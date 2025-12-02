@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4efefec339c45e4eacb1b288a41d31b, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  moveSpeed: 3
+  maxHealthPoints: 100
+  healthRegenRate: 0.2
+  timeToStartHealing: 10
+  startingWeapon: 0
+  pencil:
+    sprite: {fileID: 21300000, guid: 4236b98e3e00bc64dae3bddea75ab261, type: 3}
+    damage: 5
+    attackCooldown: 2
+    attackRange: 1
