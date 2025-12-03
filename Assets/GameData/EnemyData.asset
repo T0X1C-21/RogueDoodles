@@ -14,15 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   firstWaveCost: 6
   firstWaveTime: 12
-  waveCostMultiplier: 1.5
-  waveTimeMultiplier: 1.5
-  enemyCostList:
-  - enemy: 0
-    cost: 2
-  - enemy: 1
-    cost: 1
-  - enemy: 2
-    cost: 3
   waveCostIncreaseCurve:
     serializedVersion: 2
     m_Curve:
@@ -71,8 +62,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  enemyCostList:
+  - enemy: 0
+    cost: 2
+  - enemy: 1
+    cost: 1
+  - enemy: 2
+    cost: 3
   balloon:
     moveSpeed: 1.5
     maxHealthPoints: 20
-    healthRegenRate: 0.5
-    timeToStartHealing: 5
+    attackCooldown: 3
+    attackRange: 0.5
+    attackDamage: 5

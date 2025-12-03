@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject {
     public float moveSpeed = 3f;
     public int maxHealthPoints = 100;
     public WeaponType startingWeapon;
+    public float aimWeaponRadius;
 
     [System.Serializable]
     public struct Pencil {

@@ -18,6 +18,7 @@ public class EnemyData : ScriptableObject {
         public int maxHealthPoints;
         public float attackCooldown;
         public float attackRange;
+        public float attackDamage;
     }
 
     [Header("----- WAVE SETTINGS -----")]

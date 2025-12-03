@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   moveSpeed: 3
   maxHealthPoints: 100
-  healthRegenRate: 0.2
-  timeToStartHealing: 10
   startingWeapon: 0
+  aimWeaponRadius: 0.9
   pencil:
     sprite: {fileID: 21300000, guid: 4236b98e3e00bc64dae3bddea75ab261, type: 3}
     damage: 5

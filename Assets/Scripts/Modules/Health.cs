@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
 
@@ -7,6 +7,7 @@ public class Health : MonoBehaviour {
     
     private float healthPoints;
     private int maxHealthPoints;
+    private Slider healthSlider;
 
     private void Awake() {
         switch (characterType) {
@@ -20,9 +21,20 @@ public class Health : MonoBehaviour {
                 break;
         }
         healthPoints = maxHealthPoints;
+        healthSlider = this.GetComponentInChildren<Slider>();
     }
 
-    public void TakeDamage(int damageAmount) {
+    private void Update() {
+        CalculateHealthSlider();
+    }
+
+    // temp health slider
+    public void CalculateHealthSlider() {
+        float healthSliderValue = Mathf.InverseLerp(0f, maxHealthPoints, healthPoints);
+        healthSlider.value = healthSliderValue;
+    }
+
+    public void TakeDamage(float damageAmount) {
 
         if(healthPoints - damageAmount < 0) {
             // Death
