@@ -622,7 +622,7 @@ Transform:
   m_GameObject: {fileID: 1252383103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.512, y: 0, z: 0}
+  m_LocalPosition: {x: 2.403, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -700,6 +700,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   characterType: 1
+--- !u!1 &1449418087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1449418088}
+  - component: {fileID: 1449418089}
+  m_Layer: 0
+  m_Name: WaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1449418088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449418087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449418089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449418087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d08437ee74cb224e95df3af78471c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
 --- !u!1 &1953134078
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
   playerData: {fileID: 11400000, guid: 358601d7724cf4846ad56b44ebf7d6df, type: 2}
   enemyData: {fileID: 11400000, guid: 37a7740c958591e40a6788561e9361de, type: 2}
+  playerTargetTransform: {fileID: 889725389}
 --- !u!1 &1972690441
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,3 +890,4 @@ SceneRoots:
   - {fileID: 889725389}
   - {fileID: 1953134079}
   - {fileID: 1252383104}
+  - {fileID: 1449418088}

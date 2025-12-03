@@ -12,6 +12,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d0f494e8c849543aeff61eb45c8efb, type: 3}
   m_Name: EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  firstWaveCost: 6
+  firstWaveTime: 12
+  waveCostMultiplier: 1.5
+  waveTimeMultiplier: 1.5
+  enemyCostList:
+  - enemy: 0
+    cost: 2
+  - enemy: 1
+    cost: 1
+  - enemy: 2
+    cost: 3
+  waveCostIncreaseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.11398168
+      outSlope: 0.11398168
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05651491
+    - serializedVersion: 3
+      time: 10
+      value: 5
+      inSlope: 1.1285115
+      outSlope: 1.1285115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03689165
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  waveTimeIncreaseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.11398168
+      outSlope: 0.11398168
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05651491
+    - serializedVersion: 3
+      time: 10
+      value: 5
+      inSlope: 1.1285115
+      outSlope: 1.1285115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03689165
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   balloon:
     moveSpeed: 1.5
     maxHealthPoints: 20

@@ -17,9 +17,11 @@ public class PlayerWeapon : MonoBehaviour {
         switch (currentWeaponType) {
             case WeaponType.Pencil:
                 weaponSlot.GetComponent<SpriteRenderer>().sprite = DataManager.Instance.GetPlayerData().pencil.sprite;
-                weaponDamage = DataManager.Instance.GetPlayerData().pencil.damage;
-                attackCooldown = DataManager.Instance.GetPlayerData().pencil.attackCooldown;
-                attackRange = DataManager.Instance.GetPlayerData().pencil.attackRange;
+
+                PlayerData playerData = DataManager.Instance.GetPlayerData();
+                weaponDamage = playerData.pencil.damage;
+                attackCooldown = playerData.pencil.attackCooldown;
+                attackRange = playerData.pencil.attackRange;
                 break;
         }
 
