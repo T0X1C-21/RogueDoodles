@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,25 +40,25 @@ public class WaveSpawner : MonoBehaviour {
 
     private void SpawnWave() {
         List<string> enemies = new List<string>();
-        int randomCost = 0;
+        int randomEnemyCost = 0;
         float currentWaveCost = waveCost;
-        while(currentWaveCost - randomCost > 0) {
-            int randomNumber = Random.Range(0, 3);
+        while(currentWaveCost - randomEnemyCost > 0) {
+            EnemyType randomEnemy = GetRandomEnemy();
         
-            switch (randomNumber) {
-                case 0:
-                    randomCost = enemyCostDictionary[EnemyType.Balloon];
-                    currentWaveCost -= randomCost;
+            switch (randomEnemy) {
+                case EnemyType.Balloon:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.Balloon];
+                    currentWaveCost -= randomEnemyCost;
                     enemies.Add("balloon");
                     break;
-                case 1:
-                    randomCost = enemyCostDictionary[EnemyType.X];
-                    currentWaveCost -= randomCost;
+                case EnemyType.X:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.X];
+                    currentWaveCost -= randomEnemyCost;
                     enemies.Add("X");
                     break;
-                case 2:
-                    randomCost = enemyCostDictionary[EnemyType.Y];
-                    currentWaveCost -= randomCost;
+                case EnemyType.Y:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.Y];
+                    currentWaveCost -= randomEnemyCost;
                     enemies.Add("Y");
                     break;
             }
@@ -66,6 +67,19 @@ public class WaveSpawner : MonoBehaviour {
         foreach(string enemy in enemies) {
             Debug.Log(enemy);
         }
+    }
+
+    private EnemyType GetRandomEnemy() {
+        int randomNumber = UnityEngine.Random.Range(0, enemyCostDictionary.Count);
+        int i = 0;
+
+        foreach(EnemyType enemy in enemyCostDictionary.Keys) {
+            if(i == randomNumber) {
+                return enemy;
+            }
+            i++;
+        }
+        return EnemyType.Balloon;
     }
 
 }

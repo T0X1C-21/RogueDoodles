@@ -9,22 +9,39 @@ public class Enemy : MonoBehaviour {
     protected float attackCooldown;
     protected float attackRange;
     protected float attackDamage;
+    protected float attackPointOffsetMultiplier;
+    protected float movementStopThreshold;
 
     private float attackTimer;
     private Vector3 moveDirection;
+    private Vector3 targetPosition;
+    private bool stopMovement;
 
     protected virtual void Awake() {
         playerTarget = DataManager.Instance.GetPlayerTargetTransform();
     }
 
     private void Update() {
+        StopMovement();
         Movement();
         DetectAndAttackPlayer();
         FlipEnemy();
     }
 
+    private void StopMovement() {
+        float distance = Vector2.Distance(this.transform.position, targetPosition);
+        stopMovement = (distance <= movementStopThreshold) ? true : false;
+    }
+
     private void Movement() {
-        moveDirection = playerTarget.position - this.transform.position;
+        Vector3 targetPositionOffset = this.transform.position - playerTarget.position;
+        targetPosition = playerTarget.position + (targetPositionOffset.normalized * attackPointOffsetMultiplier);
+
+        if (stopMovement) {
+            return;
+        }
+
+        moveDirection = targetPosition - this.transform.position;
         this.transform.position += moveDirection.normalized * Time.deltaTime * moveSpeed;
     }
 
@@ -54,5 +71,7 @@ public class Enemy : MonoBehaviour {
             return;
         }
         Gizmos.DrawWireSphere(this.transform.position, attackRange);
+        Gizmos.color = Color.purple;
+        Gizmos.DrawWireSphere(targetPosition, 0.2f);
     }
 }

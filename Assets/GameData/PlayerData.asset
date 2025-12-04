@@ -21,3 +21,4 @@ MonoBehaviour:
     damage: 5
     attackCooldown: 2
     attackRange: 1
+    attackArcThreshold: 0.95

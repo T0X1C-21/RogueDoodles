@@ -10,6 +10,8 @@ public class Balloon : Enemy {
         attackCooldown = enemyData.balloon.attackCooldown;
         attackRange = enemyData.balloon.attackRange;
         attackDamage = enemyData.balloon.attackDamage;
+        attackPointOffsetMultiplier = enemyData.balloon.attackPointOffsetMultiplier;
+        movementStopThreshold = enemyData.balloon.movementStopThreshold;
     }
 
 }

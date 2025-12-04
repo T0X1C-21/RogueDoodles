@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerWeapon : MonoBehaviour {
@@ -13,6 +11,8 @@ public class PlayerWeapon : MonoBehaviour {
     private float attackCooldown;
     private float attackRange;
     private float aimWeaponRadius = 1f;
+    private Vector3 aimDirection;
+    private float attackArcThreshold;
 
     private float attackTimer;
 
@@ -28,6 +28,8 @@ public class PlayerWeapon : MonoBehaviour {
                 weaponDamage = playerData.pencil.damage;
                 attackCooldown = playerData.pencil.attackCooldown;
                 attackRange = playerData.pencil.attackRange;
+                attackArcThreshold = playerData.pencil.attackArcThreshold;
+
                 break;
         }
 
@@ -52,9 +54,11 @@ public class PlayerWeapon : MonoBehaviour {
             if(hit.TryGetComponent<Enemy>(out Enemy enemy)) {
                 switch (currentWeaponType) {
                     case WeaponType.Pencil:
-                        //Vector2 mouseDirection = Input.mousePosition - this.transform.position;
-                        //float dotProduct = Vector2.Dot();
-                        enemy.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
+                        Vector3 enemyDirection = this.transform.position - enemy.transform.position;
+                        float dotProduct = Vector2.Dot(aimDirection.normalized, enemyDirection.normalized);
+                        if(dotProduct < attackArcThreshold) {
+                            enemy.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
+                        }
                         break;
                 }
             }
@@ -69,9 +73,9 @@ public class PlayerWeapon : MonoBehaviour {
         mousePositionInScreen.z = Mathf.Abs(Camera.main.transform.position.z);
 
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePositionInScreen);
-        Vector3 mouseDirection = mousePositionInWorld - circleCenter;
+        aimDirection = mousePositionInWorld - circleCenter;
 
-        Vector3 aimPosition = Vector3.Normalize(mouseDirection) * aimWeaponRadius;
+        Vector3 aimPosition = aimDirection.normalized * aimWeaponRadius;
         weaponSlot.transform.position = this.transform.position + aimPosition;
 
         // temporary rotation
@@ -88,6 +92,23 @@ public class PlayerWeapon : MonoBehaviour {
         Gizmos.DrawWireSphere(weaponSlot.transform.position, attackRange);
         Vector3 mouseDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - this.transform.position;
         Gizmos.DrawRay(this.transform.position, mouseDirection);
+
+        float angle = Mathf.Acos(attackArcThreshold) * Mathf.Rad2Deg;
+        Gizmos.color = Color.yellow;
+        
+        int segments = 30;
+        float startAngle = -angle;
+        float endAngle = angle;
+
+        Vector3 previousPoint = this.transform.position + Quaternion.Euler(0, 0, startAngle) * aimDirection.normalized * attackRange;
+
+        for(int i = 1; i <= segments; i++) {
+            float t = Mathf.Lerp(startAngle, endAngle, i / (float)segments);
+            Vector3 nextPoint = this.transform.position + Quaternion.Euler(0, 0, t) * aimDirection.normalized * attackRange;
+
+            Gizmos.DrawLine(previousPoint, nextPoint);
+            previousPoint = nextPoint;
+        }
     }
 
 }

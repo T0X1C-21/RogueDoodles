@@ -16,6 +16,9 @@ public class PlayerData : ScriptableObject {
         public int damage;
         public float attackCooldown;
         public float attackRange;
+        [Tooltip("The higher this number, the larger the attack arc.")]
+        [Range(-1f, 1f)]
+        public float attackArcThreshold;
 
     }
 

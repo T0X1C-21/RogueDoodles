@@ -19,6 +19,12 @@ public class EnemyData : ScriptableObject {
         public float attackCooldown;
         public float attackRange;
         public float attackDamage;
+        [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
+        [Range(0f, 1f)]
+        public float attackPointOffsetMultiplier;
+        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
+        [Range(0f, 1f)]
+        public float movementStopThreshold;
     }
 
     [Header("----- WAVE SETTINGS -----")]

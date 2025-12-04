@@ -75,3 +75,5 @@ MonoBehaviour:
     attackCooldown: 3
     attackRange: 0.5
     attackDamage: 5
+    attackPointOffsetMultiplier: 0.1
+    movementStopThreshold: 0.35
