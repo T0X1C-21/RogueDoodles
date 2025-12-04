@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
 
+    [SerializeField] private float minimumSpawnCircleRadius = 1f;
+    [SerializeField] private float maximumSpawnCircleRadius = 2f;
+    [SerializeField] private bool drawGizmos;
+
     private float waveCost;
     private float waveTime;
     private int waveNumber = 0;
@@ -39,7 +43,6 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void SpawnWave() {
-        List<string> enemies = new List<string>();
         int randomEnemyCost = 0;
         float currentWaveCost = waveCost;
         while(currentWaveCost - randomEnemyCost > 0) {
@@ -49,23 +52,14 @@ public class WaveSpawner : MonoBehaviour {
                 case EnemyType.Balloon:
                     randomEnemyCost = enemyCostDictionary[EnemyType.Balloon];
                     currentWaveCost -= randomEnemyCost;
-                    enemies.Add("balloon");
+                    SpawnEnemy(EnemyType.Balloon);
                     break;
-                case EnemyType.X:
-                    randomEnemyCost = enemyCostDictionary[EnemyType.X];
+                case EnemyType.CursedChalkStick:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.CursedChalkStick];
                     currentWaveCost -= randomEnemyCost;
-                    enemies.Add("X");
-                    break;
-                case EnemyType.Y:
-                    randomEnemyCost = enemyCostDictionary[EnemyType.Y];
-                    currentWaveCost -= randomEnemyCost;
-                    enemies.Add("Y");
+                    SpawnEnemy(EnemyType.CursedChalkStick);
                     break;
             }
-        }
-        
-        foreach(string enemy in enemies) {
-            Debug.Log(enemy);
         }
     }
 
@@ -80,6 +74,40 @@ public class WaveSpawner : MonoBehaviour {
             i++;
         }
         return EnemyType.Balloon;
+    }
+
+    private void SpawnEnemy(EnemyType enemyType) {
+        float randomAngle = UnityEngine.Random.Range(0f, 2 * Mathf.PI);
+        float x = Mathf.Cos(randomAngle);
+        float y = Mathf.Cos(randomAngle);
+
+        float randomDistance = UnityEngine.Random.Range(minimumSpawnCircleRadius, maximumSpawnCircleRadius);
+
+        Vector2 cameraPosition = Camera.main.transform.position;
+        Vector2 spawnPosition = cameraPosition + (new Vector2(x, y) * randomDistance);
+
+        GameObject enemyPrefab;
+        switch (enemyType) {
+            case EnemyType.Balloon:
+                enemyPrefab = DataManager.Instance.GetEnemyData().balloon.balloonPrefab;
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                break;
+            case EnemyType.CursedChalkStick:
+                enemyPrefab = DataManager.Instance.GetEnemyData()
+                    .cursedChalkStick.cursedChalkStickPrefab;
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                break;
+        }
+    }
+
+    private void OnDrawGizmos() {
+        if (!drawGizmos) {
+            return;
+        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(Camera.main.transform.position, minimumSpawnCircleRadius);
+        Gizmos.color = Color.crimson;
+        Gizmos.DrawWireSphere(Camera.main.transform.position, maximumSpawnCircleRadius);
     }
 
 }

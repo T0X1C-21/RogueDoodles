@@ -10,14 +10,19 @@ public class Health : MonoBehaviour {
     private Slider healthSlider;
 
     private void Awake() {
+        EnemyData enemyData;
         switch (characterType) {
             case CharacterType.Player:
                 PlayerData playerData = DataManager.Instance.GetPlayerData();
                 maxHealthPoints = playerData.maxHealthPoints;
                 break;
             case CharacterType.Balloon:
-                EnemyData enemyData = DataManager.Instance.GetEnemyData();
+                enemyData = DataManager.Instance.GetEnemyData();
                 maxHealthPoints = enemyData.balloon.maxHealthPoints;
+                break;
+            case CharacterType.CursedChalkStick:
+                enemyData = DataManager.Instance.GetEnemyData();
+                maxHealthPoints = enemyData.cursedChalkStick.maxHealthPoints;
                 break;
         }
         healthPoints = maxHealthPoints;
@@ -37,13 +42,12 @@ public class Health : MonoBehaviour {
     public void TakeDamage(float damageAmount) {
 
         if(healthPoints - damageAmount < 0) {
-            // Death
+            Destroy(this.gameObject);
             healthPoints = 0f;
             return;
         }
 
         healthPoints -= damageAmount;
-        Debug.Log(characterType.ToString() + " Took Damage: " + healthPoints);
     }
 
     // Instant Health Regeneration For Player

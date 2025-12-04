@@ -12,6 +12,7 @@ public class PlayerWeapon : MonoBehaviour {
     private float attackRange;
     private float aimWeaponRadius = 1f;
     private Vector3 aimDirection;
+    private Vector3 aimPosition;
     private float attackArcThreshold;
 
     private float attackTimer;
@@ -54,7 +55,7 @@ public class PlayerWeapon : MonoBehaviour {
             if(hit.TryGetComponent<Enemy>(out Enemy enemy)) {
                 switch (currentWeaponType) {
                     case WeaponType.Pencil:
-                        Vector3 enemyDirection = this.transform.position - enemy.transform.position;
+                        Vector3 enemyDirection = aimPosition - enemy.transform.position;
                         float dotProduct = Vector2.Dot(aimDirection.normalized, enemyDirection.normalized);
                         if(dotProduct < attackArcThreshold) {
                             enemy.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
@@ -75,7 +76,7 @@ public class PlayerWeapon : MonoBehaviour {
         Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePositionInScreen);
         aimDirection = mousePositionInWorld - circleCenter;
 
-        Vector3 aimPosition = aimDirection.normalized * aimWeaponRadius;
+        aimPosition = aimDirection.normalized * aimWeaponRadius;
         weaponSlot.transform.position = this.transform.position + aimPosition;
 
         // temporary rotation
@@ -89,9 +90,9 @@ public class PlayerWeapon : MonoBehaviour {
         if (!drawGizmos) {
             return;
         }
+        Gizmos.color = new Color(0f, 0f, 0f, 0.2f);
         Gizmos.DrawWireSphere(weaponSlot.transform.position, attackRange);
         Vector3 mouseDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - this.transform.position;
-        Gizmos.DrawRay(this.transform.position, mouseDirection);
 
         float angle = Mathf.Acos(attackArcThreshold) * Mathf.Rad2Deg;
         Gizmos.color = Color.yellow;

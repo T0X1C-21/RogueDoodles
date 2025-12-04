@@ -6,13 +6,13 @@ public enum WeaponType {
 
 public enum CharacterType {
     Player,
-    Balloon
+    Balloon,
+    CursedChalkStick
 }
 
 public enum EnemyType {
     Balloon,
-    X,
-    Y
+    CursedChalkStick
 }
 
 public class DataManager : Singleton<DataManager> {

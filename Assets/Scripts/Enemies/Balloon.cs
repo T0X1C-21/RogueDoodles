@@ -6,7 +6,8 @@ public class Balloon : Enemy {
         base.Awake();
 
         EnemyData enemyData = DataManager.Instance.GetEnemyData();
-        moveSpeed = enemyData.balloon.moveSpeed;
+        moveSpeed = enemyData.balloon.moveSpeed + Random.Range
+            (-enemyData.balloon.moveSpeedOffset, enemyData.balloon.moveSpeedOffset);
         attackCooldown = enemyData.balloon.attackCooldown;
         attackRange = enemyData.balloon.attackRange;
         attackDamage = enemyData.balloon.attackDamage;

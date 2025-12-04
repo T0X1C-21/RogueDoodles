@@ -64,16 +64,26 @@ MonoBehaviour:
     m_RotationOrder: 4
   enemyCostList:
   - enemy: 0
-    cost: 2
-  - enemy: 1
     cost: 1
-  - enemy: 2
-    cost: 3
+  - enemy: 1
+    cost: 2
   balloon:
-    moveSpeed: 1.5
+    balloonPrefab: {fileID: 3897716040525845867, guid: ac7fc6a43634e9342951c0c8eed701ba, type: 3}
+    moveSpeed: 1
+    moveSpeedOffset: 0.1
     maxHealthPoints: 20
     attackCooldown: 3
     attackRange: 0.5
     attackDamage: 5
+    attackPointOffsetMultiplier: 0.1
+    movementStopThreshold: 0.35
+  cursedChalkStick:
+    cursedChalkStickPrefab: {fileID: 1500435386923096678, guid: 6318bf4e40af40347911d0f33244ce42, type: 3}
+    moveSpeed: 0.75
+    moveSpeedOffset: 0.1
+    maxHealthPoints: 25
+    attackCooldown: 4
+    attackRange: 0.3
+    attackDamage: 6
     attackPointOffsetMultiplier: 0.1
     movementStopThreshold: 0.35
