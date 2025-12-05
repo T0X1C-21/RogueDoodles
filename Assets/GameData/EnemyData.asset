@@ -79,7 +79,7 @@ MonoBehaviour:
     movementStopThreshold: 0.35
   cursedChalkStick:
     cursedChalkStickPrefab: {fileID: 1500435386923096678, guid: 6318bf4e40af40347911d0f33244ce42, type: 3}
-    moveSpeed: 0.75
+    moveSpeed: 0.5
     moveSpeedOffset: 0.1
     maxHealthPoints: 25
     attackCooldown: 4

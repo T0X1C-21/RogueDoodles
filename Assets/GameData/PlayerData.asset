@@ -17,7 +17,7 @@ MonoBehaviour:
   startingWeapon: 0
   aimWeaponRadius: 0.9
   pencil:
-    sprite: {fileID: 21300000, guid: 4236b98e3e00bc64dae3bddea75ab261, type: 3}
+    sprite: {fileID: 21300000, guid: cef8c6d4cce6e744ea0b377cb07d561b, type: 3}
     damage: 5
     attackCooldown: 2
     attackRange: 1

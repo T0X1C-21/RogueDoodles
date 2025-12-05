@@ -80,10 +80,12 @@ public class PlayerWeapon : MonoBehaviour {
         weaponSlot.transform.position = this.transform.position + aimPosition;
 
         // temporary rotation
-        float dotProduct = Vector2.Dot(mousePositionInWorld, Vector2.right);
-        int direction = (dotProduct > 0) ? 1 : -1;
-        Vector3 scale = weaponSlot.transform.localScale;
-        weaponSlot.transform.localScale = new Vector3(direction, scale.y, scale.z);
+        Quaternion lookRotation = Quaternion.FromToRotation(weaponSlot.transform.position, aimDirection);
+        weaponSlot.transform.rotation = lookRotation;
+        //float dotProduct = Vector2.Dot(mousePositionInWorld, Vector2.right);
+        //int direction = (dotProduct > 0) ? 1 : -1;
+        //Vector3 scale = weaponSlot.transform.localScale;
+        //weaponSlot.transform.localScale = new Vector3(direction, scale.y, scale.z);
     }
 
     private void OnDrawGizmos() {

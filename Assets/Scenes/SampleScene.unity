@@ -430,7 +430,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4236b98e3e00bc64dae3bddea75ab261, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cef8c6d4cce6e744ea0b377cb07d561b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1192,8 +1192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d08437ee74cb224e95df3af78471c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
-  minimumSpawnCircleRadius: 3
-  maximumSpawnCircleRadius: 5
+  minimumSpawnCircleRadius: 8.5
+  maximumSpawnCircleRadius: 10.5
   drawGizmos: 0
 --- !u!1 &1953134078
 GameObject:
@@ -1321,7 +1321,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4169eb064329f8c4096808b98d6a972d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: daf9091d4b8c9ed46a19648d936bcafb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
