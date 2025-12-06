@@ -15,10 +15,12 @@ MonoBehaviour:
   moveSpeed: 3
   maxHealthPoints: 100
   startingWeapon: 0
-  aimWeaponRadius: 0.9
+  aimWeaponRadius: 0.25
   pencil:
     sprite: {fileID: 21300000, guid: cef8c6d4cce6e744ea0b377cb07d561b, type: 3}
     damage: 5
     attackCooldown: 2
-    attackRange: 1
+    attackRange: 0.5
     attackArcThreshold: 0.95
+    preAnimationTime: 0.15
+    animationTime: 0.2

@@ -19,6 +19,8 @@ public class PlayerData : ScriptableObject {
         [Tooltip("The higher this number, the larger the attack arc.")]
         [Range(-1f, 1f)]
         public float attackArcThreshold;
+        public float preAnimationTime;
+        public float animationTime;
 
     }
 
