@@ -77,6 +77,8 @@ MonoBehaviour:
     attackDamage: 5
     attackPointOffsetMultiplier: 0.1
     movementStopThreshold: 0.35
+    minimumAmountOfExperienceDrop: 1
+    maximumAmountOfExperienceDrop: 3
   cursedChalkStick:
     cursedChalkStickPrefab: {fileID: 1500435386923096678, guid: 6318bf4e40af40347911d0f33244ce42, type: 3}
     moveSpeed: 0.5
@@ -87,3 +89,5 @@ MonoBehaviour:
     attackDamage: 6
     attackPointOffsetMultiplier: 0.1
     movementStopThreshold: 0.35
+    minimumAmountOfExperienceDrop: 4
+    maximumAmountOfExperienceDrop: 7

@@ -42,8 +42,13 @@ public class Health : MonoBehaviour {
     public void TakeDamage(float damageAmount) {
 
         if(healthPoints - damageAmount < 0) {
-            Destroy(this.gameObject);
+            if(characterType != CharacterType.Player) {
+                this.GetComponent<DropExperience>().SpawnExperienceOrbs();
+            }
+
             healthPoints = 0f;
+            Destroy(this.gameObject);
+
             return;
         }
 

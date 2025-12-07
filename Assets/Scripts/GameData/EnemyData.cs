@@ -28,6 +28,8 @@ public class EnemyData : ScriptableObject {
         [Tooltip("This number determines at how much distance the enemy should stop its movement")]
         [Range(0f, 1f)]
         public float movementStopThreshold;
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
     }
 
     [System.Serializable]
@@ -46,6 +48,8 @@ public class EnemyData : ScriptableObject {
         [Tooltip("This number determines at how much distance the enemy should stop its movement")]
         [Range(0f, 1f)]
         public float movementStopThreshold;
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
     }
 
     [Header("----- WAVE SETTINGS -----")]
