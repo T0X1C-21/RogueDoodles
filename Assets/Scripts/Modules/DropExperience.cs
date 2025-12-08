@@ -34,14 +34,27 @@ public class DropExperience : MonoBehaviour {
     public void SpawnExperienceOrbs() {
         int amountOfExperienceToDrop = Random.Range(minimumAmountOfExperience, maximumAmountOfExperience);
         int remainingAmountOfExperience = amountOfExperienceToDrop;
+        int randomNumber = 0;
 
         while(remainingAmountOfExperience > 0) {
             if(remainingAmountOfExperience >= largeInkBlobExperienceAmount) {
-                ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Large, this.transform.position);
-                remainingAmountOfExperience -= largeInkBlobExperienceAmount;
+                randomNumber = Random.Range(1, 3);
+                if(randomNumber == 1) {
+                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Large, this.transform.position);
+                    remainingAmountOfExperience -= largeInkBlobExperienceAmount;
+                } else {
+                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Medium, this.transform.position);
+                    remainingAmountOfExperience -= mediumInkBlobExperienceAmount;
+                }
             } else if(remainingAmountOfExperience >= mediumInkBlobExperienceAmount) {
-                ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Medium, this.transform.position);
-                remainingAmountOfExperience -= mediumInkBlobExperienceAmount;
+                randomNumber = Random.Range(1, 3);
+                if(randomNumber == 1) {
+                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Medium, this.transform.position);
+                    remainingAmountOfExperience -= mediumInkBlobExperienceAmount;
+                } else {
+                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Small, this.transform.position);    
+                    remainingAmountOfExperience -= smallInkBlobExperienceAmount;
+                }
             } else if(remainingAmountOfExperience >= smallInkBlobExperienceAmount) {
                 ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Small, this.transform.position);    
                 remainingAmountOfExperience -= smallInkBlobExperienceAmount;

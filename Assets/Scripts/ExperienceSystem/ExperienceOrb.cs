@@ -4,16 +4,14 @@ using UnityEngine;
 public class ExperienceOrb : MonoBehaviour {
 
     private int amountOfExperience;
-    private AnimationCurve yMinimumRandomization;
-    private AnimationCurve yMaximumRandomization;
+    private AnimationCurve heightCurve;
     private float animationDuration;
     private AnimationCurve orbCollectionSpeedCurve;
     private Coroutine attractToPlayerCoroutine;
 
     private void Awake() {
         ExperienceData experienceData = DataManager.Instance.GetExperienceData();
-        yMinimumRandomization = experienceData.yMinimumRandomization;
-        yMaximumRandomization = experienceData.yMaximumRandomization;
+        heightCurve = experienceData.heightCurve;
         animationDuration = experienceData.animationDuration;
         orbCollectionSpeedCurve = experienceData.orbCollectionSpeedCurve;
     }
@@ -26,12 +24,13 @@ public class ExperienceOrb : MonoBehaviour {
         float originalOrbPositionX = this.transform.position.x;
         float originalOrbPositionY = this.transform.position.y;
         float targetOrbPositionX = Random.Range(-1f, 1f) + originalOrbPositionX;
+        float randomHeightMultiplier = Random.Range(0.25f, 1.25f);
+        float randomAnimationDurationMultiplier = Random.Range(0.8f, 1.2f);
         float t = 0f;
         while(t < 1) {
-            t += Time.deltaTime / animationDuration;
+            t += Time.deltaTime * animationDuration * randomAnimationDurationMultiplier;
             float animationX = Mathf.Lerp(originalOrbPositionX, targetOrbPositionX, t);
-            float animationY = Random.Range(yMinimumRandomization.Evaluate(t), yMaximumRandomization.Evaluate(t))
-                + originalOrbPositionY;
+            float animationY = (heightCurve.Evaluate(t) * randomHeightMultiplier) + originalOrbPositionY;
             this.transform.position = new Vector3(animationX, animationY);
             yield return null;
         }
@@ -39,7 +38,7 @@ public class ExperienceOrb : MonoBehaviour {
 
     public IEnumerator AttractToPlayer() {
         Vector3 startPosition = this.transform.position;
-        float t = 0f;
+        float t = Random.Range(-0.3f, 0f);
         while(t < 1f) {
             Vector3 endPosition = DataManager.Instance.GetPlayerTargetTransform().position;
             t += Time.deltaTime * 1f;

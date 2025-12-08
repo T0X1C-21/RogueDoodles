@@ -32,8 +32,7 @@ public class ExperienceData : ScriptableObject {
     public LargeInkBlob largeInkBlobSettings;
 
     [Header("-----Ink Blob Animation-----")]
-    public AnimationCurve yMinimumRandomization;
-    public AnimationCurve yMaximumRandomization;
+    public AnimationCurve heightCurve;
     public float animationDuration;
 
     [Header("-----Ink Blob Collection-----")]

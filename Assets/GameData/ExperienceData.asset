@@ -24,30 +24,21 @@ MonoBehaviour:
   largeInkBlobSettings:
     inkBlobSprite: {fileID: 0}
     amountOfExperience: 50
-  yMinimumRandomization:
+  heightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 18.112982
+      outSlope: 18.112982
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.39999998
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.03689168
     - serializedVersion: 3
       time: 1
-      value: 0.2
+      value: 7.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -57,55 +48,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  yMaximumRandomization:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1.4285715
-      outSlope: 1.4285715
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.7
-      value: 1
-      inSlope: -0.14271484
-      outSlope: -0.14271484
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.07938998
-      outWeight: 0.20983775
-    - serializedVersion: 3
-      time: 1
-      value: -0.2
-      inSlope: -4
-      outSlope: -4
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  animationDuration: 0.3
+  animationDuration: 4
   orbCollectionSpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 7.4119053
-      outSlope: 7.4119053
+      inSlope: 12.706132
+      outSlope: 12.706132
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.043956045
+      outWeight: 0.03689168
     - serializedVersion: 3
       time: 1
-      value: 5
+      value: 7.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
