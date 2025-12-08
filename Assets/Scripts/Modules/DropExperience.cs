@@ -26,9 +26,9 @@ public class DropExperience : MonoBehaviour {
         }
 
         ExperienceData experienceData = DataManager.Instance.GetExperienceData();
-        smallInkBlobExperienceAmount = experienceData.smallInkBlob.amountOfExperience;
-        mediumInkBlobExperienceAmount = experienceData.mediumInkBlob.amountOfExperience;
-        largeInkBlobExperienceAmount = experienceData.largeInkBlob.amountOfExperience;
+        smallInkBlobExperienceAmount = experienceData.smallInkBlobSettings.amountOfExperience;
+        mediumInkBlobExperienceAmount = experienceData.mediumInkBlobSettings.amountOfExperience;
+        largeInkBlobExperienceAmount = experienceData.largeInkBlobSettings.amountOfExperience;
     }
 
     public void SpawnExperienceOrbs() {

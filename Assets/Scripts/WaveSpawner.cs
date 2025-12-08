@@ -87,17 +87,19 @@ public class WaveSpawner : MonoBehaviour {
         Vector2 spawnPosition = cameraPosition + (new Vector2(x, y) * randomDistance);
 
         GameObject enemyPrefab;
+        GameObject spawnedEnemy = null;
         switch (enemyType) {
             case EnemyType.Balloon:
                 enemyPrefab = DataManager.Instance.GetEnemyData().balloon.balloonPrefab;
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 break;
             case EnemyType.CursedChalkStick:
                 enemyPrefab = DataManager.Instance.GetEnemyData()
                     .cursedChalkStick.cursedChalkStickPrefab;
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 break;
         }
+        spawnedEnemy.transform.parent = this.transform;
     }
 
     private void OnDrawGizmos() {

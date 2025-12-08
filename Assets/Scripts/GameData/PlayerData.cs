@@ -8,6 +8,7 @@ public class PlayerData : ScriptableObject {
     public int maxHealthPoints = 100;
     public WeaponType startingWeapon;
     public float aimWeaponRadius;
+    public float experienceCollectionRadius;
 
     [System.Serializable]
     public struct Pencil {

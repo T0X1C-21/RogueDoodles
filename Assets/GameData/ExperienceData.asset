@@ -13,14 +13,105 @@ MonoBehaviour:
   m_Name: ExperienceData
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceData
   smallInkBlobObject: {fileID: 5202080998711141345, guid: 2d65b2fe016dd504490a501c2886b25e, type: 3}
-  mediumInkBlobObject: {fileID: 0}
+  mediumInkBlobObject: {fileID: 3149679781769782567, guid: 517ac32043a79044a8d263e525815680, type: 3}
   largeInkBlobObject: {fileID: 0}
-  smallInkBlob:
-    inkBlobSprite: {fileID: 21300000, guid: 372ba0b5ba612fc4983abd2d83cb4baa, type: 3}
+  smallInkBlobSettings:
+    inkBlobSprite: {fileID: 21300000, guid: e58bef87230bbaa44b4d6e932782a9d8, type: 3}
     amountOfExperience: 1
-  mediumInkBlob:
+  mediumInkBlobSettings:
+    inkBlobSprite: {fileID: 21300000, guid: 367d6f60affc323429c34cfb5a13054d, type: 3}
+    amountOfExperience: 3
+  largeInkBlobSettings:
     inkBlobSprite: {fileID: 0}
     amountOfExperience: 50
-  largeInkBlob:
-    inkBlobSprite: {fileID: 0}
-    amountOfExperience: 50
+  yMinimumRandomization:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.39999998
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yMaximumRandomization:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.4285715
+      outSlope: 1.4285715
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: -0.14271484
+      outSlope: -0.14271484
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07938998
+      outWeight: 0.20983775
+    - serializedVersion: 3
+      time: 1
+      value: -0.2
+      inSlope: -4
+      outSlope: -4
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animationDuration: 0.3
+  orbCollectionSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 7.4119053
+      outSlope: 7.4119053
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.043956045
+    - serializedVersion: 3
+      time: 1
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

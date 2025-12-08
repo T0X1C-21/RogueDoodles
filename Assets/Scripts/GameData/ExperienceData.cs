@@ -27,8 +27,16 @@ public class ExperienceData : ScriptableObject {
     public GameObject largeInkBlobObject;
 
     [Header("-----Ink Blobs Settings-----")]
-    public SmallInkBlob smallInkBlob;
-    public MediumInkBlob mediumInkBlob;
-    public LargeInkBlob largeInkBlob;
+    public SmallInkBlob smallInkBlobSettings;
+    public MediumInkBlob mediumInkBlobSettings;
+    public LargeInkBlob largeInkBlobSettings;
+
+    [Header("-----Ink Blob Animation-----")]
+    public AnimationCurve yMinimumRandomization;
+    public AnimationCurve yMaximumRandomization;
+    public float animationDuration;
+
+    [Header("-----Ink Blob Collection-----")]
+    public AnimationCurve orbCollectionSpeedCurve;
 
 }
