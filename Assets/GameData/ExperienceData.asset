@@ -12,17 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa2d7b7a95efd4ca33a7fd5eadef55, type: 3}
   m_Name: ExperienceData
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceData
-  smallInkBlobObject: {fileID: 5202080998711141345, guid: 2d65b2fe016dd504490a501c2886b25e, type: 3}
-  mediumInkBlobObject: {fileID: 3149679781769782567, guid: 517ac32043a79044a8d263e525815680, type: 3}
-  largeInkBlobObject: {fileID: 0}
   smallInkBlobSettings:
-    inkBlobSprite: {fileID: 21300000, guid: e58bef87230bbaa44b4d6e932782a9d8, type: 3}
+    prefabObject: {fileID: 5202080998711141345, guid: 2d65b2fe016dd504490a501c2886b25e, type: 3}
     amountOfExperience: 1
   mediumInkBlobSettings:
-    inkBlobSprite: {fileID: 21300000, guid: 367d6f60affc323429c34cfb5a13054d, type: 3}
+    prefabObject: {fileID: 3149679781769782567, guid: 517ac32043a79044a8d263e525815680, type: 3}
     amountOfExperience: 3
   largeInkBlobSettings:
-    inkBlobSprite: {fileID: 0}
+    prefabObject: {fileID: 0}
     amountOfExperience: 50
   heightCurve:
     serializedVersion: 2
@@ -30,46 +27,56 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 18.112982
-      outSlope: 18.112982
+      inSlope: 4.6642823
+      outSlope: 4.6642823
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.03689168
+      outWeight: 0.034536894
     - serializedVersion: 3
       time: 1
-      value: 7.5
-      inSlope: 0
-      outSlope: 0
+      value: 1.5
+      inSlope: 0.102165796
+      outSlope: 0.102165796
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.077708006
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 4
-  orbCollectionSpeedCurve:
+  animationDuration: 0.4
+  orbCollectionPathCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 12.706132
-      outSlope: 12.706132
+      inSlope: -6.765339
+      outSlope: -6.765339
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.03689168
+      outWeight: 0.1569859
+    - serializedVersion: 3
+      time: 0.2
+      value: -0.5
+      inSlope: -0.4002128
+      outSlope: 0.06849772
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.2935636
+      outWeight: 0.07280221
     - serializedVersion: 3
       time: 1
-      value: 7.5
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: -0.06981299
+      outSlope: -0.06981299
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.17857149
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  orbCollectionDuration: 0.2

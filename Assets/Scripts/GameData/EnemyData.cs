@@ -53,6 +53,8 @@ public class EnemyData : ScriptableObject {
     }
 
     [Header("----- WAVE SETTINGS -----")]
+    public float minimumSpawnCircleRadius;
+    public float maximumSpawnCircleRadius;
     [Tooltip("The higher the number, higher number of enemies spawn at the start")]
     public int firstWaveCost = 10;
     [Tooltip("Time to wait for the next wave at the first wave")]

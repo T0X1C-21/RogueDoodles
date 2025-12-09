@@ -1,23 +1,34 @@
 using System.Collections;
 using UnityEngine;
 
-public class ExperienceOrb : MonoBehaviour {
+public class ExperienceOrb : MonoBehaviour, IPoolable {
 
     private int amountOfExperience;
     private AnimationCurve heightCurve;
     private float animationDuration;
     private AnimationCurve orbCollectionSpeedCurve;
     private Coroutine attractToPlayerCoroutine;
+    private float orbCollectionDuration;
+    private PoolType orbType;
 
     private void Awake() {
         ExperienceData experienceData = DataManager.Instance.GetExperienceData();
         heightCurve = experienceData.heightCurve;
         animationDuration = experienceData.animationDuration;
-        orbCollectionSpeedCurve = experienceData.orbCollectionSpeedCurve;
+        orbCollectionSpeedCurve = experienceData.orbCollectionPathCurve;
+        orbCollectionDuration = experienceData.orbCollectionDuration;
     }
 
     private void Start() {
         StartCoroutine(SpawnParabolicAnimation());
+    }
+
+    public void OnSpawnFromPool() {
+        StartCoroutine(SpawnParabolicAnimation());
+    }
+
+    public void OnReturnToPool() {
+        
     }
 
     private IEnumerator SpawnParabolicAnimation() {
@@ -28,7 +39,7 @@ public class ExperienceOrb : MonoBehaviour {
         float randomAnimationDurationMultiplier = Random.Range(0.8f, 1.2f);
         float t = 0f;
         while(t < 1) {
-            t += Time.deltaTime * animationDuration * randomAnimationDurationMultiplier;
+            t += Time.deltaTime / animationDuration * randomAnimationDurationMultiplier;
             float animationX = Mathf.Lerp(originalOrbPositionX, targetOrbPositionX, t);
             float animationY = (heightCurve.Evaluate(t) * randomHeightMultiplier) + originalOrbPositionY;
             this.transform.position = new Vector3(animationX, animationY);
@@ -41,8 +52,8 @@ public class ExperienceOrb : MonoBehaviour {
         float t = Random.Range(-0.3f, 0f);
         while(t < 1f) {
             Vector3 endPosition = DataManager.Instance.GetPlayerTargetTransform().position;
-            t += Time.deltaTime * 1f;
-            this.transform.position = Vector3.Lerp(startPosition, endPosition, t * orbCollectionSpeedCurve.Evaluate(t));
+            t += Time.deltaTime / orbCollectionDuration;
+            this.transform.position = Vector3.LerpUnclamped(startPosition, endPosition, orbCollectionSpeedCurve.Evaluate(t));
             yield return null;
         }
 
@@ -51,7 +62,7 @@ public class ExperienceOrb : MonoBehaviour {
         float destroyDistance = 0.1f;
         if(Vector2.Distance(this.transform.position, 
             DataManager.Instance.GetPlayerTargetTransform().position) <= destroyDistance) {
-            Destroy(this.gameObject);
+            ObjectPoolManager.SetObjectBackToPool(orbType, this.gameObject);
         }
     }
 
@@ -69,6 +80,10 @@ public class ExperienceOrb : MonoBehaviour {
 
     public void SetAmountOfExperience(int amountOfExperience) {
         this.amountOfExperience = amountOfExperience;
+    }
+
+    public void SetOrbType(PoolType poolType) {
+        orbType = poolType;
     }
     
 }

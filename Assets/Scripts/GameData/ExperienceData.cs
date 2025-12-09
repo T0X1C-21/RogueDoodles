@@ -5,37 +5,33 @@ public class ExperienceData : ScriptableObject {
 
     [System.Serializable]
     public struct SmallInkBlob {
-        public Sprite inkBlobSprite;
+        public GameObject prefabObject;
         public int amountOfExperience;
     }
 
     [System.Serializable]
     public struct MediumInkBlob {
-        public Sprite inkBlobSprite;
+        public GameObject prefabObject;
         public int amountOfExperience;
     }
 
     [System.Serializable]
     public struct LargeInkBlob {
-        public Sprite inkBlobSprite;
+        public GameObject prefabObject;
         public int amountOfExperience;
     }
 
-    [Header("-----Ink Blobs Objects-----")]
-    public GameObject smallInkBlobObject;
-    public GameObject mediumInkBlobObject;
-    public GameObject largeInkBlobObject;
-
-    [Header("-----Ink Blobs Settings-----")]
+    [Header("----- INK BLOBS SETTINGS -----")]
     public SmallInkBlob smallInkBlobSettings;
     public MediumInkBlob mediumInkBlobSettings;
     public LargeInkBlob largeInkBlobSettings;
 
-    [Header("-----Ink Blob Animation-----")]
+    [Header("----- INK BLOB POP OUT ANIMATION -----")]
     public AnimationCurve heightCurve;
     public float animationDuration;
 
-    [Header("-----Ink Blob Collection-----")]
-    public AnimationCurve orbCollectionSpeedCurve;
+    [Header("----- INK BLOB COLLECTION ANIMATION -----")]
+    public AnimationCurve orbCollectionPathCurve;
+    public float orbCollectionDuration;
 
 }

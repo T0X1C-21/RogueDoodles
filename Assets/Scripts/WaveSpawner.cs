@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
 
-    [SerializeField] private float minimumSpawnCircleRadius = 1f;
-    [SerializeField] private float maximumSpawnCircleRadius = 2f;
     [SerializeField] private bool drawGizmos;
 
+    private float minimumSpawnCircleRadius;
+    private float maximumSpawnCircleRadius;
     private float waveCost;
     private float waveTime;
     private int waveNumber = 0;
@@ -19,6 +18,8 @@ public class WaveSpawner : MonoBehaviour {
 
     private void Awake() {
         EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        minimumSpawnCircleRadius = enemyData.minimumSpawnCircleRadius;
+        maximumSpawnCircleRadius = enemyData.maximumSpawnCircleRadius;
         waveCost = enemyData.firstWaveCost;
         waveTime = enemyData.firstWaveTime;
         waveCostIncreaseCurve = enemyData.waveCostIncreaseCurve;
@@ -64,7 +65,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private EnemyType GetRandomEnemy() {
-        int randomNumber = UnityEngine.Random.Range(0, enemyCostDictionary.Count);
+        int randomNumber = Random.Range(0, enemyCostDictionary.Count);
         int i = 0;
 
         foreach(EnemyType enemy in enemyCostDictionary.Keys) {
@@ -77,11 +78,11 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void SpawnEnemy(EnemyType enemyType) {
-        float randomAngle = UnityEngine.Random.Range(0f, 2 * Mathf.PI);
+        float randomAngle = Random.Range(0f, 2 * Mathf.PI);
         float x = Mathf.Cos(randomAngle);
         float y = Mathf.Cos(randomAngle);
 
-        float randomDistance = UnityEngine.Random.Range(minimumSpawnCircleRadius, maximumSpawnCircleRadius);
+        float randomDistance = Random.Range(minimumSpawnCircleRadius, maximumSpawnCircleRadius);
 
         Vector2 cameraPosition = Camera.main.transform.position;
         Vector2 spawnPosition = cameraPosition + (new Vector2(x, y) * randomDistance);
@@ -91,15 +92,16 @@ public class WaveSpawner : MonoBehaviour {
         switch (enemyType) {
             case EnemyType.Balloon:
                 enemyPrefab = DataManager.Instance.GetEnemyData().balloon.balloonPrefab;
-                spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.Balloon, enemyPrefab, spawnPosition,
+                    Quaternion.identity);
                 break;
             case EnemyType.CursedChalkStick:
                 enemyPrefab = DataManager.Instance.GetEnemyData()
                     .cursedChalkStick.cursedChalkStickPrefab;
-                spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.CursedChalkStick, enemyPrefab,
+                    spawnPosition, Quaternion.identity);
                 break;
         }
-        spawnedEnemy.transform.parent = this.transform;
     }
 
     private void OnDrawGizmos() {

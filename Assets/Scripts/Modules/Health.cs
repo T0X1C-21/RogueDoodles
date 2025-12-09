@@ -47,7 +47,18 @@ public class Health : MonoBehaviour {
             }
 
             healthPoints = 0f;
-            Destroy(this.gameObject);
+
+            switch (characterType) {
+                case CharacterType.Player:
+                    Destroy(this.gameObject);
+                    break;
+                case CharacterType.Balloon:
+                    ObjectPoolManager.SetObjectBackToPool(PoolType.Balloon, this.gameObject);
+                    break;
+                case CharacterType.CursedChalkStick:
+                    ObjectPoolManager.SetObjectBackToPool(PoolType.CursedChalkStick, this.gameObject);
+                    break;
+            }
 
             return;
         }
@@ -58,6 +69,11 @@ public class Health : MonoBehaviour {
     // Instant Health Regeneration For Player
     public void RegenerateHealthPointsInstant(int healAmount) {
 
+    }
+
+    // For pooling enemies
+    public void ResetHealth() {
+        healthPoints = maxHealthPoints;
     }
 
 }

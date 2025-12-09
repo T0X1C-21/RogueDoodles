@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour, IPoolable {
 
     [SerializeField] private bool drawGizmos;
 
@@ -16,6 +16,16 @@ public class Enemy : MonoBehaviour {
     private Vector3 moveDirection;
     private Vector3 targetPosition;
     private bool stopMovement;
+
+    public void OnSpawnFromPool() {
+        if(this.TryGetComponent(out Health health)) {
+            health.ResetHealth();
+        }
+    }
+
+    public void OnReturnToPool() {
+
+    }
 
     protected virtual void Awake() {
         playerTarget = DataManager.Instance.GetPlayerTargetTransform();

@@ -15,13 +15,13 @@ public class ExperienceManager : Singleton<ExperienceManager> {
 
         ExperienceData experienceData = DataManager.Instance.GetExperienceData();
 
-        smallInkBlobObject = experienceData.smallInkBlobObject;
-        mediumInkBlobObject = experienceData.mediumInkBlobObject;
-        largeInkBlobObject = experienceData.largeInkBlobObject;
-
         smallInkBlobSettings = experienceData.smallInkBlobSettings;
         mediumInkBlobSettings = experienceData.mediumInkBlobSettings;
         largeInkBlobSettings = experienceData.largeInkBlobSettings;
+
+        smallInkBlobObject = smallInkBlobSettings.prefabObject;
+        mediumInkBlobObject = mediumInkBlobSettings.prefabObject;
+        largeInkBlobObject = largeInkBlobSettings.prefabObject;
     }
 
     public void SpawnInkBlob(InkBlobSize inkBlobSize, Vector3 spawnPosition) {
@@ -30,23 +30,27 @@ public class ExperienceManager : Singleton<ExperienceManager> {
 
         switch (inkBlobSize) {
             case InkBlobSize.Small:
-                inkBlob = Instantiate(smallInkBlobObject, spawnPosition, Quaternion.identity);
+                inkBlob = ObjectPoolManager.GetObjectFromPool(PoolType.SmallInkBlob, smallInkBlobObject,
+                    spawnPosition, Quaternion.identity);
                 experienceOrb = inkBlob.GetComponent<ExperienceOrb>();
                 experienceOrb.SetAmountOfExperience(smallInkBlobSettings.amountOfExperience);
+                experienceOrb.SetOrbType(PoolType.SmallInkBlob);
                 break;
             case InkBlobSize.Medium:
-                inkBlob = Instantiate(mediumInkBlobObject, spawnPosition, Quaternion.identity);
+                inkBlob = ObjectPoolManager.GetObjectFromPool(PoolType.MediumInkBlob, mediumInkBlobObject,
+                    spawnPosition, Quaternion.identity);
                 experienceOrb = inkBlob.GetComponent<ExperienceOrb>();
                 experienceOrb.SetAmountOfExperience(mediumInkBlobSettings.amountOfExperience);
+                experienceOrb.SetOrbType(PoolType.MediumInkBlob);
                 break;
             case InkBlobSize.Large:
-                inkBlob = Instantiate(largeInkBlobObject, spawnPosition, Quaternion.identity);
+                inkBlob = ObjectPoolManager.GetObjectFromPool(PoolType.LargeInkBlob, largeInkBlobObject,
+                    spawnPosition, Quaternion.identity);
                 experienceOrb = inkBlob.GetComponent<ExperienceOrb>();
                 experienceOrb.SetAmountOfExperience(largeInkBlobSettings.amountOfExperience);
+                experienceOrb.SetOrbType(PoolType.LargeInkBlob);
                 break;
         }
-
-        inkBlob.transform.parent = this.transform;
     }
 
 }

@@ -21,6 +21,14 @@ public enum InkBlobSize {
     Large
 }
 
+public enum PoolType {
+    SmallInkBlob,
+    MediumInkBlob,
+    LargeInkBlob,
+    Balloon,
+    CursedChalkStick
+}
+
 public class DataManager : Singleton<DataManager> {
 
     [SerializeField] private PlayerData playerData;

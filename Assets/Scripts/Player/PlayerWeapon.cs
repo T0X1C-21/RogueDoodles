@@ -64,6 +64,10 @@ public class PlayerWeapon : MonoBehaviour {
         Collider2D[] hits = Physics2D.OverlapCircleAll(aimPoint.position, attackRange);
 
         foreach(Collider2D hit in hits) {
+            if(hit == null) {
+                yield break;
+            }
+
             if(hit.TryGetComponent<Enemy>(out Enemy enemy)) {
                 switch (currentWeaponType) {
                     case WeaponType.Pencil:

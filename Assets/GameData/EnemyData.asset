@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d0f494e8c849543aeff61eb45c8efb, type: 3}
   m_Name: EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  minimumSpawnCircleRadius: 6
+  maximumSpawnCircleRadius: 7
   firstWaveCost: 6
   firstWaveTime: 12
   waveCostIncreaseCurve:
