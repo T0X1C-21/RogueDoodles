@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa2d7b7a95efd4ca33a7fd5eadef55, type: 3}
   m_Name: ExperienceData
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceData
+  experienceCollectionRadius: 0.5
   smallInkBlobSettings:
     prefabObject: {fileID: 5202080998711141345, guid: 2d65b2fe016dd504490a501c2886b25e, type: 3}
     amountOfExperience: 1
