@@ -27,20 +27,20 @@ public class PlayerWeapon : MonoBehaviour {
     private bool isAnimating;
 
     private void Awake() {
-        currentWeaponType = DataManager.Instance.GetPlayerData().startingWeapon;
-        aimWeaponRadius = DataManager.Instance.GetPlayerData().aimWeaponRadius;
+        currentWeaponType = DataManager.Instance.GetPlayerData().scribbleKid.startingWeapon;
+        aimWeaponRadius = DataManager.Instance.GetPlayerData().scribbleKid.aimWeaponRadius;
 
         switch (currentWeaponType) {
             case WeaponType.Pencil:
-                weaponSlot.GetComponent<SpriteRenderer>().sprite = DataManager.Instance.GetPlayerData().pencil.sprite;
+                weaponSlot.GetComponent<SpriteRenderer>().sprite = DataManager.Instance.GetWeaponData().pencil.sprite;
 
-                PlayerData playerData = DataManager.Instance.GetPlayerData();
-                weaponDamage = playerData.pencil.damage;
-                attackCooldown = playerData.pencil.attackCooldown;
-                attackRange = playerData.pencil.attackRange;
-                attackArcThreshold = playerData.pencil.attackArcThreshold;
-                preAnimationTime = playerData.pencil.preAnimationTime;
-                animationTime = playerData.pencil.animationTime;
+                WeaponData weaponData = DataManager.Instance.GetWeaponData();
+                weaponDamage = weaponData.pencil.damage;
+                attackCooldown = weaponData.pencil.attackCooldown;
+                attackRange = weaponData.pencil.attackRange;
+                attackArcThreshold = weaponData.pencil.attackArcThreshold;
+                preAnimationTime = weaponData.pencil.preAnimationTime;
+                animationTime = weaponData.pencil.animationTime;
 
                 break;
         }

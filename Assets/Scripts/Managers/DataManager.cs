@@ -4,6 +4,10 @@ public enum WeaponType {
     Pencil
 }
 
+public enum PlayerType {
+    ScribbleKid
+}
+
 public enum CharacterType {
     Player,
     Balloon,
@@ -32,12 +36,17 @@ public enum PoolType {
 public class DataManager : Singleton<DataManager> {
 
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private WeaponData weaponData;
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private ExperienceData experienceData;
     [SerializeField] private Transform playerTargetTransform;
 
     public PlayerData GetPlayerData() {
         return playerData;
+    }
+
+    public WeaponData GetWeaponData() {
+        return weaponData;
     }
 
     public EnemyData GetEnemyData() {
