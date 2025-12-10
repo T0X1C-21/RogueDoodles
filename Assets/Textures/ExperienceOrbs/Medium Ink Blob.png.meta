@@ -103,9 +103,9 @@ TextureImporter:
       name: Medium Ink Blob_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 251
+        width: 256
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}

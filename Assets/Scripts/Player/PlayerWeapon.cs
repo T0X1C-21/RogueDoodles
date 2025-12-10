@@ -71,7 +71,7 @@ public class PlayerWeapon : MonoBehaviour {
             if(hit.TryGetComponent<Enemy>(out Enemy enemy)) {
                 switch (currentWeaponType) {
                     case WeaponType.Pencil:
-                        Vector3 enemyDirection = aimPosition - enemy.transform.position;
+                        Vector3 enemyDirection = enemy.transform.position - aimPosition;
                         float dotProduct = Vector2.Dot(aimDirection.normalized, enemyDirection.normalized);
                         if(dotProduct < attackArcThreshold) {
                             yield return new WaitForSeconds(preAnimationTime + animationTime);

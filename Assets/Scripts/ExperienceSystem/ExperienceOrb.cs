@@ -10,6 +10,7 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
     private Coroutine attractToPlayerCoroutine;
     private float orbCollectionDuration;
     private PoolType orbType;
+    private Transform playerTransform;
 
     private void Awake() {
         ExperienceData experienceData = DataManager.Instance.GetExperienceData();
@@ -17,6 +18,8 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
         animationDuration = experienceData.animationDuration;
         orbCollectionSpeedCurve = experienceData.orbCollectionPathCurve;
         orbCollectionDuration = experienceData.orbCollectionDuration;
+
+        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
     }
 
     private void Start() {
@@ -60,8 +63,9 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
         attractToPlayerCoroutine = null;
 
         float destroyDistance = 0.1f;
-        if(Vector2.Distance(this.transform.position, 
-            DataManager.Instance.GetPlayerTargetTransform().position) <= destroyDistance) {
+        if(Vector2.Distance(this.transform.position, playerTransform.position) <= destroyDistance) {
+            //playerTransform.TryGetComponent(out CollectExperience collectExperience);
+            CollectExperience.AddExperience(amountOfExperience);
             ObjectPoolManager.SetObjectBackToPool(orbType, this.gameObject);
         }
     }

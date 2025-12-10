@@ -21,6 +21,9 @@ public class ExperienceData : ScriptableObject {
         public int amountOfExperience;
     }
 
+    [Header("---- LEVEL SETTINGS -----")]
+    public AnimationCurve levelExperienceThresholdCurve;
+
     [Header("----- INK BLOBS SETTINGS -----")]
     public float experienceCollectionRadius;
     public SmallInkBlob smallInkBlobSettings;

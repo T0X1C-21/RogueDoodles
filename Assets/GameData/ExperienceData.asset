@@ -12,6 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa2d7b7a95efd4ca33a7fd5eadef55, type: 3}
   m_Name: ExperienceData
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceData
+  levelExperienceThresholdCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 15
+      outSlope: 15
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 150
+      inSlope: 15
+      outSlope: 15
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   experienceCollectionRadius: 0.5
   smallInkBlobSettings:
     prefabObject: {fileID: 5202080998711141345, guid: 2d65b2fe016dd504490a501c2886b25e, type: 3}
@@ -28,25 +52,34 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 4.6642823
-      outSlope: 4.6642823
+      inSlope: 2.5631504
+      outSlope: 2.5631504
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.034536894
+      outWeight: 0.04218996
+    - serializedVersion: 3
+      time: 0.8
+      value: 1.25
+      inSlope: 0.019234516
+      outSlope: -0.060070414
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.037480444
+      outWeight: 0.32496068
     - serializedVersion: 3
       time: 1
-      value: 1.5
-      inSlope: 0.102165796
-      outSlope: 0.102165796
+      value: 0.35
+      inSlope: -12.406416
+      outSlope: -12.406416
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.077708006
+      inWeight: 0.04317135
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 0.4
+  animationDuration: 0.25
   orbCollectionPathCurve:
     serializedVersion: 2
     m_Curve:
