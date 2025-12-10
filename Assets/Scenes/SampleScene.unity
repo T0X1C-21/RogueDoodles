@@ -823,7 +823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4ed7ed5cb54e74295554d568e63a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  playerType: 0
 --- !u!114 &889725391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   characterType: 0
-  playerType: 0
 --- !u!114 &889725392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d08437ee74cb224e95df3af78471c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
-  drawGizmos: 1
+  drawGizmos: 0
 --- !u!1 &1790032692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
   playerData: {fileID: 11400000, guid: 358601d7724cf4846ad56b44ebf7d6df, type: 2}
-  weaponData: {fileID: 11400000, guid: 2b40ef74dfedbbd4d9726b61233c1119, type: 2}
   enemyData: {fileID: 11400000, guid: 37a7740c958591e40a6788561e9361de, type: 2}
   experienceData: {fileID: 11400000, guid: 639d0389d7ee60540b8342a971ff31f0, type: 2}
   playerTargetTransform: {fileID: 889725389}

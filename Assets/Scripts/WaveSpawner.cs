@@ -78,14 +78,14 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void SpawnEnemy(EnemyType enemyType) {
+        float randomAngle = Random.Range(0f, 2 * Mathf.PI);
+        float x = Mathf.Cos(randomAngle);
+        float y = Mathf.Cos(randomAngle);
+
         float randomDistance = Random.Range(minimumSpawnCircleRadius, maximumSpawnCircleRadius);
 
-        float randomAngle = Random.Range(0f, 2 * Mathf.PI);
-        float x = randomDistance * Mathf.Cos(randomAngle);
-        float y = randomDistance * Mathf.Sin(randomAngle);
-
         Vector2 cameraPosition = Camera.main.transform.position;
-        Vector2 spawnPosition = cameraPosition + (new Vector2(x, y));
+        Vector2 spawnPosition = cameraPosition + (new Vector2(x, y) * randomDistance);
 
         GameObject enemyPrefab;
         GameObject spawnedEnemy = null;

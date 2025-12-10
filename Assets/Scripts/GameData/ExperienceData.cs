@@ -22,7 +22,6 @@ public class ExperienceData : ScriptableObject {
     }
 
     [Header("----- INK BLOBS SETTINGS -----")]
-    public float experienceCollectionRadius;
     public SmallInkBlob smallInkBlobSettings;
     public MediumInkBlob mediumInkBlobSettings;
     public LargeInkBlob largeInkBlobSettings;

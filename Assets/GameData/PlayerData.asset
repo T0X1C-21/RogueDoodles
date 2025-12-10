@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4efefec339c45e4eacb1b288a41d31b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  scribbleKid:
-    moveSpeed: 5
-    maxHealthPoints: 100
-    startingWeapon: 0
-    aimWeaponRadius: 0.5
+  moveSpeed: 3
+  maxHealthPoints: 100
+  startingWeapon: 0
+  aimWeaponRadius: 0.25
+  experienceCollectionRadius: 0.4
+  pencil:
+    sprite: {fileID: 21300000, guid: cef8c6d4cce6e744ea0b377cb07d561b, type: 3}
+    damage: 20
+    attackCooldown: 1
+    attackRange: 1
+    attackArcThreshold: 0.95
+    preAnimationTime: 0.15
+    animationTime: 0.2

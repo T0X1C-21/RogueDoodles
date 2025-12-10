@@ -3,17 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
 
-    [SerializeField] private PlayerType playerType;
-
     private Vector3 moveDirection;
     private float moveSpeed;
 
     private void Start() {
-        switch (playerType) { 
-            case PlayerType.ScribbleKid:
-                moveSpeed = DataManager.Instance.GetPlayerData().scribbleKid.moveSpeed;
-                break;
-        }
+        moveSpeed = DataManager.Instance.GetPlayerData().moveSpeed;
     }
 
     private void Update() {

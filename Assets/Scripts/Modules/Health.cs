@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour {
 
     [SerializeField] private CharacterType characterType;
-    [SerializeField] private PlayerType playerType;
     
     private float healthPoints;
     private int maxHealthPoints;
@@ -14,12 +13,8 @@ public class Health : MonoBehaviour {
         EnemyData enemyData;
         switch (characterType) {
             case CharacterType.Player:
-                switch (playerType) {
-                    case PlayerType.ScribbleKid:
-                        PlayerData playerData = DataManager.Instance.GetPlayerData();
-                        maxHealthPoints = playerData.scribbleKid.maxHealthPoints;
-                        break;
-                }
+                PlayerData playerData = DataManager.Instance.GetPlayerData();
+                maxHealthPoints = playerData.maxHealthPoints;
                 break;
             case CharacterType.Balloon:
                 enemyData = DataManager.Instance.GetEnemyData();

@@ -7,8 +7,8 @@ public class CollectExperience : MonoBehaviour {
     private float experienceCollectionRadius;
 
     private void Awake() {
-        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
-        experienceCollectionRadius = experienceData.experienceCollectionRadius;
+        PlayerData playerData = DataManager.Instance.GetPlayerData();
+        experienceCollectionRadius = playerData.experienceCollectionRadius;
     }
 
     private void Update() {
