@@ -277,7 +277,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697785821295531896}
-  - component: {fileID: 7657760205104893371}
+  - component: {fileID: 737392659901682001}
+  - component: {fileID: 67969463006962023}
   - component: {fileID: 6077206213862301850}
   - component: {fileID: 8177611368191593334}
   - component: {fileID: 3198150945403541237}
@@ -305,7 +306,7 @@ Transform:
   - {fileID: 6590315783338794832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7657760205104893371
+--- !u!114 &737392659901682001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,10 +315,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 3897716040525845867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80626c8ae28f54e428b13c25d19a577b, type: 3}
+  m_Script: {fileID: 11500000, guid: f821279dcf5533a46a946ce83ba32b8e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  characterType: 1
+  m_EditorClassIdentifier: Assembly-CSharp::TypeOfEnemy
+  enemyType: 0
+--- !u!114 &67969463006962023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897716040525845867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79604ac8f182d34d9ea59a82c491b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
 --- !u!114 &6077206213862301850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a064e32d366fc643b585db91c0fd887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropExperience
-  enemyType: 0
 --- !u!114 &8177611368191593334
 MonoBehaviour:
   m_ObjectHideFlags: 0

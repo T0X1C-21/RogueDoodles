@@ -8,12 +8,6 @@ public enum PlayerType {
     ScribbleKid
 }
 
-public enum CharacterType {
-    Player,
-    Balloon,
-    CursedChalkStick
-}
-
 public enum EnemyType {
     Balloon,
     CursedChalkStick

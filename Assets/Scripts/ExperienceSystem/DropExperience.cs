@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class DropExperience : MonoBehaviour {
 
-    [SerializeField] private EnemyType enemyType;
+    private EnemyType enemyType;
 
     private int minimumAmountOfExperience;
     private int maximumAmountOfExperience;
@@ -12,6 +12,7 @@ public class DropExperience : MonoBehaviour {
     private int largeInkBlobExperienceAmount;
 
     private void Awake() {
+        enemyType = this.GetComponent<TypeOfEnemy>().GetEnemyType();
         EnemyData enemyData = DataManager.Instance.GetEnemyData();
 
         switch (enemyType) {

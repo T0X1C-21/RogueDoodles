@@ -18,8 +18,8 @@ public class Enemy : MonoBehaviour, IPoolable {
     private bool stopMovement;
 
     public void OnSpawnFromPool() {
-        if(this.TryGetComponent(out Health health)) {
-            health.ResetHealth();
+        if(this.TryGetComponent(out EnemyHealth enemyHealth)) {
+            enemyHealth.ResetHealth();
         }
     }
 
