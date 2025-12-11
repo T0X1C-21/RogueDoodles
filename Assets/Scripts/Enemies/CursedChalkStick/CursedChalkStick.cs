@@ -15,4 +15,11 @@ public class CursedChalkStick : Enemy {
         movementStopThreshold = enemyData.cursedChalkStick.movementStopThreshold;
     }
 
+    public override void OnSpawnFromPool() {
+        base.OnSpawnFromPool();
+
+        // Resetting Damage Trail Line Renderer
+        this.GetComponentInChildren<LineRenderer>().positionCount = 0;
+    }
+
 }

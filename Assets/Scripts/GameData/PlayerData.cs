@@ -11,6 +11,7 @@ public class PlayerData : ScriptableObject {
         public float aimWeaponRadius;
     }
 
+    [Space(10)]
     [Header("----- PLAYER STATS -----")]
     public ScribbleKid scribbleKid;
 

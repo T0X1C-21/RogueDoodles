@@ -91,5 +91,8 @@ MonoBehaviour:
     attackDamage: 6
     attackPointOffsetMultiplier: 0.1
     movementStopThreshold: 0.35
+    lifeTimePerDamageTrailPoint: 6
+    trailDamageAmount: 10
+    trailDamageCooldown: 1
     minimumAmountOfExperienceDrop: 7
     maximumAmountOfExperienceDrop: 13

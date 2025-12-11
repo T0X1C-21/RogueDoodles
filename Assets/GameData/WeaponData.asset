@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   pencil:
     sprite: {fileID: 21300000, guid: cef8c6d4cce6e744ea0b377cb07d561b, type: 3}
-    damage: 20
+    damage: 12
     attackCooldown: 1
     attackRange: 1
     attackArcThreshold: 0.95

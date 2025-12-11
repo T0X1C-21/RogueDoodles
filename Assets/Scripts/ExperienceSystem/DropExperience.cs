@@ -13,20 +13,19 @@ public class DropExperience : MonoBehaviour {
 
     private void Awake() {
         enemyType = this.GetComponent<TypeOfEnemy>().GetEnemyType();
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
 
         switch (enemyType) {
             case EnemyType.Balloon:
-                minimumAmountOfExperience = enemyData.balloon.minimumAmountOfExperienceDrop;
-                maximumAmountOfExperience = enemyData.balloon.maximumAmountOfExperienceDrop;
+                minimumAmountOfExperience = experienceData.balloon.minimumAmountOfExperienceDrop;
+                maximumAmountOfExperience = experienceData.balloon.maximumAmountOfExperienceDrop;
                 break;
             case EnemyType.CursedChalkStick:
-                minimumAmountOfExperience = enemyData.cursedChalkStick.minimumAmountOfExperienceDrop;
-                maximumAmountOfExperience = enemyData.cursedChalkStick.maximumAmountOfExperienceDrop;
+                minimumAmountOfExperience = experienceData.cursedChalkStick.minimumAmountOfExperienceDrop;
+                maximumAmountOfExperience = experienceData.cursedChalkStick.maximumAmountOfExperienceDrop;
                 break;
         }
 
-        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
         smallInkBlobExperienceAmount = experienceData.smallInkBlobSettings.amountOfExperience;
         mediumInkBlobExperienceAmount = experienceData.mediumInkBlobSettings.amountOfExperience;
         largeInkBlobExperienceAmount = experienceData.largeInkBlobSettings.amountOfExperience;

@@ -21,21 +21,42 @@ public class ExperienceData : ScriptableObject {
         public int amountOfExperience;
     }
 
+    [System.Serializable]
+    public struct Balloon {
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
+    }
+
+    [System.Serializable]
+    public struct CursedChalkStick {
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
+    }
+
+    [Space(10)]
     [Header("---- LEVEL SETTINGS -----")]
     public AnimationCurve levelExperienceThresholdCurve;
 
+    [Space(10)]
     [Header("----- INK BLOBS SETTINGS -----")]
     public float experienceCollectionRadius;
     public SmallInkBlob smallInkBlobSettings;
     public MediumInkBlob mediumInkBlobSettings;
     public LargeInkBlob largeInkBlobSettings;
 
+    [Space(10)]
     [Header("----- INK BLOB POP OUT ANIMATION -----")]
     public AnimationCurve heightCurve;
     public float animationDuration;
 
+    [Space(10)]
     [Header("----- INK BLOB COLLECTION ANIMATION -----")]
     public AnimationCurve orbCollectionPathCurve;
     public float orbCollectionDuration;
+
+    [Space(10)]
+    [Header("----- ENEMY SETTINGS -----")]
+    public Balloon balloon;
+    public CursedChalkStick cursedChalkStick;
 
 }

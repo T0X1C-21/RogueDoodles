@@ -17,13 +17,13 @@ public class Enemy : MonoBehaviour, IPoolable {
     private Vector3 targetPosition;
     private bool stopMovement;
 
-    public void OnSpawnFromPool() {
+    public virtual void OnSpawnFromPool() {
         if(this.TryGetComponent(out EnemyHealth enemyHealth)) {
             enemyHealth.ResetHealth();
         }
     }
 
-    public void OnReturnToPool() {
+    public virtual void OnReturnToPool() {
 
     }
 

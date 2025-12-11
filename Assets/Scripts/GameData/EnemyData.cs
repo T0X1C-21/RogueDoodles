@@ -14,44 +14,57 @@ public class EnemyData : ScriptableObject {
 
     [System.Serializable]
     public struct Balloon {
+        [Space(10)]
+        [Header("----- BASIC SETTIGNS -----")]
         public GameObject balloonPrefab;
         public float moveSpeed;
         [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
         public float moveSpeedOffset;
         public int maxHealthPoints;
+        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
+        [Range(0f, 1f)]
+        public float movementStopThreshold;
+
+        [Space(10)]
+        [Header("----- ATTACK SETTINGS -----")]
         public float attackCooldown;
         public float attackRange;
         public float attackDamage;
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         [Range(0f, 1f)]
         public float attackPointOffsetMultiplier;
-        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
-        [Range(0f, 1f)]
-        public float movementStopThreshold;
-        public int minimumAmountOfExperienceDrop;
-        public int maximumAmountOfExperienceDrop;
     }
 
     [System.Serializable]
     public struct CursedChalkStick {
+        [Space(10)]
+        [Header("----- BASIC SETTIGNS -----")]
         public GameObject cursedChalkStickPrefab;
         public float moveSpeed;
         [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
         public float moveSpeedOffset;
         public int maxHealthPoints;
+        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
+        [Range(0f, 1f)]
+        public float movementStopThreshold;
+
+        [Space(10)]
+        [Header("----- ATTACK SETTINGS -----")]
         public float attackCooldown;
         public float attackRange;
         public float attackDamage;
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         [Range(0f, 1f)]
         public float attackPointOffsetMultiplier;
-        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
-        [Range(0f, 1f)]
-        public float movementStopThreshold;
-        public int minimumAmountOfExperienceDrop;
-        public int maximumAmountOfExperienceDrop;
+
+        [Space(10)]
+        [Header("----- DAMAGE TRAIL SETTINGS -----")]
+        public float lifeTimePerDamageTrailPoint;
+        public int trailDamageAmount;
+        public float trailDamageCooldown;
     }
 
+    [Space(10)]
     [Header("----- WAVE SETTINGS -----")]
     public float minimumSpawnCircleRadius;
     public float maximumSpawnCircleRadius;
@@ -65,6 +78,7 @@ public class EnemyData : ScriptableObject {
     public AnimationCurve waveTimeIncreaseCurve;
     public List<EnemyCost> enemyCostList;
     
+    [Space(10)]
     [Header("----- ENEMY STATS -----")]
     public Balloon balloon;
     public CursedChalkStick cursedChalkStick;

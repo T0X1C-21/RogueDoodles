@@ -4,7 +4,7 @@
 
 public interface IPoolable {
     
-    public void OnSpawnFromPool();
-    public void OnReturnToPool();
+    public abstract void OnSpawnFromPool();
+    public abstract void OnReturnToPool();
 
 }
