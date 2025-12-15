@@ -60,6 +60,11 @@ public class WaveSpawner : MonoBehaviour {
                     currentWaveCost -= randomEnemyCost;
                     SpawnEnemy(EnemyType.CursedChalkStick);
                     break;
+                case EnemyType.SadSandCastle:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.SadSandCastle];
+                    currentWaveCost -= randomEnemyCost;
+                    SpawnEnemy(EnemyType.SadSandCastle);
+                    break;
             }
         }
     }
@@ -99,6 +104,12 @@ public class WaveSpawner : MonoBehaviour {
                 enemyPrefab = DataManager.Instance.GetEnemyData()
                     .cursedChalkStick.cursedChalkStickPrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.CursedChalkStick, enemyPrefab,
+                    spawnPosition, Quaternion.identity);
+                break;
+            case EnemyType.SadSandCastle:
+                enemyPrefab = DataManager.Instance.GetEnemyData()
+                    .sadSandCastle.sadSandCastlePrefab;
+                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.SadSandCastle, enemyPrefab,
                     spawnPosition, Quaternion.identity);
                 break;
         }

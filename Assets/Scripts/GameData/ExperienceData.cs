@@ -33,6 +33,12 @@ public class ExperienceData : ScriptableObject {
         public int maximumAmountOfExperienceDrop;
     }
 
+    [System.Serializable]
+    public struct SadSandCastle {
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
+    }
+
     [Space(10)]
     [Header("---- LEVEL SETTINGS -----")]
     public AnimationCurve levelExperienceThresholdCurve;
@@ -58,5 +64,6 @@ public class ExperienceData : ScriptableObject {
     [Header("----- ENEMY SETTINGS -----")]
     public Balloon balloon;
     public CursedChalkStick cursedChalkStick;
+    public SadSandCastle sadSandCastle;
 
 }

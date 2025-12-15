@@ -79,7 +79,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 0.25
+  animationDuration: 0.2
   orbCollectionPathCurve:
     serializedVersion: 2
     m_Curve:
@@ -113,4 +113,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  orbCollectionDuration: 0.2
+  orbCollectionDuration: 0.3
+  balloon:
+    minimumAmountOfExperienceDrop: 1
+    maximumAmountOfExperienceDrop: 3
+  cursedChalkStick:
+    minimumAmountOfExperienceDrop: 4
+    maximumAmountOfExperienceDrop: 8
+  sadSandCastle:
+    minimumAmountOfExperienceDrop: 9
+    maximumAmountOfExperienceDrop: 12

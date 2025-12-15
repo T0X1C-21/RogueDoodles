@@ -24,6 +24,10 @@ public class DropExperience : MonoBehaviour {
                 minimumAmountOfExperience = experienceData.cursedChalkStick.minimumAmountOfExperienceDrop;
                 maximumAmountOfExperience = experienceData.cursedChalkStick.maximumAmountOfExperienceDrop;
                 break;
+            case EnemyType.SadSandCastle:
+                minimumAmountOfExperience = experienceData.sadSandCastle.minimumAmountOfExperienceDrop;
+                maximumAmountOfExperience = experienceData.sadSandCastle.maximumAmountOfExperienceDrop;
+                break;
         }
 
         smallInkBlobExperienceAmount = experienceData.smallInkBlobSettings.amountOfExperience;

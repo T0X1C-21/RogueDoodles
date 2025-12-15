@@ -15,6 +15,9 @@ public class EnemyHealth : Health {
             case EnemyType.CursedChalkStick:
                 maxHealthPoints = enemyData.balloon.maxHealthPoints;
                 break;
+            case EnemyType.SadSandCastle:
+                maxHealthPoints = enemyData.sadSandCastle.maxHealthPoints;
+                break;
         }
 
         base.Awake();
@@ -31,6 +34,9 @@ public class EnemyHealth : Health {
                     break;
                 case EnemyType.CursedChalkStick:
                     ObjectPoolManager.SetObjectBackToPool(PoolType.CursedChalkStick, this.gameObject);
+                    break;
+                case EnemyType.SadSandCastle:
+                    ObjectPoolManager.SetObjectBackToPool(PoolType.SadSandCastle, this.gameObject);
                     break;
             }
 

@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//temp
+using UnityEditor;
+
 public class PlayerWeapon : MonoBehaviour {
 
     [SerializeField] private GameObject weaponSlot;
@@ -61,7 +64,10 @@ public class PlayerWeapon : MonoBehaviour {
     }
 
     private IEnumerator Attack() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(aimPoint.position, attackRange);
+        //Collider2D[] hits = Physics2D.OverlapCircleAll(aimPoint.position, attackRange);
+        Vector2 boxSize = new Vector2(1f, 0.25f);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(aimPoint.position, boxSize, 
+            weaponSlot.transform.eulerAngles.z);
 
         foreach(Collider2D hit in hits) {
             if(hit == null) {
@@ -71,12 +77,14 @@ public class PlayerWeapon : MonoBehaviour {
             if(hit.TryGetComponent<Enemy>(out Enemy enemy)) {
                 switch (currentWeaponType) {
                     case WeaponType.Pencil:
-                        Vector3 enemyDirection = enemy.transform.position - aimPosition;
-                        float dotProduct = Vector2.Dot(aimDirection.normalized, enemyDirection.normalized);
-                        if(dotProduct < attackArcThreshold) {
-                            yield return new WaitForSeconds(preAnimationTime + animationTime);
-                            enemy.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
-                        }
+                        //Vector3 enemyDirection = enemy.transform.position - aimPosition;
+                        //float dotProduct = Vector2.Dot(aimDirection.normalized, enemyDirection.normalized);
+                        //if(dotProduct < attackArcThreshold) {
+                        //    yield return new WaitForSeconds(preAnimationTime + animationTime);
+                        //    enemy.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
+                        //}
+                        yield return new WaitForSeconds(preAnimationTime + animationTime);
+                        enemy.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
                         break;
                 }
             }
@@ -130,7 +138,8 @@ public class PlayerWeapon : MonoBehaviour {
             return;
         }
         Gizmos.color = new Color(0f, 0f, 0f, 0.2f);
-        Gizmos.DrawWireSphere(aimPoint.position, attackRange);
+        //Gizmos.DrawWireSphere(aimPoint.position, attackRange);
+        Gizmos.DrawWireCube(aimPoint.position, new Vector2(1f, 0.25f));
         Vector3 mouseDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - this.transform.position;
 
         float angle = Mathf.Acos(attackArcThreshold) * Mathf.Rad2Deg;

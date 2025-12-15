@@ -8,6 +8,7 @@ public class ObjectPoolManager : MonoBehaviour {
 
     private void Awake() {
         poolObjectTransformDictionary = new Dictionary<PoolType, Transform>();
+        poolDictionary = new Dictionary<PoolType, List<GameObject>>();
 
         // Create gameobjects at runtime which will parent pooled object to themselves for a clean hierarchy
         foreach(PoolType poolType in System.Enum.GetValues(typeof(PoolType))) {

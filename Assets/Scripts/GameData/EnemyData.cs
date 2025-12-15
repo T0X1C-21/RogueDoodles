@@ -64,6 +64,29 @@ public class EnemyData : ScriptableObject {
         public float trailDamageCooldown;
     }
 
+    [System.Serializable]
+    public struct SadSandCastle {
+        [Space(10)]
+        [Header("----- BASIC SETTIGNS -----")]
+        public GameObject sadSandCastlePrefab;
+        public float moveSpeed;
+        [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
+        public float moveSpeedOffset;
+        public int maxHealthPoints;
+        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
+        [Range(0f, 1f)]
+        public float movementStopThreshold;
+
+        [Space(10)]
+        [Header("----- ATTACK SETTINGS -----")]
+        public float attackCooldown;
+        public float attackRange;
+        public float attackDamage;
+        [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
+        [Range(0f, 1f)]
+        public float attackPointOffsetMultiplier;
+    }
+
     [Space(10)]
     [Header("----- WAVE SETTINGS -----")]
     public float minimumSpawnCircleRadius;
@@ -82,5 +105,6 @@ public class EnemyData : ScriptableObject {
     [Header("----- ENEMY STATS -----")]
     public Balloon balloon;
     public CursedChalkStick cursedChalkStick;
+    public SadSandCastle sadSandCastle;
     
 }
