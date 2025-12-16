@@ -75,6 +75,11 @@ public class WaveSpawner : MonoBehaviour {
                     currentWaveCost -= randomEnemyCost;
                     SpawnEnemy(EnemyType.SketchyWorm);
                     break;
+                case EnemyType.AngryBench:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.AngryBench];
+                    currentWaveCost -= randomEnemyCost;
+                    SpawnEnemy(EnemyType.AngryBench);
+                    break;
             }
 
             randomEnemy = GetRandomEnemy();
@@ -131,6 +136,12 @@ public class WaveSpawner : MonoBehaviour {
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.SketchyWorm, enemyPrefab,
                     spawnPosition, Quaternion.identity);
                 break;
+            case EnemyType.AngryBench:
+                enemyPrefab = DataManager.Instance.GetEnemyData()
+                    .angryBench.angryBenchPrefab;
+                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.AngryBench, enemyPrefab,
+                    spawnPosition, Quaternion.identity);
+                break;
         }
     }
 
@@ -147,6 +158,9 @@ public class WaveSpawner : MonoBehaviour {
                 break;
             case EnemyType.SketchyWorm:
                 SpawnEnemy(EnemyType.SketchyWorm);
+                break;
+            case EnemyType.AngryBench:
+                SpawnEnemy(EnemyType.AngryBench);
                 break;
         }
     }

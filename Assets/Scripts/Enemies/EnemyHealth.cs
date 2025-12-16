@@ -22,6 +22,9 @@ public class EnemyHealth : Health {
             case EnemyType.SketchyWorm:
                 maxHealthPoints = enemyData.sketchyWorm.maxHealthPoints;
                 break;
+            case EnemyType.AngryBench:
+                maxHealthPoints = enemyData.angryBench.maxHealthPoints;
+                break;
         }
 
         base.Awake();
@@ -44,6 +47,9 @@ public class EnemyHealth : Health {
                     break;
                 case EnemyType.SketchyWorm:
                     ObjectPoolManager.SetObjectBackToPool(PoolType.SketchyWorm, this.gameObject);
+                    break;
+                case EnemyType.AngryBench:
+                    ObjectPoolManager.SetObjectBackToPool(PoolType.AngryBench, this.gameObject);
                     break;
             }
 

@@ -73,6 +73,8 @@ MonoBehaviour:
     cost: 7
   - enemy: 3
     cost: 10
+  - enemy: 4
+    cost: 14
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -112,13 +114,24 @@ MonoBehaviour:
   sketchyWorm:
     sketchyWormPrefab: {fileID: 1134908199416999463, guid: 1fafc83b7a8791047b19583ba6935c2b, type: 3}
     maxHealthPoints: 15
-    movementStopThreshold: 0.35
     timeToStayHidden: 3
+    timeToStayHiddenOffset: 0.5
     attackCooldown: 2
     timeToDisappear: 2
+    timeToDisappearOffset: 0.5
     attackPointOffsetMultiplier: 1
     sketchyWormProjectilePrefab: {fileID: 5981903970954296668, guid: eb0e696819241804db9966662755ad6e, type: 3}
     moveSpeed: 3
     attackDamage: 5
     targetDetectionRadius: 0.5
     autoDestroySelfTimer: 15
+  angryBench:
+    angryBenchPrefab: {fileID: 2670313613644122842, guid: c4556ee8c56596d4e9d99022da40e540, type: 3}
+    moveSpeed: 0.5
+    moveSpeedOffset: 0.1
+    maxHealthPoints: 30
+    movementStopThreshold: 0.35
+    attackCooldown: 3
+    attackRange: 0.5
+    attackDamage: 5
+    attackPointOffsetMultiplier: 0.1

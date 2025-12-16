@@ -4,7 +4,9 @@ using UnityEngine;
 public class SketchyWorm : Enemy {
     
     private float timeToStayHidden;
+    private float timeToStayHiddenOffset;
     private float timeToDisappear;
+    private float timeToDisappearOffset;
 
     protected override void Awake() {
         base.Awake();
@@ -13,10 +15,11 @@ public class SketchyWorm : Enemy {
         attackCooldown = enemyData.sketchyWorm.attackCooldown;
         attackDamage = enemyData.sketchyWorm.attackDamage;
         attackPointOffsetMultiplier = enemyData.sketchyWorm.attackPointOffsetMultiplier;
-        movementStopThreshold = enemyData.sketchyWorm.movementStopThreshold;
 
         timeToStayHidden = enemyData.sketchyWorm.timeToStayHidden;
+        timeToStayHiddenOffset = enemyData.sketchyWorm.timeToStayHiddenOffset;
         timeToDisappear = enemyData.sketchyWorm.timeToDisappear;
+        timeToDisappearOffset = enemyData.sketchyWorm.timeToDisappearOffset;
     }
 
     private void OnEnable() {
@@ -33,7 +36,8 @@ public class SketchyWorm : Enemy {
     }
 
     private IEnumerator PopUpNearPlayer() {
-        yield return new WaitForSeconds(timeToStayHidden);
+        float waitTime = timeToStayHidden + Random.Range(-timeToStayHiddenOffset, timeToStayHiddenOffset);
+        yield return new WaitForSeconds(waitTime);
 
         float randomAngle = Random.Range(0f, 2 * Mathf.PI);
         float xValue = attackPointOffsetMultiplier * Mathf.Cos(randomAngle);
@@ -56,7 +60,8 @@ public class SketchyWorm : Enemy {
     }
 
     private IEnumerator Disappear() {
-        yield return new WaitForSeconds(timeToDisappear);
+        float waitTime = timeToDisappear + Random.Range(-timeToDisappearOffset, timeToDisappearOffset);
+        yield return new WaitForSeconds(waitTime);
 
         // Faking despawn
         this.transform.position = new Vector3(999f, 999f);

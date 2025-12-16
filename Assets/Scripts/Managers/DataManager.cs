@@ -12,7 +12,8 @@ public enum EnemyType {
     Balloon,
     CursedChalkStick,
     SadSandCastle,
-    SketchyWorm
+    SketchyWorm,
+    AngryBench
 }
 
 public enum InkBlobSize {
@@ -29,7 +30,8 @@ public enum PoolType {
     CursedChalkStick,
     SadSandCastle,
     SketchyWorm,
-    SketchyWormProjectile
+    SketchyWormProjectile,
+    AngryBench
 }
 
 public enum ProjectileHitType {

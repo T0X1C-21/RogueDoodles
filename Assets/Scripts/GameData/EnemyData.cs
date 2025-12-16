@@ -94,18 +94,19 @@ public class EnemyData : ScriptableObject {
         public GameObject sketchyWormPrefab;
         [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
         public int maxHealthPoints;
-        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
-        [Range(0f, 1f)]
-        public float movementStopThreshold;
 
         [Space(10)]
         [Header("----- ATTACK SETTINGS -----")]
         [Tooltip("Time for the worm to stay hidden")]
         public float timeToStayHidden;
+        [Tooltip("Offset for time to stay hidden")]
+        public float timeToStayHiddenOffset;
         [Tooltip("Time for the worm to shoot projectile")]
         public float attackCooldown;
         [Tooltip("Time for the worm to disappear after shooting")]
         public float timeToDisappear;
+        [Tooltip("Offset for time to disappear")]
+        public float timeToDisappearOffset;
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         [Range(0f, 1f)]
         public float attackPointOffsetMultiplier;
@@ -120,6 +121,29 @@ public class EnemyData : ScriptableObject {
         [Tooltip("Radius to detect the target")]
         public float targetDetectionRadius;
         public float autoDestroySelfTimer;
+    }
+
+    [System.Serializable]
+    public struct AngryBench {
+        [Space(10)]
+        [Header("----- BASIC SETTIGNS -----")]
+        public GameObject angryBenchPrefab;
+        public float moveSpeed;
+        [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
+        public float moveSpeedOffset;
+        public int maxHealthPoints;
+        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
+        [Range(0f, 1f)]
+        public float movementStopThreshold;
+
+        [Space(10)]
+        [Header("----- ATTACK SETTINGS -----")]
+        public float attackCooldown;
+        public float attackRange;
+        public float attackDamage;
+        [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
+        [Range(0f, 1f)]
+        public float attackPointOffsetMultiplier;
     }
 
     [Space(10)]
@@ -143,5 +167,6 @@ public class EnemyData : ScriptableObject {
     public CursedChalkStick cursedChalkStick;
     public SadSandCastle sadSandCastle;
     public SketchyWorm sketchyWorm;
+    public AngryBench angryBench;
     
 }

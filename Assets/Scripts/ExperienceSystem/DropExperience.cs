@@ -32,6 +32,10 @@ public class DropExperience : MonoBehaviour {
                 minimumAmountOfExperience = experienceData.sketchyWorm.minimumAmountOfExperienceDrop;
                 maximumAmountOfExperience = experienceData.sketchyWorm.maximumAmountOfExperienceDrop;
                 break;
+            case EnemyType.AngryBench:
+                minimumAmountOfExperience = experienceData.angryBench.minimumAmountOfExperienceDrop;
+                maximumAmountOfExperience = experienceData.angryBench.maximumAmountOfExperienceDrop;
+                break;
         }
 
         smallInkBlobExperienceAmount = experienceData.smallInkBlobSettings.amountOfExperience;
