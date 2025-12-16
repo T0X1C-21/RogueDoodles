@@ -76,6 +76,9 @@ public class WaveSpawner : MonoBehaviour {
                     SpawnEnemy(EnemyType.SketchyWorm);
                     break;
             }
+
+            randomEnemy = GetRandomEnemy();
+            randomEnemyCost = enemyCostDictionary[randomEnemy];
         }
     }
 

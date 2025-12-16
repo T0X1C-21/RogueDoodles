@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : Health {
@@ -49,7 +50,7 @@ public class EnemyHealth : Health {
             return;
         }
 
-        base.TakeDamage(damageAmount);
+        healthPoints -= damageAmount;
     }
 
     // For pooling enemies

@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6781663107521032163}
   - component: {fileID: 4209125320632666302}
   - component: {fileID: 8435583227608363182}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CursedChalkStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

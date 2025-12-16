@@ -138,6 +138,7 @@ public class EnemyData : ScriptableObject {
     
     [Space(10)]
     [Header("----- ENEMY STATS -----")]
+    public LayerMask enemyLayerMask;
     public Balloon balloon;
     public CursedChalkStick cursedChalkStick;
     public SadSandCastle sadSandCastle;

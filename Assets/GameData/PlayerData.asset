@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4efefec339c45e4eacb1b288a41d31b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   scribbleKid:
     moveSpeed: 5
     maxHealthPoints: 100

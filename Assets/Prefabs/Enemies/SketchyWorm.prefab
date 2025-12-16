@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6845916899290365565}
   - component: {fileID: 460712245500636477}
   - component: {fileID: 3527977825886741253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SketchyWorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

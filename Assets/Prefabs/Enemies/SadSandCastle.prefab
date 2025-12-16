@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 5170564485428765011}
   - component: {fileID: 4406999970731987840}
   - component: {fileID: 1108170919223352018}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SadSandCastle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

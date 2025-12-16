@@ -13,6 +13,7 @@ public class PlayerData : ScriptableObject {
 
     [Space(10)]
     [Header("----- PLAYER STATS -----")]
+    public LayerMask playerLayerMask;
     public ScribbleKid scribbleKid;
 
 }

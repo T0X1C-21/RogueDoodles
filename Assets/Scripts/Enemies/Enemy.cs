@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IPoolable {
     private Vector3 moveDirection;
     private Vector3 targetPosition;
     private bool stopMovement;
+    private LayerMask playerLayerMask;
 
     public virtual void OnSpawnFromPool() {
         if(this.TryGetComponent(out EnemyHealth enemyHealth)) {
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour, IPoolable {
 
     protected virtual void Awake() {
         playerTarget = DataManager.Instance.GetPlayerTargetTransform();
+        playerLayerMask = DataManager.Instance.GetPlayerData().playerLayerMask;
     }
 
     protected virtual void Update() {
@@ -56,11 +58,11 @@ public class Enemy : MonoBehaviour, IPoolable {
     }
 
     protected virtual void DetectAndAttackPlayer() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRange);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRange, playerLayerMask);
         foreach(Collider2D hit in hits) {
             if(hit.TryGetComponent(out PlayerMovement player)) {
                 if(attackTimer <= 0f) {
-                    hit.GetComponent<Health>().TakeDamage(attackDamage);
+                    hit.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
                     attackTimer = attackCooldown;
                 } else {
                     attackTimer -= Time.deltaTime;

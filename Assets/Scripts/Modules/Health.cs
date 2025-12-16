@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour {
+public abstract class Health : MonoBehaviour {
     
     protected float healthPoints;
     protected int maxHealthPoints;
@@ -22,8 +23,6 @@ public class Health : MonoBehaviour {
         healthSlider.value = healthSliderValue;
     }
 
-    public virtual void TakeDamage(float damageAmount) {
-        healthPoints -= damageAmount;
-    }
+    public abstract void TakeDamage(float damageAmount);
 
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   minimumSpawnCircleRadius: 6
   maximumSpawnCircleRadius: 7
-  firstWaveCost: 6
+  firstWaveCost: 20
   firstWaveTime: 12
   waveCostIncreaseCurve:
     serializedVersion: 2
@@ -22,20 +22,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0.11398168
-      outSlope: 0.11398168
+      inSlope: 0.23809749
+      outSlope: 0.23809749
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.05651491
+      outWeight: 0.058084775
     - serializedVersion: 3
       time: 10
       value: 5
-      inSlope: 1.1285115
-      outSlope: 1.1285115
+      inSlope: 0.6776589
+      outSlope: 0.6776589
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.03689165
+      inWeight: 0.04317112
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -73,6 +73,9 @@ MonoBehaviour:
     cost: 7
   - enemy: 3
     cost: 10
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   balloon:
     balloonPrefab: {fileID: 3897716040525845867, guid: ac7fc6a43634e9342951c0c8eed701ba, type: 3}
     moveSpeed: 1

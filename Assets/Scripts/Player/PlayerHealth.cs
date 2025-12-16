@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerHealth : Health {
@@ -22,7 +23,7 @@ public class PlayerHealth : Health {
             return;
         }
 
-        base.TakeDamage(damageAmount);
+        healthPoints -= damageAmount;
     }
 
     public void RegenerateHealthPointsInstant(int healAmount) {
