@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ExperienceOrb : MonoBehaviour, IPoolable {
 
+    private static int orbAnimationDirection = 1;
+
     private int amountOfExperience;
     private AnimationCurve heightCurve;
     private float animationDuration;
@@ -37,7 +39,8 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
     private IEnumerator SpawnParabolicAnimation() {
         float originalOrbPositionX = this.transform.position.x;
         float originalOrbPositionY = this.transform.position.y;
-        float targetOrbPositionX = Random.Range(-1f, 1f) + originalOrbPositionX;
+        float targetOrbPositionX = (Random.Range(0.1f, 1f) * orbAnimationDirection) + originalOrbPositionX;
+        orbAnimationDirection = (orbAnimationDirection == 1) ? -1 : 1;
         float randomHeightMultiplier = Random.Range(0.25f, 1.25f);
         float randomAnimationDurationMultiplier = Random.Range(0.8f, 1.2f);
         float t = 0f;
@@ -64,7 +67,6 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
 
         float destroyDistance = 0.1f;
         if(Vector2.Distance(this.transform.position, playerTransform.position) <= destroyDistance) {
-            //playerTransform.TryGetComponent(out CollectExperience collectExperience);
             CollectExperience.AddExperience(amountOfExperience);
             ObjectPoolManager.SetObjectBackToPool(orbType, this.gameObject);
         }

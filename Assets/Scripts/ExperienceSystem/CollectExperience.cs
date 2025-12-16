@@ -12,7 +12,7 @@ public class CollectExperience : MonoBehaviour {
     [SerializeField] private bool drawGizmos;
 
     private static int amountOfExperience;
-    private static int levelNumber = 0;
+    private static int levelNumber;
     private static int nextLevelThreshold;
 
     private float experienceCollectionRadius;
@@ -22,6 +22,9 @@ public class CollectExperience : MonoBehaviour {
         ExperienceData experienceData = DataManager.Instance.GetExperienceData();
         experienceCollectionRadius = experienceData.experienceCollectionRadius;
         levelExperienceThresholdCurve = experienceData.levelExperienceThresholdCurve;
+
+        levelNumber = 0;
+        amountOfExperience = 0;
     }
 
     private void Start() {

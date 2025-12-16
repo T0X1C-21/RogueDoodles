@@ -28,6 +28,10 @@ public class DropExperience : MonoBehaviour {
                 minimumAmountOfExperience = experienceData.sadSandCastle.minimumAmountOfExperienceDrop;
                 maximumAmountOfExperience = experienceData.sadSandCastle.maximumAmountOfExperienceDrop;
                 break;
+            case EnemyType.SketchyWorm:
+                minimumAmountOfExperience = experienceData.sketchyWorm.minimumAmountOfExperienceDrop;
+                maximumAmountOfExperience = experienceData.sketchyWorm.maximumAmountOfExperienceDrop;
+                break;
         }
 
         smallInkBlobExperienceAmount = experienceData.smallInkBlobSettings.amountOfExperience;
@@ -44,23 +48,23 @@ public class DropExperience : MonoBehaviour {
             if(remainingAmountOfExperience >= largeInkBlobExperienceAmount) {
                 randomNumber = Random.Range(1, 3);
                 if(randomNumber == 1) {
-                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Large, this.transform.position);
+                    ExperienceManager.Instance.SpawnInkBlobAtPosition(InkBlobSize.Large, this.transform.position);
                     remainingAmountOfExperience -= largeInkBlobExperienceAmount;
                 } else {
-                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Medium, this.transform.position);
+                    ExperienceManager.Instance.SpawnInkBlobAtPosition(InkBlobSize.Medium, this.transform.position);
                     remainingAmountOfExperience -= mediumInkBlobExperienceAmount;
                 }
             } else if(remainingAmountOfExperience >= mediumInkBlobExperienceAmount) {
                 randomNumber = Random.Range(1, 3);
                 if(randomNumber == 1) {
-                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Medium, this.transform.position);
+                    ExperienceManager.Instance.SpawnInkBlobAtPosition(InkBlobSize.Medium, this.transform.position);
                     remainingAmountOfExperience -= mediumInkBlobExperienceAmount;
                 } else {
-                    ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Small, this.transform.position);    
+                    ExperienceManager.Instance.SpawnInkBlobAtPosition(InkBlobSize.Small, this.transform.position);    
                     remainingAmountOfExperience -= smallInkBlobExperienceAmount;
                 }
             } else if(remainingAmountOfExperience >= smallInkBlobExperienceAmount) {
-                ExperienceManager.Instance.SpawnInkBlob(InkBlobSize.Small, this.transform.position);    
+                ExperienceManager.Instance.SpawnInkBlobAtPosition(InkBlobSize.Small, this.transform.position);    
                 remainingAmountOfExperience -= smallInkBlobExperienceAmount;
             }
         }

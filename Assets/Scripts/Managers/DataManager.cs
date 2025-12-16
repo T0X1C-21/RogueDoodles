@@ -11,7 +11,8 @@ public enum PlayerType {
 public enum EnemyType {
     Balloon,
     CursedChalkStick,
-    SadSandCastle
+    SadSandCastle,
+    SketchyWorm
 }
 
 public enum InkBlobSize {
@@ -26,7 +27,14 @@ public enum PoolType {
     LargeInkBlob,
     Balloon,
     CursedChalkStick,
-    SadSandCastle
+    SadSandCastle,
+    SketchyWorm,
+    SketchyWormProjectile
+}
+
+public enum ProjectileHitType {
+    Enemy,
+    Player
 }
 
 public class DataManager : Singleton<DataManager> {

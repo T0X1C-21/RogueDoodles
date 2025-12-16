@@ -66,11 +66,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   enemyCostList:
   - enemy: 0
-    cost: 1
+    cost: 2
   - enemy: 1
     cost: 3
   - enemy: 2
-    cost: 5
+    cost: 7
+  - enemy: 3
+    cost: 10
   balloon:
     balloonPrefab: {fileID: 3897716040525845867, guid: ac7fc6a43634e9342951c0c8eed701ba, type: 3}
     moveSpeed: 1
@@ -104,3 +106,16 @@ MonoBehaviour:
     attackRange: 0.5
     attackDamage: 5
     attackPointOffsetMultiplier: 0.1
+  sketchyWorm:
+    sketchyWormPrefab: {fileID: 1134908199416999463, guid: 1fafc83b7a8791047b19583ba6935c2b, type: 3}
+    maxHealthPoints: 15
+    movementStopThreshold: 0.35
+    timeToStayHidden: 3
+    attackCooldown: 2
+    timeToDisappear: 2
+    attackPointOffsetMultiplier: 1
+    sketchyWormProjectilePrefab: {fileID: 5981903970954296668, guid: eb0e696819241804db9966662755ad6e, type: 3}
+    moveSpeed: 3
+    attackDamage: 5
+    targetDetectionRadius: 0.5
+    autoDestroySelfTimer: 15

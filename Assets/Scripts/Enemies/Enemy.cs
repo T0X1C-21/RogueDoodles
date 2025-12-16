@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable {
 
-    [SerializeField] private bool drawGizmos;
+    [SerializeField] protected bool drawGizmos;
 
-    private Transform playerTarget;
+    protected Transform playerTarget;
     protected float moveSpeed;
     protected float attackCooldown;
     protected float attackRange;
@@ -31,19 +31,19 @@ public class Enemy : MonoBehaviour, IPoolable {
         playerTarget = DataManager.Instance.GetPlayerTargetTransform();
     }
 
-    private void Update() {
+    protected virtual void Update() {
         StopMovement();
         Movement();
         DetectAndAttackPlayer();
         FlipEnemy();
     }
 
-    private void StopMovement() {
+    protected virtual void StopMovement() {
         float distance = Vector2.Distance(this.transform.position, targetPosition);
         stopMovement = (distance <= movementStopThreshold) ? true : false;
     }
 
-    private void Movement() {
+    protected virtual void Movement() {
         Vector3 targetPositionOffset = this.transform.position - playerTarget.position;
         targetPosition = playerTarget.position + (targetPositionOffset.normalized * attackPointOffsetMultiplier);
 
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour, IPoolable {
         this.transform.position += moveDirection.normalized * Time.deltaTime * moveSpeed;
     }
 
-    private void DetectAndAttackPlayer() {
+    protected virtual void DetectAndAttackPlayer() {
         Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRange);
         foreach(Collider2D hit in hits) {
             if(hit.TryGetComponent(out PlayerMovement player)) {
@@ -69,14 +69,14 @@ public class Enemy : MonoBehaviour, IPoolable {
         }
     }
 
-    private void FlipEnemy() {
+    protected virtual void FlipEnemy() {
         float dotProduct = Vector2.Dot(moveDirection.normalized, Vector2.right);
         int direction = (dotProduct > 0) ? 1 : -1;
         Vector3 scale = this.transform.localScale;
         this.transform.localScale = new Vector3(direction, scale.y, scale.z);
     }
 
-    private void OnDrawGizmos() {
+    protected virtual void OnDrawGizmos() {
         if (!drawGizmos) {
             return;
         }

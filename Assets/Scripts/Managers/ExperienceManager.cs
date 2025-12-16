@@ -24,7 +24,7 @@ public class ExperienceManager : Singleton<ExperienceManager> {
         largeInkBlobObject = largeInkBlobSettings.prefabObject;
     }
 
-    public void SpawnInkBlob(InkBlobSize inkBlobSize, Vector3 spawnPosition) {
+    public void SpawnInkBlobAtPosition(InkBlobSize inkBlobSize, Vector3 spawnPosition) {
         GameObject inkBlob = null;
         ExperienceOrb experienceOrb = null;
 

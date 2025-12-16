@@ -123,3 +123,6 @@ MonoBehaviour:
   sadSandCastle:
     minimumAmountOfExperienceDrop: 9
     maximumAmountOfExperienceDrop: 12
+  sketchyWorm:
+    minimumAmountOfExperienceDrop: 15
+    maximumAmountOfExperienceDrop: 18

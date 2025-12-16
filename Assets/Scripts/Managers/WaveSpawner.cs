@@ -44,11 +44,16 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     private void SpawnWave() {
-        int randomEnemyCost = 0;
+        EnemyType randomEnemy = GetRandomEnemy();
         float currentWaveCost = waveCost;
+        int randomEnemyCost = enemyCostDictionary[randomEnemy];
+
+        if(currentWaveCost - randomEnemyCost <= 0) {
+            randomEnemyCost = enemyCostDictionary[EnemyType.Balloon];
+            randomEnemy = EnemyType.Balloon; 
+        }
+
         while(currentWaveCost - randomEnemyCost > 0) {
-            EnemyType randomEnemy = GetRandomEnemy();
-        
             switch (randomEnemy) {
                 case EnemyType.Balloon:
                     randomEnemyCost = enemyCostDictionary[EnemyType.Balloon];
@@ -64,6 +69,11 @@ public class WaveSpawner : MonoBehaviour {
                     randomEnemyCost = enemyCostDictionary[EnemyType.SadSandCastle];
                     currentWaveCost -= randomEnemyCost;
                     SpawnEnemy(EnemyType.SadSandCastle);
+                    break;
+                case EnemyType.SketchyWorm:
+                    randomEnemyCost = enemyCostDictionary[EnemyType.SketchyWorm];
+                    currentWaveCost -= randomEnemyCost;
+                    SpawnEnemy(EnemyType.SketchyWorm);
                     break;
             }
         }
@@ -111,6 +121,29 @@ public class WaveSpawner : MonoBehaviour {
                     .sadSandCastle.sadSandCastlePrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.SadSandCastle, enemyPrefab,
                     spawnPosition, Quaternion.identity);
+                break;
+            case EnemyType.SketchyWorm:
+                enemyPrefab = DataManager.Instance.GetEnemyData()
+                    .sketchyWorm.sketchyWormPrefab;
+                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.SketchyWorm, enemyPrefab,
+                    spawnPosition, Quaternion.identity);
+                break;
+        }
+    }
+
+    public void Editor_SpawnEnemy(EnemyType enemyType) {
+        switch (enemyType) {
+            case EnemyType.Balloon:
+                SpawnEnemy(EnemyType.Balloon);
+                break;
+            case EnemyType.CursedChalkStick:
+                SpawnEnemy(EnemyType.CursedChalkStick);
+                break;
+            case EnemyType.SadSandCastle:
+                SpawnEnemy(EnemyType.SadSandCastle);
+                break;
+            case EnemyType.SketchyWorm:
+                SpawnEnemy(EnemyType.SketchyWorm);
                 break;
         }
     }

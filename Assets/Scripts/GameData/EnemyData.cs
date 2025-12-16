@@ -38,7 +38,7 @@ public class EnemyData : ScriptableObject {
     [System.Serializable]
     public struct CursedChalkStick {
         [Space(10)]
-        [Header("----- BASIC SETTIGNS -----")]
+        [Header("----- BASIC SETTINGS -----")]
         public GameObject cursedChalkStickPrefab;
         public float moveSpeed;
         [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
@@ -67,7 +67,7 @@ public class EnemyData : ScriptableObject {
     [System.Serializable]
     public struct SadSandCastle {
         [Space(10)]
-        [Header("----- BASIC SETTIGNS -----")]
+        [Header("----- BASIC SETTINGS -----")]
         public GameObject sadSandCastlePrefab;
         public float moveSpeed;
         [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
@@ -85,6 +85,41 @@ public class EnemyData : ScriptableObject {
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         [Range(0f, 1f)]
         public float attackPointOffsetMultiplier;
+    }
+
+    [System.Serializable]
+    public struct SketchyWorm {
+        [Space(10)]
+        [Header("----- BASIC SETTINGS -----")]
+        public GameObject sketchyWormPrefab;
+        [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
+        public int maxHealthPoints;
+        [Tooltip("This number determines at how much distance the enemy should stop its movement")]
+        [Range(0f, 1f)]
+        public float movementStopThreshold;
+
+        [Space(10)]
+        [Header("----- ATTACK SETTINGS -----")]
+        [Tooltip("Time for the worm to stay hidden")]
+        public float timeToStayHidden;
+        [Tooltip("Time for the worm to shoot projectile")]
+        public float attackCooldown;
+        [Tooltip("Time for the worm to disappear after shooting")]
+        public float timeToDisappear;
+        [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
+        [Range(0f, 1f)]
+        public float attackPointOffsetMultiplier;
+
+        [Space(10)]
+        [Header("----- PROJECTILE SETTINGS -----")]
+        public GameObject sketchyWormProjectilePrefab;
+        [Tooltip("Move speed of the projectile")]
+        public float moveSpeed;
+        [Tooltip("Damage of the projectile")]
+        public float attackDamage;
+        [Tooltip("Radius to detect the target")]
+        public float targetDetectionRadius;
+        public float autoDestroySelfTimer;
     }
 
     [Space(10)]
@@ -106,5 +141,6 @@ public class EnemyData : ScriptableObject {
     public Balloon balloon;
     public CursedChalkStick cursedChalkStick;
     public SadSandCastle sadSandCastle;
+    public SketchyWorm sketchyWorm;
     
 }

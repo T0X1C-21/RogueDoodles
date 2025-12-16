@@ -1,0 +1,47 @@
+using System.Collections;
+using UnityEngine;
+
+public abstract class Projectile : MonoBehaviour {
+
+    protected float moveSpeed;
+    protected float damageAmount;
+    protected Vector3 targetPosition;
+    protected Vector3 currentPosition;
+    protected Vector3 moveDirection;
+    protected float targetDetectionRadius;
+    protected float autoDestroySelfTimer;
+    protected ProjectileHitType projectileHitType;
+
+    private void Update() {
+        MoveTowardsTarget();
+        DetectTarget();
+    }
+
+    private void MoveTowardsTarget() {
+        if(targetPosition == null) {
+            Debug.LogWarning("Target not assigned!");
+            return;
+        }
+
+        this.transform.position += moveDirection * moveSpeed * Time.deltaTime;
+    }
+
+    protected abstract void DetectTarget();
+    protected abstract void DestroySelf();
+    protected abstract IEnumerator AutoDestroySelf();
+
+    //private void DetectTarget() {
+    //    if(projectileHitType == ProjectileHitType.Enemy) {
+    //        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, targetDetectionRadius);
+            
+    //        foreach(Collider2D hit in hits) {
+    //            hit.TryGetComponent(out EnemyHealth enemyHealth);
+    //            enemyHealth.TakeDamage(damageAmount);
+    //        }
+    //    } else if(projectileHitType == ProjectileHitType.Player) {
+    //        
+    //    }
+
+    //}
+
+}

@@ -18,6 +18,9 @@ public class EnemyHealth : Health {
             case EnemyType.SadSandCastle:
                 maxHealthPoints = enemyData.sadSandCastle.maxHealthPoints;
                 break;
+            case EnemyType.SketchyWorm:
+                maxHealthPoints = enemyData.sketchyWorm.maxHealthPoints;
+                break;
         }
 
         base.Awake();
@@ -37,6 +40,9 @@ public class EnemyHealth : Health {
                     break;
                 case EnemyType.SadSandCastle:
                     ObjectPoolManager.SetObjectBackToPool(PoolType.SadSandCastle, this.gameObject);
+                    break;
+                case EnemyType.SketchyWorm:
+                    ObjectPoolManager.SetObjectBackToPool(PoolType.SketchyWorm, this.gameObject);
                     break;
             }
 
