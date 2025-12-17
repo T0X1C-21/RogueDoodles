@@ -126,3 +126,12 @@ MonoBehaviour:
   sketchyWorm:
     minimumAmountOfExperienceDrop: 15
     maximumAmountOfExperienceDrop: 18
+  largeAngryBench:
+    minimumAmountOfExperienceDrop: 2
+    maximumAmountOfExperienceDrop: 3
+  mediumAngryBench:
+    minimumAmountOfExperienceDrop: 3
+    maximumAmountOfExperienceDrop: 5
+  smallAngryBench:
+    minimumAmountOfExperienceDrop: 5
+    maximumAmountOfExperienceDrop: 6

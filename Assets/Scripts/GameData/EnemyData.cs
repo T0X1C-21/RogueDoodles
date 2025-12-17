@@ -127,11 +127,17 @@ public class EnemyData : ScriptableObject {
     public struct AngryBench {
         [Space(10)]
         [Header("----- BASIC SETTIGNS -----")]
-        public GameObject angryBenchPrefab;
-        public float moveSpeed;
+        public GameObject largeAngryBenchPrefab;
+        public GameObject mediumAngryBenchPrefab;
+        public GameObject smallAngryBenchPrefab;
+        public float largeAngryBenchMoveSpeed;
+        public float mediumAngryBenchMoveSpeed;
+        public float smallAngryBenchMoveSpeed;
         [Tooltip("This will be added or subtracted to the MoveSpeed to add random move speed for each enemy")]
         public float moveSpeedOffset;
-        public int maxHealthPoints;
+        public int largeAngryBenchMaxHealthPoints;
+        public int mediumAngryBenchMaxHealthPoints;
+        public int smallAngryBenchMaxHealthPoints;
         [Tooltip("This number determines at how much distance the enemy should stop its movement")]
         [Range(0f, 1f)]
         public float movementStopThreshold;
@@ -144,6 +150,18 @@ public class EnemyData : ScriptableObject {
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         [Range(0f, 1f)]
         public float attackPointOffsetMultiplier;
+
+        [Space(10)]
+        [Header("----- SPAWN ANIMATION SETTINGS -----")]
+        public float animationDuration;
+        public AnimationCurve animationHeightCurve;
+
+        [Space(10)]
+        [Header("----- SPECIAL BEHAVIOUR SETTINGS -----")]
+        public int mediumAngryBenchMinimumSplitCount;
+        public int mediumAngryBenchMaximumSplitCount;
+        public int smallAngryBenchMinimumSplitCount;
+        public int smallAngryBenchMaximumSplitCount;
     }
 
     [Space(10)]

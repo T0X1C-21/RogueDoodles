@@ -31,12 +31,20 @@ public enum PoolType {
     SadSandCastle,
     SketchyWorm,
     SketchyWormProjectile,
-    AngryBench
+    LargeAngryBench,
+    MediumAngryBench,
+    SmallAngryBench,
 }
 
 public enum ProjectileHitType {
     Enemy,
     Player
+}
+
+public enum AngryBenchVariant {
+    Large,
+    Medium,
+    Small
 }
 
 public class DataManager : Singleton<DataManager> {

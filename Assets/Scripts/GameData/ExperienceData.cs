@@ -46,7 +46,19 @@ public class ExperienceData : ScriptableObject {
     }
 
     [System.Serializable]
-    public struct AngryBench {
+    public struct LargeAngryBench {
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
+    }
+
+    [System.Serializable]
+    public struct MediumAngryBench {
+        public int minimumAmountOfExperienceDrop;
+        public int maximumAmountOfExperienceDrop;
+    }
+
+    [System.Serializable]
+    public struct SmallAngryBench {
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
     }
@@ -78,6 +90,8 @@ public class ExperienceData : ScriptableObject {
     public CursedChalkStick cursedChalkStick;
     public SadSandCastle sadSandCastle;
     public SketchyWorm sketchyWorm;
-    public AngryBench angryBench;
+    public LargeAngryBench largeAngryBench;
+    public MediumAngryBench mediumAngryBench;
+    public SmallAngryBench smallAngryBench;
 
 }

@@ -33,8 +33,21 @@ public class DropExperience : MonoBehaviour {
                 maximumAmountOfExperience = experienceData.sketchyWorm.maximumAmountOfExperienceDrop;
                 break;
             case EnemyType.AngryBench:
-                minimumAmountOfExperience = experienceData.angryBench.minimumAmountOfExperienceDrop;
-                maximumAmountOfExperience = experienceData.angryBench.maximumAmountOfExperienceDrop;
+                this.TryGetComponent(out AngryBench angryBench);
+                switch (angryBench.GetAngryBenchVariant()) {
+                    case AngryBenchVariant.Large:
+                        minimumAmountOfExperience = experienceData.largeAngryBench.minimumAmountOfExperienceDrop;
+                        maximumAmountOfExperience = experienceData.largeAngryBench.maximumAmountOfExperienceDrop;
+                        break;
+                    case AngryBenchVariant.Medium:
+                        minimumAmountOfExperience = experienceData.mediumAngryBench.minimumAmountOfExperienceDrop;
+                        maximumAmountOfExperience = experienceData.mediumAngryBench.maximumAmountOfExperienceDrop;
+                        break;
+                    case AngryBenchVariant.Small:
+                        minimumAmountOfExperience = experienceData.smallAngryBench.minimumAmountOfExperienceDrop;
+                        maximumAmountOfExperience = experienceData.smallAngryBench.maximumAmountOfExperienceDrop;
+                        break;
+                }
                 break;
         }
 

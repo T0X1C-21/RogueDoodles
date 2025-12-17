@@ -126,12 +126,56 @@ MonoBehaviour:
     targetDetectionRadius: 0.5
     autoDestroySelfTimer: 15
   angryBench:
-    angryBenchPrefab: {fileID: 2670313613644122842, guid: c4556ee8c56596d4e9d99022da40e540, type: 3}
-    moveSpeed: 0.5
+    largeAngryBenchPrefab: {fileID: 2670313613644122842, guid: c4556ee8c56596d4e9d99022da40e540, type: 3}
+    mediumAngryBenchPrefab: {fileID: 2670313613644122842, guid: 52a85033a46de274199d89e7ed8e0a82, type: 3}
+    smallAngryBenchPrefab: {fileID: 2670313613644122842, guid: f671767f8e047cf4fbe9bd8317f28e6e, type: 3}
+    largeAngryBenchMoveSpeed: 0.25
+    mediumAngryBenchMoveSpeed: 0.45
+    smallAngryBenchMoveSpeed: 0.7
     moveSpeedOffset: 0.1
-    maxHealthPoints: 30
+    largeAngryBenchMaxHealthPoints: 40
+    mediumAngryBenchMaxHealthPoints: 26
+    smallAngryBenchMaxHealthPoints: 18
     movementStopThreshold: 0.35
     attackCooldown: 3
     attackRange: 0.5
     attackDamage: 5
     attackPointOffsetMultiplier: 0.1
+    animationDuration: 0.2
+    animationHeightCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2.5631504
+        outSlope: 2.5631504
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.04218996
+      - serializedVersion: 3
+        time: 0.8
+        value: 1.25
+        inSlope: 0.019234516
+        outSlope: -0.060070414
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.037480444
+        outWeight: 0.32496068
+      - serializedVersion: 3
+        time: 1
+        value: 0.35
+        inSlope: -12.406416
+        outSlope: -12.406416
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.04317135
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    mediumAngryBenchMinimumSplitCount: 2
+    mediumAngryBenchMaximumSplitCount: 3
+    smallAngryBenchMinimumSplitCount: 3
+    smallAngryBenchMaximumSplitCount: 4

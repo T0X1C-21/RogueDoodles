@@ -138,8 +138,8 @@ public class WaveSpawner : MonoBehaviour {
                 break;
             case EnemyType.AngryBench:
                 enemyPrefab = DataManager.Instance.GetEnemyData()
-                    .angryBench.angryBenchPrefab;
-                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.AngryBench, enemyPrefab,
+                    .angryBench.largeAngryBenchPrefab;
+                spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.LargeAngryBench, enemyPrefab,
                     spawnPosition, Quaternion.identity);
                 break;
         }

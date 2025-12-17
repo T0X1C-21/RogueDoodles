@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : Health {
@@ -23,7 +22,18 @@ public class EnemyHealth : Health {
                 maxHealthPoints = enemyData.sketchyWorm.maxHealthPoints;
                 break;
             case EnemyType.AngryBench:
-                maxHealthPoints = enemyData.angryBench.maxHealthPoints;
+                this.TryGetComponent(out AngryBench angryBench);
+                switch (angryBench.GetAngryBenchVariant()) {
+                    case AngryBenchVariant.Large:
+                        maxHealthPoints = enemyData.angryBench.largeAngryBenchMaxHealthPoints;
+                        break;
+                    case AngryBenchVariant.Medium:
+                        maxHealthPoints = enemyData.angryBench.mediumAngryBenchMaxHealthPoints;
+                        break;
+                    case AngryBenchVariant.Small:
+                        maxHealthPoints = enemyData.angryBench.smallAngryBenchMaxHealthPoints;
+                        break;
+                }
                 break;
         }
 
@@ -49,7 +59,27 @@ public class EnemyHealth : Health {
                     ObjectPoolManager.SetObjectBackToPool(PoolType.SketchyWorm, this.gameObject);
                     break;
                 case EnemyType.AngryBench:
-                    ObjectPoolManager.SetObjectBackToPool(PoolType.AngryBench, this.gameObject);
+                    this.TryGetComponent(out AngryBench angryBench);
+                    EnemyData enemyData = DataManager.Instance.GetEnemyData();
+                    switch (angryBench.GetAngryBenchVariant()) {
+                        case AngryBenchVariant.Large:
+                            ObjectPoolManager.SetObjectBackToPool(PoolType.LargeAngryBench, this.gameObject);
+                            int minimumSplitCount = enemyData.angryBench.mediumAngryBenchMinimumSplitCount;
+                            int maximumSplitCount = enemyData.angryBench.mediumAngryBenchMaximumSplitCount;
+                            int splitCount = Random.Range(minimumSplitCount, maximumSplitCount + 1);
+                            angryBench.SpawnLowerVariant(AngryBenchVariant.Medium, splitCount);
+                            break;
+                        case AngryBenchVariant.Medium:
+                            ObjectPoolManager.SetObjectBackToPool(PoolType.MediumAngryBench, this.gameObject);
+                            minimumSplitCount = enemyData.angryBench.smallAngryBenchMinimumSplitCount;
+                            maximumSplitCount = enemyData.angryBench.smallAngryBenchMaximumSplitCount;
+                            splitCount = Random.Range(minimumSplitCount, maximumSplitCount + 1);
+                            angryBench.SpawnLowerVariant(AngryBenchVariant.Small, splitCount);
+                            break;
+                        case AngryBenchVariant.Small:
+                            ObjectPoolManager.SetObjectBackToPool(PoolType.SmallAngryBench, this.gameObject);
+                            break;
+                    }
                     break;
             }
 
