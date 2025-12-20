@@ -4,7 +4,6 @@ using UnityEngine;
 public class SketchyWormProjectile : Projectile {
 
     private void Awake() {
-
         EnemyData enemyData = DataManager.Instance.GetEnemyData();
 
         moveSpeed = enemyData.sketchyWorm.moveSpeed;
@@ -12,6 +11,7 @@ public class SketchyWormProjectile : Projectile {
         targetDetectionRadius = enemyData.sketchyWorm.targetDetectionRadius;
         autoDestroySelfTimer = enemyData.sketchyWorm.autoDestroySelfTimer;
         projectileHitType = ProjectileHitType.Player;
+        targetLayerMask = DataManager.Instance.GetPlayerData().playerLayerMask;
     }
 
     private void OnEnable() {
@@ -23,7 +23,8 @@ public class SketchyWormProjectile : Projectile {
     }
 
     protected override void DetectTarget() {
-        Collider2D hit = Physics2D.OverlapCircle(this.transform.position, targetDetectionRadius);
+        Collider2D hit = Physics2D.OverlapCircle(this.transform.position, targetDetectionRadius, 
+            targetLayerMask);
         if(hit == null) {
             return;
         }
@@ -40,7 +41,7 @@ public class SketchyWormProjectile : Projectile {
 
     protected override IEnumerator AutoDestroySelf() {
         yield return new WaitForSeconds(autoDestroySelfTimer);
-        ObjectPoolManager.SetObjectBackToPool(PoolType.SketchyWormProjectile, this.gameObject);
+        DestroySelf();
     }
 
 }

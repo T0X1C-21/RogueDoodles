@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingWeaponType: 0
+  startingWeaponType: 1
   weaponRotationSpeed: 25
   pencil:
     pencilPrefab: {fileID: 3644522096767842627, guid: 2a507ace5dcdb7043bc2b162b0b8c141, type: 3}
-    sprite: {fileID: 21300000, guid: cef8c6d4cce6e744ea0b377cb07d561b, type: 3}
     damage: 12
     piercing: 5
     attackCooldown: 1.5
@@ -24,3 +23,15 @@ MonoBehaviour:
     attackArcThreshold: 0.95
     preAnimationTime: 0.3
     animationTime: 0.15
+  chalkShot:
+    chalkShotPrefab: {fileID: 3644522096767842627, guid: f13d69bc09ba29f44903dab179e375aa, type: 3}
+    chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
+    damage: 15
+    piercing: 3
+    attackCooldown: 1
+    preAnimationTime: 0.025
+    animationTime: 0.05
+    moveSpeed: 5
+    damageAmount: 5
+    targetDetectionRadius: 0.5
+    autoDestroySelfTimer: 15

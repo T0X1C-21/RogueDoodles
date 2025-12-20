@@ -17,9 +17,9 @@ public abstract class PlayerWeapon : MonoBehaviour {
     protected float attackTimer;
     protected bool isAnimating;
     protected LayerMask enemyLayerMask;
+    protected Transform playerTransform;
 
     private float aimWeaponRadius;
-    private Transform playerTransform;
     private float weaponRotationSpeed;
 
     protected virtual void Awake() {
@@ -32,7 +32,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
         attackTimer = attackCooldown;
     }
 
-    private void Update() {
+    protected virtual void Update() {
         attackTimer -= Time.deltaTime;
 
         if(attackTimer <= 0f) {
@@ -44,7 +44,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
         AimWeapon();
     }
 
-    private void AimWeapon() {
+    protected void AimWeapon() {
         // position weapon
         Vector3 circleCenter = playerTransform.position;
 
@@ -55,12 +55,15 @@ public abstract class PlayerWeapon : MonoBehaviour {
         aimDirection = mousePositionInWorld - circleCenter;
         aimPosition = aimDirection.normalized * aimWeaponRadius;
 
+        Vector3 targetPosition;
         if (isAnimating) {
-            this.transform.position = playerTransform.position + previousAimPosition;
+            targetPosition = playerTransform.position + previousAimPosition;
+            this.transform.position = targetPosition;
             return;
         }
 
-        this.transform.position = playerTransform.position + aimPosition;
+        targetPosition = playerTransform.position + aimPosition;
+        this.transform.position = targetPosition;
         previousAimPosition = aimPosition;
 
         // rotate weapon

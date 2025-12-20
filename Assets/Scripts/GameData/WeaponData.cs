@@ -7,7 +7,6 @@ public class WeaponData : ScriptableObject {
     public struct Pencil {
 
         public GameObject pencilPrefab;
-        public Sprite sprite;
         public int damage;
         public int piercing;
         public float attackCooldown;
@@ -17,6 +16,25 @@ public class WeaponData : ScriptableObject {
         public float attackArcThreshold;
         public float preAnimationTime;
         public float animationTime;
+
+    }
+
+    [System.Serializable]
+    public struct ChalkShot {
+
+        public GameObject chalkShotPrefab;
+        public GameObject chalkShotBulletPrefab;
+        public int damage;
+        public int piercing;
+        public float attackCooldown;
+        public float preAnimationTime;
+        public float animationTime;
+
+        [Header("----- PROJECTILE SETTINGS -----")]
+        public float moveSpeed;
+        public float damageAmount;
+        public float targetDetectionRadius;
+        public float autoDestroySelfTimer;
 
     }
 
@@ -30,5 +48,6 @@ public class WeaponData : ScriptableObject {
     [Space(10)]
     [Header("----- WEAPON STATS -----")]
     public Pencil pencil;
+    public ChalkShot chalkShot;
 
 }

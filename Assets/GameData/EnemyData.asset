@@ -176,6 +176,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     mediumAngryBenchMinimumSplitCount: 2
-    mediumAngryBenchMaximumSplitCount: 3
+    mediumAngryBenchMaximumSplitCount: 24
     smallAngryBenchMinimumSplitCount: 3
     smallAngryBenchMaximumSplitCount: 4

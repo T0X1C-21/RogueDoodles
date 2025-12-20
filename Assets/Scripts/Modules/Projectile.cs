@@ -11,6 +11,7 @@ public abstract class Projectile : MonoBehaviour {
     protected float targetDetectionRadius;
     protected float autoDestroySelfTimer;
     protected ProjectileHitType projectileHitType;
+    protected LayerMask targetLayerMask;
 
     private void Update() {
         MoveTowardsTarget();
