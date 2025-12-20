@@ -18,5 +18,4 @@ MonoBehaviour:
   scribbleKid:
     moveSpeed: 5
     maxHealthPoints: 100
-    startingWeapon: 0
-    aimWeaponRadius: 0.5
+    startingWeapon: 2

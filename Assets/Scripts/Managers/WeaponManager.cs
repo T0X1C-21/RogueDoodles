@@ -1,42 +1,51 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour {
+public class WeaponManager : Singleton<WeaponManager> {
 
-    private void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+    private WeaponData weaponData;
+    private Dictionary<WeaponType, PlayerWeapon> equippedWeaponDictionary = new Dictionary<WeaponType, PlayerWeapon>();
 
-        switch (weaponData.startingWeaponType) {
+    protected override void Awake() {
+        base.Awake();
+
+        weaponData = DataManager.Instance.GetWeaponData();
+        SpawnWeapon(weaponData.startingWeaponType);
+        //SpawnWeapon(WeaponType.Pencil);
+    }
+
+    public void SpawnWeapon(WeaponType weaponType) {
+        if(equippedWeaponDictionary.Count >= 3) {
+            Debug.LogWarning("Cannot add more than 3 weapons!");
+            return;
+        }
+
+        GameObject instantiatedWeapon = null;
+        switch (weaponType) {
             case WeaponType.Pencil:
-                GameObject instantiatedWeapon = Instantiate(weaponData.pencil.pencilPrefab,
+                instantiatedWeapon = Instantiate(weaponData.pencil.pencilPrefab,
                     Vector3.zero, Quaternion.identity);
-                instantiatedWeapon.transform.parent = this.transform;
-                instantiatedWeapon.name = weaponData.startingWeaponType.ToString();
                 break;
             case WeaponType.ChalkShot:
                 instantiatedWeapon = Instantiate(weaponData.chalkShot.chalkShotPrefab,
                     Vector3.zero, Quaternion.identity);
-                instantiatedWeapon.transform.parent = this.transform;
-                instantiatedWeapon.name = weaponData.startingWeaponType.ToString();
+                break;
+            case WeaponType.InkSplash:
+                instantiatedWeapon = Instantiate(weaponData.inkSplash.inkSplashPrefab,
+                    Vector3.zero, Quaternion.identity);
                 break;
         }
 
-        //foreach(WeaponType weaponType in Enum.GetValues(typeof(WeaponType))) {
-        //    switch (weaponType) {
-        //        case WeaponType.Pencil:
-        //            GameObject instantiatedWeapon = Instantiate(weaponData.pencil.pencilPrefab,
-        //                Vector3.zero, Quaternion.identity);
-        //            instantiatedWeapon.transform.parent = this.transform;
-        //            instantiatedWeapon.name = weaponData.startingWeaponType.ToString();
-        //            break;
-        //        case WeaponType.ChalkShot:
-        //            instantiatedWeapon = Instantiate(weaponData.chalkShot.chalkShotPrefab,
-        //                Vector3.zero, Quaternion.identity);
-        //            instantiatedWeapon.transform.parent = this.transform;
-        //            instantiatedWeapon.name = weaponData.startingWeaponType.ToString();
-        //            break;
-        //    }
-        //}
+        if(instantiatedWeapon == null) {
+            return;
+        }
+
+        instantiatedWeapon.transform.parent = this.transform;
+        instantiatedWeapon.name = weaponType.ToString();
+        instantiatedWeapon.TryGetComponent(out PlayerWeapon playerWeapon);
+        equippedWeaponDictionary.Add(weaponType, playerWeapon);
+        Debug.Log($"Equipped {weaponType.ToString()}: {equippedWeaponDictionary[weaponType]}");
     }
 
 }

@@ -13,7 +13,7 @@ public abstract class Projectile : MonoBehaviour {
     protected ProjectileHitType projectileHitType;
     protected LayerMask targetLayerMask;
 
-    private void Update() {
+    protected virtual void Update() {
         MoveTowardsTarget();
         DetectTarget();
     }
@@ -29,7 +29,11 @@ public abstract class Projectile : MonoBehaviour {
 
     protected abstract void DetectTarget();
     protected abstract void DestroySelf();
-    protected abstract IEnumerator AutoDestroySelf();
+
+    protected virtual IEnumerator AutoDestroySelf() {
+        Debug.LogWarning("Implement AutoDestroySelf() in child Projectile class!");
+        yield return null;
+    }
 
     //private void DetectTarget() {
     //    if(projectileHitType == ProjectileHitType.Enemy) {

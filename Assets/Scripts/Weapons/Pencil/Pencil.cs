@@ -28,7 +28,7 @@ public class Pencil : PlayerWeapon {
     // Collect enemies to hit at slash
     protected override void Attack() {
         Vector2 boxSize = new Vector2(1f, 0.25f);
-        Collider2D[] hits = Physics2D.OverlapBoxAll(aimPoint.position, boxSize, 
+        Collider2D[] hits = Physics2D.OverlapBoxAll(GetAimPointPosition(), boxSize, 
             this.transform.eulerAngles.z, enemyLayerMask);
 
         if(hits == null) {
@@ -58,17 +58,22 @@ public class Pencil : PlayerWeapon {
 
     protected override void AnimateWeapon() {
         isAnimating = true;
+        SpriteRenderer spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
+        Tween appear = spriteRenderer.DOFade(1f, 0.2f);
         Tween goUp = this.transform.DORotate(new Vector3(0f, 0f, 20f), preAnimationTime, RotateMode.WorldAxisAdd);
         Tween slash = this.transform.DORotate(new Vector3(0f, 0f, -40f), animationTime, 
             RotateMode.WorldAxisAdd).SetEase(Ease.InOutBack).OnComplete(() => {
             ApplyDamage();
         });
         Tween reset = this.transform.DORotate(new Vector3(0f, 0f, 20f), preAnimationTime, RotateMode.WorldAxisAdd);
+        Tween disappear = spriteRenderer.DOFade(0f, 0.2f);
 
         Sequence attackAnimationSequence = DOTween.Sequence();
+        attackAnimationSequence.Append(appear);
         attackAnimationSequence.Append(goUp);
         attackAnimationSequence.Append(slash);
         attackAnimationSequence.Append(reset);
+        attackAnimationSequence.Append(disappear);
         attackAnimationSequence.OnComplete(() => {
             isAnimating = false;
 
@@ -84,7 +89,7 @@ public class Pencil : PlayerWeapon {
         }
 
         Gizmos.color = new Color(0f, 0f, 0f, 0.2f);
-        Gizmos.DrawWireCube(aimPoint.position, new Vector2(1f, 0.25f));
+        Gizmos.DrawWireCube(GetAimPointPosition(), new Vector2(1f, 0.25f));
         Vector3 mouseDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - this.transform.position;
 
         float angle = Mathf.Acos(attackArcThreshold) * Mathf.Rad2Deg;

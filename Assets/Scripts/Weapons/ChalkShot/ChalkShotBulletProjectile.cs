@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChalkShotBullet : Projectile {
+public class ChalkShotBulletProjectile : Projectile {
     
     private int piercing;
     private HashSet<Collider2D> damagedEnemiesHashSet = new HashSet<Collider2D>();
@@ -30,7 +30,7 @@ public class ChalkShotBullet : Projectile {
     }
 
     protected override void DestroySelf() {
-        ObjectPoolManager.SetObjectBackToPool(PoolType.ChalkShotBullet, this.gameObject);
+        ObjectPoolManager.SetObjectBackToPool(PoolType.ChalkShotProjectile, this.gameObject);
     }
 
     protected override void DetectTarget() {

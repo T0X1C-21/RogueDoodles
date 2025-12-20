@@ -30,6 +30,7 @@ public class WeaponData : ScriptableObject {
         public float preAnimationTime;
         public float animationTime;
 
+        [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
         public float moveSpeed;
         public float damageAmount;
@@ -38,9 +39,28 @@ public class WeaponData : ScriptableObject {
 
     }
 
+    [System.Serializable]
+    public struct InkSplash {
+
+        public GameObject inkSplashPrefab;
+        public GameObject inkSplashProjectilePrefab;
+        public int damage;
+        public float attackCooldown;
+
+        [Space(10)]
+        [Header("----- PROJECTILE SETTINGS -----")]
+        public float playerDetectionRadius;
+        public float minimumAttackRange;
+        public float maximumAttackRange;
+        public float spawnAnimationDuration;
+        public AnimationCurve heightAnimationCurve;
+
+    }
+
     [Space(10)]
     [Header("----- BASIC SETTINGS -----")]
     public WeaponType startingWeaponType;
+    public float aimWeaponRadius;
     [Tooltip("SLerp speed of the weapon")]
     [Range(15f, 25f)]
     public float weaponRotationSpeed;
@@ -49,5 +69,6 @@ public class WeaponData : ScriptableObject {
     [Header("----- WEAPON STATS -----")]
     public Pencil pencil;
     public ChalkShot chalkShot;
+    public InkSplash inkSplash;
 
 }

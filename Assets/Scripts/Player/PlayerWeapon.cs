@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerWeapon : MonoBehaviour {
 
-    [SerializeField] protected Transform aimPoint;
+    [SerializeField] private Transform aimPoint;
     [SerializeField] protected bool drawGizmos;
 
     protected int weaponDamage;
@@ -23,13 +23,17 @@ public abstract class PlayerWeapon : MonoBehaviour {
     private float weaponRotationSpeed;
 
     protected virtual void Awake() {
-        aimWeaponRadius = DataManager.Instance.GetPlayerData().scribbleKid.aimWeaponRadius;
         playerTransform = DataManager.Instance.GetPlayerTargetTransform();
-
-        weaponRotationSpeed = DataManager.Instance.GetWeaponData().weaponRotationSpeed;
+        WeaponData weaponData = DataManager.Instance.GetWeaponData();
         enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        weaponRotationSpeed = weaponData.weaponRotationSpeed;
+        aimWeaponRadius = weaponData.aimWeaponRadius;
 
         attackTimer = attackCooldown;
+    }
+
+    protected Vector3 GetAimPointPosition() {
+        return aimPoint.position;
     }
 
     protected virtual void Update() {
@@ -73,7 +77,10 @@ public abstract class PlayerWeapon : MonoBehaviour {
             targetRotation, Time.deltaTime * weaponRotationSpeed);
     }
 
+    protected virtual void AnimateWeapon() {
+        Debug.LogWarning("Implement AnimateWeapon() in the child weapon class!");
+    }
+
     protected abstract void Attack();
-    protected abstract void AnimateWeapon();
 
 }

@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 653627707425701598}
   - component: {fileID: 1090078789134413090}
   m_Layer: 0
-  m_Name: ChalkShotBullet
+  m_Name: ChalkShotBulletProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
