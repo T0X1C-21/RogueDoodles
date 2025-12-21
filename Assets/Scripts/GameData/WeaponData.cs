@@ -25,6 +25,8 @@ public class WeaponData : ScriptableObject {
         public GameObject chalkShotPrefab;
         public GameObject chalkShotBulletPrefab;
         public int damage;
+        public int numberOfBullets;
+        public float reloadTime;
         public int piercing;
         public float attackCooldown;
         public float preAnimationTime;
@@ -45,15 +47,19 @@ public class WeaponData : ScriptableObject {
         public GameObject inkSplashPrefab;
         public GameObject inkSplashProjectilePrefab;
         public int damage;
-        public float attackCooldown;
 
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
-        public float playerDetectionRadius;
         public float minimumAttackRange;
         public float maximumAttackRange;
         public float spawnAnimationDuration;
-        public AnimationCurve heightAnimationCurve;
+
+        [Space(10)]
+        [Header("----- FLAMES SETTINGS -----")]
+        public Sprite inkSplashFlamesSprite;
+        public float playerDetectionRadius;
+        public float flamesDuration;
+        public float attackCooldown;
 
     }
 

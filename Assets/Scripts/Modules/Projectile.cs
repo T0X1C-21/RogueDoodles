@@ -15,7 +15,7 @@ public abstract class Projectile : MonoBehaviour {
 
     protected virtual void Update() {
         MoveTowardsTarget();
-        DetectTarget();
+        DetectAndDamageTarget();
     }
 
     private void MoveTowardsTarget() {
@@ -27,7 +27,7 @@ public abstract class Projectile : MonoBehaviour {
         this.transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 
-    protected abstract void DetectTarget();
+    protected abstract void DetectAndDamageTarget();
     protected abstract void DestroySelf();
 
     protected virtual IEnumerator AutoDestroySelf() {

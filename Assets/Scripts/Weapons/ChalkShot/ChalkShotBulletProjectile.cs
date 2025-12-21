@@ -33,7 +33,7 @@ public class ChalkShotBulletProjectile : Projectile {
         ObjectPoolManager.SetObjectBackToPool(PoolType.ChalkShotProjectile, this.gameObject);
     }
 
-    protected override void DetectTarget() {
+    protected override void DetectAndDamageTarget() {
         Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, targetDetectionRadius,
             targetLayerMask);
         if(piercing <= 0) {
@@ -47,7 +47,6 @@ public class ChalkShotBulletProjectile : Projectile {
 
             if(hit.TryGetComponent(out EnemyHealth enemyHealth) && piercing > 0) {
                 piercing -= 1;
-                Debug.Log(piercing);
                 enemyHealth.TakeDamage(damageAmount);
                 damagedEnemiesHashSet.Add(hit);
                 if(piercing <= 0) {

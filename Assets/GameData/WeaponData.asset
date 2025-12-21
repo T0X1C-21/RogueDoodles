@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingWeaponType: 2
+  startingWeaponType: 1
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
   pencil:
@@ -28,10 +28,12 @@ MonoBehaviour:
     chalkShotPrefab: {fileID: 3644522096767842627, guid: f13d69bc09ba29f44903dab179e375aa, type: 3}
     chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
     damage: 15
+    numberOfBullets: 3
+    reloadTime: 0.6
     piercing: 3
     attackCooldown: 1
-    preAnimationTime: 0.025
-    animationTime: 0.05
+    preAnimationTime: 0.15
+    animationTime: 0.125
     moveSpeed: 5
     damageAmount: 5
     targetDetectionRadius: 0.5
@@ -39,42 +41,11 @@ MonoBehaviour:
   inkSplash:
     inkSplashPrefab: {fileID: 3644522096767842627, guid: 2d14b4b4edbadf0499005a98930971de, type: 3}
     inkSplashProjectilePrefab: {fileID: 5981903970954296668, guid: 9c54bc0d75fc70146ba43fc18df8eac4, type: 3}
-    damage: 20
-    attackCooldown: 2
-    playerDetectionRadius: 0.5
+    damage: 5
     minimumAttackRange: 0.5
     maximumAttackRange: 1
     spawnAnimationDuration: 0.25
-    heightAnimationCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 6.4225073
-        outSlope: 6.4225073
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.07459407
-      - serializedVersion: 3
-        time: 0.3
-        value: 2
-        inSlope: 0.6165977
-        outSlope: 0.6165977
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.13667136
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0.050754912
-        outSlope: 0.050754912
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.22298953
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
+    inkSplashFlamesSprite: {fileID: 21300000, guid: e58bef87230bbaa44b4d6e932782a9d8, type: 3}
+    playerDetectionRadius: 0.5
+    flamesDuration: 3
+    attackCooldown: 1

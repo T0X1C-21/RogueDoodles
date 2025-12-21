@@ -22,7 +22,7 @@ public class SketchyWormProjectile : Projectile {
         StartCoroutine(AutoDestroySelf());
     }
 
-    protected override void DetectTarget() {
+    protected override void DetectAndDamageTarget() {
         Collider2D hit = Physics2D.OverlapCircle(this.transform.position, targetDetectionRadius, 
             targetLayerMask);
         if(hit == null) {

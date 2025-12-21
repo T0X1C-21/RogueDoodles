@@ -13,6 +13,7 @@ public class WeaponManager : Singleton<WeaponManager> {
         weaponData = DataManager.Instance.GetWeaponData();
         SpawnWeapon(weaponData.startingWeaponType);
         //SpawnWeapon(WeaponType.Pencil);
+        //SpawnWeapon(WeaponType.ChalkShot);
     }
 
     public void SpawnWeapon(WeaponType weaponType) {

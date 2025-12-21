@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChalkShot
   aimPoint: {fileID: 7331052830476848435}
   drawGizmos: 0
+  spriteGameObject: {fileID: 6992916951538679295}
 --- !u!1 &6728594666229592538
 GameObject:
   m_ObjectHideFlags: 0
