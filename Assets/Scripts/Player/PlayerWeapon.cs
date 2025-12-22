@@ -1,5 +1,3 @@
-using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +16,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
     protected bool isAnimating;
     protected LayerMask enemyLayerMask;
     protected Transform playerTransform;
+    protected float fadeOutTime;
 
     private float aimWeaponRadius;
     private float weaponRotationSpeed;
@@ -28,6 +27,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
         enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
         weaponRotationSpeed = weaponData.weaponRotationSpeed;
         aimWeaponRadius = weaponData.aimWeaponRadius;
+        fadeOutTime = weaponData.fadeOutTime;
 
         attackTimer = attackCooldown;
     }

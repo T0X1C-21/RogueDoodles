@@ -19,11 +19,6 @@ public abstract class Projectile : MonoBehaviour {
     }
 
     private void MoveTowardsTarget() {
-        if(targetPosition == null) {
-            Debug.LogWarning("Target not assigned!");
-            return;
-        }
-
         this.transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 

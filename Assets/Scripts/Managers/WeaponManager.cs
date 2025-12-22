@@ -2,17 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : Singleton<WeaponManager> {
+public class WeaponManager : MonoBehaviour {
 
     private WeaponData weaponData;
     private Dictionary<WeaponType, PlayerWeapon> equippedWeaponDictionary = new Dictionary<WeaponType, PlayerWeapon>();
 
-    protected override void Awake() {
-        base.Awake();
-
+    private void Awake() {
         weaponData = DataManager.Instance.GetWeaponData();
         SpawnWeapon(weaponData.startingWeaponType);
-        //SpawnWeapon(WeaponType.Pencil);
+        SpawnWeapon(WeaponType.Pencil);
         //SpawnWeapon(WeaponType.ChalkShot);
     }
 
@@ -34,6 +32,10 @@ public class WeaponManager : Singleton<WeaponManager> {
                 break;
             case WeaponType.InkSplash:
                 instantiatedWeapon = Instantiate(weaponData.inkSplash.inkSplashPrefab,
+                    Vector3.zero, Quaternion.identity);
+                break;
+            case WeaponType.CrayonMissile:
+                instantiatedWeapon = Instantiate(weaponData.crayonMissile.crayonMissilePrefab,
                     Vector3.zero, Quaternion.identity);
                 break;
         }

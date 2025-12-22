@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingWeaponType: 1
+  startingWeaponType: 3
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
+  fadeOutTime: 0.2
   pencil:
     pencilPrefab: {fileID: 3644522096767842627, guid: 2a507ace5dcdb7043bc2b162b0b8c141, type: 3}
-    damage: 12
+    damage: 15
     piercing: 5
     attackCooldown: 1.5
     attackRange: 1
@@ -27,14 +28,13 @@ MonoBehaviour:
   chalkShot:
     chalkShotPrefab: {fileID: 3644522096767842627, guid: f13d69bc09ba29f44903dab179e375aa, type: 3}
     chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
-    damage: 15
     numberOfBullets: 3
     reloadTime: 0.6
     piercing: 3
-    attackCooldown: 1
+    attackCooldown: 0.75
     preAnimationTime: 0.15
     animationTime: 0.125
-    moveSpeed: 5
+    moveSpeed: 15
     damageAmount: 5
     targetDetectionRadius: 0.5
     autoDestroySelfTimer: 15
@@ -46,6 +46,14 @@ MonoBehaviour:
     maximumAttackRange: 1
     spawnAnimationDuration: 0.25
     inkSplashFlamesSprite: {fileID: 21300000, guid: e58bef87230bbaa44b4d6e932782a9d8, type: 3}
-    playerDetectionRadius: 0.5
+    enemyDetectionRadius: 0
     flamesDuration: 3
     attackCooldown: 1
+  crayonMissile:
+    crayonMissilePrefab: {fileID: 3644522096767842627, guid: d4ba6e3739a5daa4388d1585abd85f16, type: 3}
+    crayonMissileProjectilePrefab: {fileID: 5981903970954296668, guid: f85074e71b036874886daaa2c2a6571b, type: 3}
+    attackCooldown: 1
+    moveSpeed: 8
+    damageAmount: 20
+    targetDetectionRadius: 0.5
+    autoDestroySelfTimer: 3

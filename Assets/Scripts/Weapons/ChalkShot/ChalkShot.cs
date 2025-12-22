@@ -1,6 +1,5 @@
 using DG.Tweening;
 using System.Collections;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class ChalkShot : PlayerWeapon {
@@ -14,7 +13,6 @@ public class ChalkShot : PlayerWeapon {
     private int currentNumberOfBullets;
     private float reloadTime;
 
-    private float fadeOutTime = 0.2f;
     private SpriteRenderer spriteRenderer;
     private bool isReloading;
 
@@ -23,7 +21,6 @@ public class ChalkShot : PlayerWeapon {
 
         WeaponData weaponData = DataManager.Instance.GetWeaponData();
         chalkShotBulletPrefab = weaponData.chalkShot.chalkShotBulletPrefab;
-        weaponDamage = weaponData.chalkShot.damage;
         piercing = weaponData.chalkShot.piercing;
         attackCooldown = weaponData.chalkShot.attackCooldown;
         preAnimationTime = weaponData.chalkShot.preAnimationTime;
@@ -47,6 +44,10 @@ public class ChalkShot : PlayerWeapon {
     }
 
     private new IEnumerator AnimateWeapon() {
+        if(currentNumberOfBullets <= 0) {
+            ReloadGun();
+            yield break;
+        }
         Vector3 playerDirectionNormalized = (playerTransform.position - this.transform.position).normalized;
         Vector3 startPosition = spriteGameObject.transform.localPosition;
         float pushForce = 0.3f;
@@ -66,10 +67,6 @@ public class ChalkShot : PlayerWeapon {
             Attack();
         }
         IEnumerator frontAnimation() {
-            if(currentNumberOfBullets <= 0) {
-                ReloadGun();
-                yield break;
-            }
             float t = 0f;
             startPosition = spriteGameObject.transform.localPosition;
             endPosition = Vector3.zero;
@@ -107,7 +104,6 @@ public class ChalkShot : PlayerWeapon {
         reloadAnimationSequence.Append(disappear);
         reloadAnimationSequence.OnComplete(() => {
             currentNumberOfBullets = numberOfBullets;
-            Debug.Log(currentNumberOfBullets);
             attackTimer = attackCooldown;
             isReloading = false;
             isAnimating = false;

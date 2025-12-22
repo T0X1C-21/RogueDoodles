@@ -49,7 +49,6 @@ public class Pencil : PlayerWeapon {
             if (hit.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth) && piercing > 0) {
                 enemyHealth.TakeDamage(weaponDamage);
                 piercing -= 1;
-                Debug.Log(piercing);
             }
         }
 
@@ -59,14 +58,14 @@ public class Pencil : PlayerWeapon {
     protected override void AnimateWeapon() {
         isAnimating = true;
         SpriteRenderer spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
-        Tween appear = spriteRenderer.DOFade(1f, 0.2f);
+        Tween appear = spriteRenderer.DOFade(1f, fadeOutTime);
         Tween goUp = this.transform.DORotate(new Vector3(0f, 0f, 20f), preAnimationTime, RotateMode.WorldAxisAdd);
         Tween slash = this.transform.DORotate(new Vector3(0f, 0f, -40f), animationTime, 
             RotateMode.WorldAxisAdd).SetEase(Ease.InOutBack).OnComplete(() => {
             ApplyDamage();
         });
         Tween reset = this.transform.DORotate(new Vector3(0f, 0f, 20f), preAnimationTime, RotateMode.WorldAxisAdd);
-        Tween disappear = spriteRenderer.DOFade(0f, 0.2f);
+        Tween disappear = spriteRenderer.DOFade(0f, fadeOutTime);
 
         Sequence attackAnimationSequence = DOTween.Sequence();
         attackAnimationSequence.Append(appear);
@@ -79,7 +78,6 @@ public class Pencil : PlayerWeapon {
 
             // Reset Piercing
             piercing = DataManager.Instance.GetWeaponData().pencil.piercing;
-            //Debug.Log("--------------------");
         });
     }
 

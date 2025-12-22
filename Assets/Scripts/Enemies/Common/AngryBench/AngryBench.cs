@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AngryBench : Enemy {
@@ -36,6 +35,7 @@ public class AngryBench : Enemy {
             animationDuration = enemyData.angryBench.animationDuration;
             animationHeightCurve = enemyData.angryBench.animationHeightCurve;
             StartCoroutine(LowerAngryBenchesSpawnAnimation());
+            canAttack = false;
         }
     }
 
@@ -54,6 +54,7 @@ public class AngryBench : Enemy {
             this.transform.position = new Vector3(animationX, animationY);
             yield return null;
         }
+        canAttack = true;
     }
 
     public AngryBenchVariant GetAngryBenchVariant() {

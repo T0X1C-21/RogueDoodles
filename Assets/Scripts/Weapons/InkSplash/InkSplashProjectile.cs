@@ -18,7 +18,7 @@ public class InkSplashProjectile : Projectile, IPoolable {
     private void Awake() {
         WeaponData weaponData = DataManager.Instance.GetWeaponData();
         damageAmount = weaponData.inkSplash.damage;
-        playerDetectionRadius = weaponData.inkSplash.playerDetectionRadius;
+        playerDetectionRadius = weaponData.inkSplash.enemyDetectionRadius;
         minimumAttackRange = weaponData.inkSplash.minimumAttackRange;
         maximumAttackRange = weaponData.inkSplash.maximumAttackRange;
         spawnAnimationDuration = weaponData.inkSplash.spawnAnimationDuration;

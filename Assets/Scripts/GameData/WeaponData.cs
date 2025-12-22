@@ -24,7 +24,6 @@ public class WeaponData : ScriptableObject {
 
         public GameObject chalkShotPrefab;
         public GameObject chalkShotBulletPrefab;
-        public int damage;
         public int numberOfBullets;
         public float reloadTime;
         public int piercing;
@@ -46,10 +45,10 @@ public class WeaponData : ScriptableObject {
 
         public GameObject inkSplashPrefab;
         public GameObject inkSplashProjectilePrefab;
-        public int damage;
 
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
+        public int damage;
         public float minimumAttackRange;
         public float maximumAttackRange;
         public float spawnAnimationDuration;
@@ -57,9 +56,25 @@ public class WeaponData : ScriptableObject {
         [Space(10)]
         [Header("----- FLAMES SETTINGS -----")]
         public Sprite inkSplashFlamesSprite;
-        public float playerDetectionRadius;
+        public float enemyDetectionRadius;
         public float flamesDuration;
         public float attackCooldown;
+
+    }
+
+    [System.Serializable]
+    public struct CrayonMissile {
+
+        public GameObject crayonMissilePrefab;
+        public GameObject crayonMissileProjectilePrefab;
+        public float attackCooldown;
+
+        [Space(10)]
+        [Header("----- PROJECTILE SETTINGS -----")]
+        public float moveSpeed;
+        public int damageAmount;
+        public float targetDetectionRadius;
+        public float autoDestroySelfTimer;
 
     }
 
@@ -70,11 +85,13 @@ public class WeaponData : ScriptableObject {
     [Tooltip("SLerp speed of the weapon")]
     [Range(15f, 25f)]
     public float weaponRotationSpeed;
+    public float fadeOutTime;
 
     [Space(10)]
     [Header("----- WEAPON STATS -----")]
     public Pencil pencil;
     public ChalkShot chalkShot;
     public InkSplash inkSplash;
+    public CrayonMissile crayonMissile;
 
 }

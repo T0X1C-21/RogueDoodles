@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IPoolable {
     protected float attackDamage;
     protected float attackPointOffsetMultiplier;
     protected float movementStopThreshold;
+    protected bool canAttack;
 
     private float attackTimer;
     private Vector3 moveDirection;
@@ -31,6 +32,8 @@ public class Enemy : MonoBehaviour, IPoolable {
     protected virtual void Awake() {
         playerTarget = DataManager.Instance.GetPlayerTargetTransform();
         playerLayerMask = DataManager.Instance.GetPlayerData().playerLayerMask;
+
+        canAttack = true;
     }
 
     protected virtual void Update() {
@@ -58,6 +61,10 @@ public class Enemy : MonoBehaviour, IPoolable {
     }
 
     protected virtual void DetectAndAttackPlayer() {
+        if (!canAttack) {
+            return;
+        }
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRange, playerLayerMask);
         foreach(Collider2D hit in hits) {
             if(hit.TryGetComponent(out PlayerMovement player)) {

@@ -3,7 +3,8 @@ using UnityEngine;
 public enum WeaponType {
     Pencil,
     ChalkShot,
-    InkSplash
+    InkSplash,
+    CrayonMissile
 }
 
 public enum PlayerType {
@@ -37,7 +38,8 @@ public enum PoolType {
     MediumAngryBench,
     SmallAngryBench,
     ChalkShotProjectile,
-    InkSplashProjectile
+    InkSplashProjectile,
+    CrayonMissileProjectile
 }
 
 public enum ProjectileHitType {
