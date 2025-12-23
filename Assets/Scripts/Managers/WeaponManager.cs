@@ -10,7 +10,7 @@ public class WeaponManager : MonoBehaviour {
     private void Awake() {
         weaponData = DataManager.Instance.GetWeaponData();
         SpawnWeapon(weaponData.startingWeaponType);
-        SpawnWeapon(WeaponType.Pencil);
+        //SpawnWeapon(WeaponType.Pencil);
         //SpawnWeapon(WeaponType.ChalkShot);
     }
 
@@ -36,6 +36,10 @@ public class WeaponManager : MonoBehaviour {
                 break;
             case WeaponType.CrayonMissile:
                 instantiatedWeapon = Instantiate(weaponData.crayonMissile.crayonMissilePrefab,
+                    Vector3.zero, Quaternion.identity);
+                break;
+            case WeaponType.NotebookTear:
+                instantiatedWeapon = Instantiate(weaponData.notebookTear.notebookTearPrefab,
                     Vector3.zero, Quaternion.identity);
                 break;
         }

@@ -16,6 +16,7 @@ public class WeaponData : ScriptableObject {
         public float attackArcThreshold;
         public float preAnimationTime;
         public float animationTime;
+        public float fadeOutTime;
 
     }
 
@@ -30,6 +31,7 @@ public class WeaponData : ScriptableObject {
         public float attackCooldown;
         public float preAnimationTime;
         public float animationTime;
+        public float fadeOutTime;
 
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
@@ -78,6 +80,23 @@ public class WeaponData : ScriptableObject {
 
     }
 
+    [System.Serializable]
+    public struct NotebookTear {
+
+        public GameObject notebookTearPrefab;
+        public float revolutionSpeed;
+        public float revolutionRadius;
+        public float autoStartRevolutionTime;
+        public float autoEndRevolutionTime;
+        public float attackCooldown;
+        public int attackDamage;
+        public float attackRadius;
+        public int piercing;
+        public float animationTime;
+        public float fadeOutTime;
+
+    }
+
     [Space(10)]
     [Header("----- BASIC SETTINGS -----")]
     public WeaponType startingWeaponType;
@@ -85,7 +104,6 @@ public class WeaponData : ScriptableObject {
     [Tooltip("SLerp speed of the weapon")]
     [Range(15f, 25f)]
     public float weaponRotationSpeed;
-    public float fadeOutTime;
 
     [Space(10)]
     [Header("----- WEAPON STATS -----")]
@@ -93,5 +111,6 @@ public class WeaponData : ScriptableObject {
     public ChalkShot chalkShot;
     public InkSplash inkSplash;
     public CrayonMissile crayonMissile;
+    public NotebookTear notebookTear;
 
 }

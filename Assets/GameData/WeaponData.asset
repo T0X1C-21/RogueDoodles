@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingWeaponType: 3
+  startingWeaponType: 4
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
-  fadeOutTime: 0.2
   pencil:
     pencilPrefab: {fileID: 3644522096767842627, guid: 2a507ace5dcdb7043bc2b162b0b8c141, type: 3}
     damage: 15
@@ -25,6 +24,7 @@ MonoBehaviour:
     attackArcThreshold: 0.95
     preAnimationTime: 0.15
     animationTime: 0.1
+    fadeOutTime: 0.2
   chalkShot:
     chalkShotPrefab: {fileID: 3644522096767842627, guid: f13d69bc09ba29f44903dab179e375aa, type: 3}
     chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
@@ -34,6 +34,7 @@ MonoBehaviour:
     attackCooldown: 0.75
     preAnimationTime: 0.15
     animationTime: 0.125
+    fadeOutTime: 0.2
     moveSpeed: 15
     damageAmount: 5
     targetDetectionRadius: 0.5
@@ -57,3 +58,15 @@ MonoBehaviour:
     damageAmount: 20
     targetDetectionRadius: 0.5
     autoDestroySelfTimer: 3
+  notebookTear:
+    notebookTearPrefab: {fileID: 3644522096767842627, guid: 5a538489bb31299408328559b6373b0f, type: 3}
+    revolutionSpeed: 6
+    revolutionRadius: 1.2
+    autoStartRevolutionTime: 5
+    autoEndRevolutionTime: 5
+    attackCooldown: 1
+    attackDamage: 10
+    attackRadius: 0.5
+    piercing: 4
+    animationTime: 1
+    fadeOutTime: 0.75

@@ -27,7 +27,6 @@ public abstract class PlayerWeapon : MonoBehaviour {
         enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
         weaponRotationSpeed = weaponData.weaponRotationSpeed;
         aimWeaponRadius = weaponData.aimWeaponRadius;
-        fadeOutTime = weaponData.fadeOutTime;
 
         attackTimer = attackCooldown;
     }

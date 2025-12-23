@@ -4,7 +4,8 @@ public enum WeaponType {
     Pencil,
     ChalkShot,
     InkSplash,
-    CrayonMissile
+    CrayonMissile,
+    NotebookTear
 }
 
 public enum PlayerType {

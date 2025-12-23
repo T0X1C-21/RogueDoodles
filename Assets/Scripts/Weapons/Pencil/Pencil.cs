@@ -23,6 +23,7 @@ public class Pencil : PlayerWeapon {
         attackArcThreshold = weaponData.pencil.attackArcThreshold;
         preAnimationTime = weaponData.pencil.preAnimationTime;
         animationTime = weaponData.pencil.animationTime;
+        fadeOutTime = weaponData.pencil.fadeOutTime;
     }
 
     // Collect enemies to hit at slash
