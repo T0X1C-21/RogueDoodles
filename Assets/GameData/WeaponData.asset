@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingWeaponType: 4
+  startingWeaponType: 1
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
   pencil:
@@ -28,10 +28,10 @@ MonoBehaviour:
   chalkShot:
     chalkShotPrefab: {fileID: 3644522096767842627, guid: f13d69bc09ba29f44903dab179e375aa, type: 3}
     chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
-    numberOfBullets: 3
+    numberOfBullets: 6
     reloadTime: 0.6
     piercing: 3
-    attackCooldown: 0.75
+    attackCooldown: 0.5
     preAnimationTime: 0.15
     animationTime: 0.125
     fadeOutTime: 0.2

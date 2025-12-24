@@ -42,10 +42,10 @@ MonoBehaviour:
     amountOfExperience: 1
   mediumInkBlobSettings:
     prefabObject: {fileID: 3149679781769782567, guid: 517ac32043a79044a8d263e525815680, type: 3}
-    amountOfExperience: 3
+    amountOfExperience: 5
   largeInkBlobSettings:
-    prefabObject: {fileID: 0}
-    amountOfExperience: 50
+    prefabObject: {fileID: 3149679781769782567, guid: bd2d6f3df3e8e7747b3241465eb989f9, type: 3}
+    amountOfExperience: 8
   heightCurve:
     serializedVersion: 2
     m_Curve:
