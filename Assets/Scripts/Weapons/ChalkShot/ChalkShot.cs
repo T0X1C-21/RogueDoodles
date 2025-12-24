@@ -13,7 +13,6 @@ public class ChalkShot : PlayerWeapon {
     private int currentNumberOfBullets;
     private float reloadTime;
 
-    private SpriteRenderer spriteRenderer;
     private bool isReloading;
 
     protected override void Awake() {
@@ -49,16 +48,12 @@ public class ChalkShot : PlayerWeapon {
             ReloadGun();
             yield break;
         }
-        Vector3 playerDirectionNormalized = (playerTransform.position - this.transform.position).normalized;
-        Vector3 startPosition = spriteGameObject.transform.localPosition;
-        float pushForce = 0.3f;
-        Vector3 endPosition = playerDirectionNormalized * pushForce;
-        Tween appear = spriteRenderer.DOFade(1f, fadeOutTime).SetEase(Ease.Linear);
-        appear.Play().OnComplete(() => {
-            StartCoroutine(backAnimation());
-            StartCoroutine(frontAnimation());
-        });
+        StartCoroutine(backAnimation());
         IEnumerator backAnimation() {
+            Vector3 playerDirectionNormalized = (playerTransform.position - this.transform.position).normalized;
+            Vector3 startPosition = spriteGameObject.transform.localPosition;
+            float pushForce = 0.3f;
+            Vector3 endPosition = playerDirectionNormalized * pushForce;
             float t = 0f;
             while(t < preAnimationTime) {
                 t += Time.deltaTime / preAnimationTime;
@@ -66,18 +61,17 @@ public class ChalkShot : PlayerWeapon {
                 yield return null;
             }
             Attack();
+            StartCoroutine(frontAnimation());
         }
         IEnumerator frontAnimation() {
+            Vector3 startPosition = spriteGameObject.transform.localPosition;
+            Vector3 endPosition = Vector3.zero;
             float t = 0f;
-            startPosition = spriteGameObject.transform.localPosition;
-            endPosition = Vector3.zero;
             while(t < animationTime) {
                 t += Time.deltaTime / animationTime;
                 spriteGameObject.transform.localPosition = Vector3.Lerp(startPosition, endPosition, t);
                 yield return null;
             }
-            Tween disappear = spriteRenderer.DOFade(0f, fadeOutTime).SetEase(Ease.Linear);
-            disappear.Play();
             spriteGameObject.transform.localPosition = Vector3.zero;
         }
         yield return null;
@@ -95,14 +89,10 @@ public class ChalkShot : PlayerWeapon {
         isReloading = true;
         isAnimating = true;
         spriteRenderer.DOKill();
-        Tween appear = spriteRenderer.DOFade(1f, fadeOutTime);
         Tween rotate = spriteGameObject.transform.DORotate(new Vector3(0f, 0f, 360f), reloadTime, RotateMode.WorldAxisAdd);
-        Tween disappear = spriteRenderer.DOFade(0f, fadeOutTime);
 
         Sequence reloadAnimationSequence = DOTween.Sequence();
-        reloadAnimationSequence.Append(appear);
         reloadAnimationSequence.Append(rotate);
-        reloadAnimationSequence.Append(disappear);
         reloadAnimationSequence.OnComplete(() => {
             currentNumberOfBullets = numberOfBullets;
             attackTimer = attackCooldown;

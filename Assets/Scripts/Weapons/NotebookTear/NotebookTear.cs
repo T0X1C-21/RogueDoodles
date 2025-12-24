@@ -7,6 +7,7 @@ public class NotebookTear : PlayerWeapon {
 
     private float revolutionSpeed;
     private float revolutionRadius;
+    private float rotationDuration;
     private float autoStartRevolutionTime;
     private float autoEndRevolutionTime;
     private float attackRadius;
@@ -14,21 +15,20 @@ public class NotebookTear : PlayerWeapon {
     private bool canAttack;
     private bool isIdle;
 
-    private SpriteRenderer spriteRenderer;
     private HashSet<Collider2D> attackHitsHashSet = new HashSet<Collider2D>();
     private int currentPiercing;
-    private float angle;
+    private float revolutionAngle;
 
     protected override void Awake() {
         WeaponData weaponData = DataManager.Instance.GetWeaponData();
         playerTransform = DataManager.Instance.GetPlayerTargetTransform();
-        spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
 
         weaponDamage = weaponData.notebookTear.attackDamage;
         piercing = weaponData.notebookTear.piercing;
         currentPiercing = piercing;
         revolutionSpeed = weaponData.notebookTear.revolutionSpeed;
         revolutionRadius = weaponData.notebookTear.revolutionRadius;
+        rotationDuration = weaponData.notebookTear.rotationDuration;
         autoStartRevolutionTime = weaponData.notebookTear.autoStartRevolutionTime;
         autoEndRevolutionTime = weaponData.notebookTear.autoEndRevolutionTime;
         attackRadius = weaponData.notebookTear.attackRadius;
@@ -37,7 +37,10 @@ public class NotebookTear : PlayerWeapon {
         attackCooldown = weaponData.notebookTear.attackCooldown;
         attackTimer = attackCooldown;
         enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
+    }
 
+    private void Start() {
         AnimateWeapon();
         StartCoroutine(ClearAttackHitHashSet());
     }
@@ -59,9 +62,9 @@ public class NotebookTear : PlayerWeapon {
             StartCoroutine(RevolutionEndAnimation());
         }
 
-        angle += Time.deltaTime * revolutionSpeed;
-        float xValue = revolutionRadius * Mathf.Cos(angle);
-        float yValue = revolutionRadius * Mathf.Sin(angle);
+        revolutionAngle += Time.deltaTime * revolutionSpeed;
+        float xValue = revolutionRadius * Mathf.Cos(revolutionAngle);
+        float yValue = revolutionRadius * Mathf.Sin(revolutionAngle);
         Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
         this.transform.position = targetPosition;
 
@@ -99,17 +102,21 @@ public class NotebookTear : PlayerWeapon {
     private IEnumerator RevolutionStartAnimation() {
         isIdle = false;
 
-        spriteRenderer.DOFade(1f, fadeOutTime);
+        spriteRenderer?.DOFade(1f, fadeOutTime);
+
+        Vector3 targetRotation = new Vector3(0f, 0f, 360f);
+        this.transform.DORotate(targetRotation, rotationDuration, RotateMode.WorldAxisAdd).SetEase(Ease.InOutSine).SetLoops(-1);
 
         float t = 0f;
         while(t <= animationTime) {
             t += Time.deltaTime / animationTime;
             float radius = Mathf.Lerp(0f, revolutionRadius, t);
-            angle += Time.deltaTime * revolutionSpeed;
-            float xValue = radius * Mathf.Cos(angle);
-            float yValue = radius * Mathf.Sin(angle);
+            revolutionAngle += Time.deltaTime * revolutionSpeed;
+            float xValue = radius * Mathf.Cos(revolutionAngle);
+            float yValue = radius * Mathf.Sin(revolutionAngle);
             Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
             this.transform.position = targetPosition;
+
             yield return null;
         }
         canAttack = true;
@@ -118,15 +125,15 @@ public class NotebookTear : PlayerWeapon {
     private IEnumerator RevolutionEndAnimation() {
         attackHitsHashSet.Clear();
 
-        spriteRenderer.DOFade(0f, fadeOutTime);
+        spriteRenderer?.DOFade(0f, fadeOutTime);
 
         float t = 0f;
         while(t <= animationTime) {
             t += Time.deltaTime / animationTime;
             float radius = Mathf.Lerp(revolutionRadius, 0, t);
-            angle += Time.deltaTime * revolutionSpeed;
-            float xValue = radius * Mathf.Cos(angle);
-            float yValue = radius * Mathf.Sin(angle);
+            revolutionAngle += Time.deltaTime * revolutionSpeed;
+            float xValue = radius * Mathf.Cos(revolutionAngle);
+            float yValue = radius * Mathf.Sin(revolutionAngle);
             Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
             this.transform.position = targetPosition;
             yield return null;

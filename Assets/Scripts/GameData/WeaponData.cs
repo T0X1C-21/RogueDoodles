@@ -86,6 +86,7 @@ public class WeaponData : ScriptableObject {
         public GameObject notebookTearPrefab;
         public float revolutionSpeed;
         public float revolutionRadius;
+        public float rotationDuration;
         public float autoStartRevolutionTime;
         public float autoEndRevolutionTime;
         public float attackCooldown;

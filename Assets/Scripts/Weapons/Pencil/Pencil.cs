@@ -24,6 +24,7 @@ public class Pencil : PlayerWeapon {
         preAnimationTime = weaponData.pencil.preAnimationTime;
         animationTime = weaponData.pencil.animationTime;
         fadeOutTime = weaponData.pencil.fadeOutTime;
+        spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }
 
     // Collect enemies to hit at slash
@@ -58,22 +59,17 @@ public class Pencil : PlayerWeapon {
 
     protected override void AnimateWeapon() {
         isAnimating = true;
-        SpriteRenderer spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
-        Tween appear = spriteRenderer.DOFade(1f, fadeOutTime);
         Tween goUp = this.transform.DORotate(new Vector3(0f, 0f, 20f), preAnimationTime, RotateMode.WorldAxisAdd);
         Tween slash = this.transform.DORotate(new Vector3(0f, 0f, -40f), animationTime, 
             RotateMode.WorldAxisAdd).SetEase(Ease.InOutBack).OnComplete(() => {
             ApplyDamage();
         });
         Tween reset = this.transform.DORotate(new Vector3(0f, 0f, 20f), preAnimationTime, RotateMode.WorldAxisAdd);
-        Tween disappear = spriteRenderer.DOFade(0f, fadeOutTime);
 
         Sequence attackAnimationSequence = DOTween.Sequence();
-        attackAnimationSequence.Append(appear);
         attackAnimationSequence.Append(goUp);
         attackAnimationSequence.Append(slash);
         attackAnimationSequence.Append(reset);
-        attackAnimationSequence.Append(disappear);
         attackAnimationSequence.OnComplete(() => {
             isAnimating = false;
 

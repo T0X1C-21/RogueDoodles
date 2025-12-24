@@ -17,6 +17,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
     protected LayerMask enemyLayerMask;
     protected Transform playerTransform;
     protected float fadeOutTime;
+    protected SpriteRenderer spriteRenderer;
 
     private float aimWeaponRadius;
     private float weaponRotationSpeed;
@@ -48,6 +49,11 @@ public abstract class PlayerWeapon : MonoBehaviour {
     }
 
     protected void AimWeapon() {
+        // flip weapon
+        Vector2 weaponDirection = this.transform.position - playerTransform.position;
+        float dotValue = Vector2.Dot(weaponDirection, Vector3.right);
+        spriteRenderer.flipY = (dotValue < 0f) ? true : false;
+
         // position weapon
         Vector3 circleCenter = playerTransform.position;
 
