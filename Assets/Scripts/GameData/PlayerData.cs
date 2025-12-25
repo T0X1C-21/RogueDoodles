@@ -7,7 +7,7 @@ public class PlayerData : ScriptableObject {
     public struct ScribbleKid {
         public float moveSpeed;
         public int maxHealthPoints;
-        public WeaponType startingWeapon;
+        public PrimaryWeaponType startingWeapon;
     }
 
     [Space(10)]

@@ -5,42 +5,38 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour {
 
     private WeaponData weaponData;
-    private Dictionary<WeaponType, PlayerWeapon> equippedWeaponDictionary = new Dictionary<WeaponType, PlayerWeapon>();
+    private Dictionary<PrimaryWeaponType, PlayerWeapon> equippedPrimaryWeaponDictionary =
+        new Dictionary<PrimaryWeaponType, PlayerWeapon>();
+    private Dictionary<SecondaryWeaponType, PlayerWeapon> equippedSecondaryWeaponDictionary = 
+        new Dictionary<SecondaryWeaponType, PlayerWeapon>();
 
     private void Awake() {
         weaponData = DataManager.Instance.GetWeaponData();
-        SpawnWeapon(weaponData.startingWeaponType);
-        //SpawnWeapon(WeaponType.Pencil);
-        //SpawnWeapon(WeaponType.ChalkShot);
+        SpawnWeapon(weaponData.startingPrimaryWeaponType);
+        foreach(SecondaryWeaponType secondaryWeaponType in weaponData.startingSecondaryWeaponTypes) {
+            SpawnWeapon(secondaryWeaponType);
+        }
     }
 
-    public void SpawnWeapon(WeaponType weaponType) {
-        if(equippedWeaponDictionary.Count >= 3) {
-            Debug.LogWarning("Cannot add more than 3 weapons!");
+    public void SpawnWeapon(SecondaryWeaponType secondaryWeaponType) {
+        if(equippedSecondaryWeaponDictionary.Count == 3) {
+            Debug.LogWarning("Cannot add more than 3 secondary weapons!");
             return;
         }
 
         GameObject instantiatedWeapon = null;
-        switch (weaponType) {
-            case WeaponType.Pencil:
-                instantiatedWeapon = Instantiate(weaponData.pencil.pencilPrefab,
-                    Vector3.zero, Quaternion.identity);
-                break;
-            case WeaponType.ChalkShot:
-                instantiatedWeapon = Instantiate(weaponData.chalkShot.chalkShotPrefab,
-                    Vector3.zero, Quaternion.identity);
-                break;
-            case WeaponType.InkSplash:
+        switch (secondaryWeaponType) {
+            case SecondaryWeaponType.InkSplash:
                 instantiatedWeapon = Instantiate(weaponData.inkSplash.inkSplashPrefab,
-                    Vector3.zero, Quaternion.identity);
+                Vector3.zero, Quaternion.identity);
                 break;
-            case WeaponType.CrayonMissile:
+            case SecondaryWeaponType.CrayonMissile:
                 instantiatedWeapon = Instantiate(weaponData.crayonMissile.crayonMissilePrefab,
-                    Vector3.zero, Quaternion.identity);
+                Vector3.zero, Quaternion.identity);
                 break;
-            case WeaponType.NotebookTear:
+            case SecondaryWeaponType.NotebookTear:
                 instantiatedWeapon = Instantiate(weaponData.notebookTear.notebookTearPrefab,
-                    Vector3.zero, Quaternion.identity);
+                Vector3.zero, Quaternion.identity);
                 break;
         }
 
@@ -49,10 +45,41 @@ public class WeaponManager : MonoBehaviour {
         }
 
         instantiatedWeapon.transform.parent = this.transform;
-        instantiatedWeapon.name = weaponType.ToString();
+        instantiatedWeapon.name = secondaryWeaponType.ToString();
         instantiatedWeapon.TryGetComponent(out PlayerWeapon playerWeapon);
-        equippedWeaponDictionary.Add(weaponType, playerWeapon);
-        Debug.Log($"Equipped {weaponType.ToString()}: {equippedWeaponDictionary[weaponType]}");
+        equippedSecondaryWeaponDictionary.Add(secondaryWeaponType, playerWeapon);
+        Debug.Log($"Equipped Primary {secondaryWeaponType.ToString()}: " +
+            $"{equippedSecondaryWeaponDictionary[secondaryWeaponType]}");
+    }
+
+    public void SpawnWeapon(PrimaryWeaponType primaryWeaponType) {
+        if(equippedPrimaryWeaponDictionary.Count == 1) {
+            Debug.LogWarning("Cannot add more than 1 primary weapon!");
+            return;
+        }
+
+        GameObject instantiatedWeapon = null;
+        switch (primaryWeaponType) {
+            case PrimaryWeaponType.Pencil:
+                instantiatedWeapon = Instantiate(weaponData.pencil.pencilPrefab,
+                Vector3.zero, Quaternion.identity);
+                break;
+            case PrimaryWeaponType.ChalkShot:
+                instantiatedWeapon = Instantiate(weaponData.chalkShot.chalkShotPrefab,
+                Vector3.zero, Quaternion.identity);
+                break;
+        }
+
+        if(instantiatedWeapon == null) {
+            return;
+        }
+
+        instantiatedWeapon.transform.parent = this.transform;
+        instantiatedWeapon.name = primaryWeaponType.ToString();
+        instantiatedWeapon.TryGetComponent(out PlayerWeapon playerWeapon);
+        equippedPrimaryWeaponDictionary.Add(primaryWeaponType, playerWeapon);
+        Debug.Log($"Equipped Secondary {primaryWeaponType.ToString()}: " +
+            $"{equippedPrimaryWeaponDictionary[primaryWeaponType]}");
     }
 
 }

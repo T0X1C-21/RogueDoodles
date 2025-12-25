@@ -7,7 +7,7 @@ public class NotebookTear : PlayerWeapon {
 
     private float revolutionSpeed;
     private float revolutionRadius;
-    private float rotationDuration;
+    private float rotationSpeed;
     private float autoStartRevolutionTime;
     private float autoEndRevolutionTime;
     private float attackRadius;
@@ -28,7 +28,7 @@ public class NotebookTear : PlayerWeapon {
         currentPiercing = piercing;
         revolutionSpeed = weaponData.notebookTear.revolutionSpeed;
         revolutionRadius = weaponData.notebookTear.revolutionRadius;
-        rotationDuration = weaponData.notebookTear.rotationDuration;
+        rotationSpeed = weaponData.notebookTear.rotationSpeed;
         autoStartRevolutionTime = weaponData.notebookTear.autoStartRevolutionTime;
         autoEndRevolutionTime = weaponData.notebookTear.autoEndRevolutionTime;
         attackRadius = weaponData.notebookTear.attackRadius;
@@ -68,6 +68,8 @@ public class NotebookTear : PlayerWeapon {
         Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
         this.transform.position = targetPosition;
 
+        this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRadius, enemyLayerMask);
 
         if(hits == null) {
@@ -104,8 +106,8 @@ public class NotebookTear : PlayerWeapon {
 
         spriteRenderer?.DOFade(1f, fadeOutTime);
 
-        Vector3 targetRotation = new Vector3(0f, 0f, 360f);
-        this.transform.DORotate(targetRotation, rotationDuration, RotateMode.WorldAxisAdd).SetEase(Ease.InOutSine).SetLoops(-1);
+        //Vector3 targetRotation = new Vector3(0f, 0f, 360f);
+        //this.transform.DORotate(targetRotation, rotationDuration, RotateMode.WorldAxisAdd).SetEase(Ease.InOutSine).SetLoops(-1);
 
         float t = 0f;
         while(t <= animationTime) {
@@ -116,6 +118,8 @@ public class NotebookTear : PlayerWeapon {
             float yValue = radius * Mathf.Sin(revolutionAngle);
             Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
             this.transform.position = targetPosition;
+
+            this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
 
             yield return null;
         }
@@ -136,6 +140,9 @@ public class NotebookTear : PlayerWeapon {
             float yValue = radius * Mathf.Sin(revolutionAngle);
             Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
             this.transform.position = targetPosition;
+
+            this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
+
             yield return null;
         }
 

@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public enum WeaponType {
+public enum PrimaryWeaponType {
     Pencil,
-    ChalkShot,
+    ChalkShot
+}
+
+public enum SecondaryWeaponType {
     InkSplash,
     CrayonMissile,
     NotebookTear

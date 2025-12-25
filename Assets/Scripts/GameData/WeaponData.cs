@@ -86,30 +86,37 @@ public class WeaponData : ScriptableObject {
         public GameObject notebookTearPrefab;
         public float revolutionSpeed;
         public float revolutionRadius;
-        public float rotationDuration;
+        public float rotationSpeed;
         public float autoStartRevolutionTime;
         public float autoEndRevolutionTime;
+        public float animationTime;
+        public float fadeOutTime;
+
+        [Space(10)]
+        [Header("----- ATTACK SETTINGS -----")]
         public float attackCooldown;
         public int attackDamage;
         public float attackRadius;
         public int piercing;
-        public float animationTime;
-        public float fadeOutTime;
 
     }
 
     [Space(10)]
     [Header("----- BASIC SETTINGS -----")]
-    public WeaponType startingWeaponType;
+    public PrimaryWeaponType startingPrimaryWeaponType;
+    public SecondaryWeaponType[] startingSecondaryWeaponTypes;
     public float aimWeaponRadius;
     [Tooltip("SLerp speed of the weapon")]
     [Range(15f, 25f)]
     public float weaponRotationSpeed;
 
     [Space(10)]
-    [Header("----- WEAPON STATS -----")]
+    [Header("----- PRIMARY WEAPON STATS -----")]
     public Pencil pencil;
     public ChalkShot chalkShot;
+
+    [Space(10)]
+    [Header("----- SECONDARY WEAPON STATS -----")]
     public InkSplash inkSplash;
     public CrayonMissile crayonMissile;
     public NotebookTear notebookTear;
