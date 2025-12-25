@@ -27,7 +27,6 @@ public class ChalkShot : PlayerWeapon {
         numberOfBullets = weaponData.chalkShot.numberOfBullets;
         currentNumberOfBullets = numberOfBullets;
         reloadTime = weaponData.chalkShot.reloadTime;
-        fadeOutTime = weaponData.chalkShot.fadeOutTime;
 
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }

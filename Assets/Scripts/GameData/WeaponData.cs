@@ -10,13 +10,10 @@ public class WeaponData : ScriptableObject {
         public int damage;
         public int piercing;
         public float attackCooldown;
-        public float attackRange;
         [Tooltip("The higher this number, the larger the attack arc.")]
         [Range(-1f, 1f)]
-        public float attackArcThreshold;
         public float preAnimationTime;
         public float animationTime;
-        public float fadeOutTime;
 
     }
 
@@ -31,7 +28,6 @@ public class WeaponData : ScriptableObject {
         public float attackCooldown;
         public float preAnimationTime;
         public float animationTime;
-        public float fadeOutTime;
 
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
@@ -101,6 +97,30 @@ public class WeaponData : ScriptableObject {
 
     }
 
+    [System.Serializable]
+    public struct MopSwipe{
+
+        public GameObject mopSwipePrefab;
+        public GameObject mopSwipeBubbleProjectilePrefab;
+        public float attackCooldown;
+        public float arcSwipeAmount;
+        public int numberOfBubbles;
+
+        [Space(10)]
+        [Header("----- ANIMATION SETTINGS -----")]
+        public float preAnimationTime;
+        public float animationTime;
+        
+        [Space(10)]
+        [Header("----- PROJECTILE SETTINGS -----")]
+        public float moveSpeed;
+        public int damageAmount;
+        public int piercing;
+        public float targetDetectionRadius;
+        public float autoDestroySelfTimer;
+
+    }
+
     [Space(10)]
     [Header("----- BASIC SETTINGS -----")]
     public PrimaryWeaponType startingPrimaryWeaponType;
@@ -114,6 +134,7 @@ public class WeaponData : ScriptableObject {
     [Header("----- PRIMARY WEAPON STATS -----")]
     public Pencil pencil;
     public ChalkShot chalkShot;
+    public MopSwipe mopSwipe;
 
     [Space(10)]
     [Header("----- SECONDARY WEAPON STATS -----")]

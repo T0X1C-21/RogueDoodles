@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -66,6 +65,10 @@ public class WeaponManager : MonoBehaviour {
                 break;
             case PrimaryWeaponType.ChalkShot:
                 instantiatedWeapon = Instantiate(weaponData.chalkShot.chalkShotPrefab,
+                Vector3.zero, Quaternion.identity);
+                break;
+            case PrimaryWeaponType.MopSwipe:
+                instantiatedWeapon = Instantiate(weaponData.mopSwipe.mopSwipePrefab,
                 Vector3.zero, Quaternion.identity);
                 break;
         }

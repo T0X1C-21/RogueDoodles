@@ -1,12 +1,9 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Pencil : PlayerWeapon {
 
-    private float attackRange;
-    private float attackArcThreshold;
     private float preAnimationTime;
     private float animationTime;
 
@@ -19,11 +16,8 @@ public class Pencil : PlayerWeapon {
         weaponDamage = weaponData.pencil.damage;
         piercing = weaponData.pencil.piercing;
         attackCooldown = weaponData.pencil.attackCooldown;
-        attackRange = weaponData.pencil.attackRange;
-        attackArcThreshold = weaponData.pencil.attackArcThreshold;
         preAnimationTime = weaponData.pencil.preAnimationTime;
         animationTime = weaponData.pencil.animationTime;
-        fadeOutTime = weaponData.pencil.fadeOutTime;
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -81,28 +75,6 @@ public class Pencil : PlayerWeapon {
     private void OnDrawGizmos() {
         if (!drawGizmos) {
             return;
-        }
-
-        Gizmos.color = new Color(0f, 0f, 0f, 0.2f);
-        Gizmos.DrawWireCube(GetAimPointPosition(), new Vector2(1f, 0.25f));
-        Vector3 mouseDirection = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - this.transform.position;
-
-        float angle = Mathf.Acos(attackArcThreshold) * Mathf.Rad2Deg;
-        Gizmos.color = Color.yellow;
-        
-        int segments = 30;
-        float startAngle = -angle;
-        float endAngle = angle;
-
-        Vector3 previousPoint = this.transform.position + 
-            Quaternion.Euler(0, 0, startAngle) * aimDirection.normalized * attackRange;
-
-        for(int i = 1; i <= segments; i++) {
-            float t = Mathf.Lerp(startAngle, endAngle, i / (float)segments);
-            Vector3 nextPoint = this.transform.position + Quaternion.Euler(0, 0, t) * aimDirection.normalized * attackRange;
-
-            Gizmos.DrawLine(previousPoint, nextPoint);
-            previousPoint = nextPoint;
         }
     }
 

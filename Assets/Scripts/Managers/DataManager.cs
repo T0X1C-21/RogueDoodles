@@ -2,7 +2,8 @@ using UnityEngine;
 
 public enum PrimaryWeaponType {
     Pencil,
-    ChalkShot
+    ChalkShot,
+    MopSwipe
 }
 
 public enum SecondaryWeaponType {
@@ -43,7 +44,8 @@ public enum PoolType {
     SmallAngryBench,
     ChalkShotProjectile,
     InkSplashProjectile,
-    CrayonMissileProjectile
+    CrayonMissileProjectile,
+    MopSwipeBubbleProjectile
 }
 
 public enum ProjectileHitType {

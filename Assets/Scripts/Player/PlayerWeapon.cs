@@ -86,6 +86,8 @@ public abstract class PlayerWeapon : MonoBehaviour {
         Debug.LogWarning("Implement AnimateWeapon() in the child weapon class!");
     }
 
-    protected abstract void Attack();
+    protected virtual void Attack(){
+        Debug.LogWarning("Implement Attack() in the child weapon class!");
+    }
 
 }
