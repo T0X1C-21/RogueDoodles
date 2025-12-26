@@ -33,21 +33,21 @@ MonoBehaviour:
     preAnimationTime: 0.15
     animationTime: 0.125
     moveSpeed: 15
-    damageAmount: 5
-    targetDetectionRadius: 0.5
+    damageAmount: 2
+    targetDetectionRadius: 0.25
     autoDestroySelfTimer: 15
   mopSwipe:
     mopSwipePrefab: {fileID: 3644522096767842627, guid: 0b1151706f1bd714f81dbda81903c03d, type: 3}
     mopSwipeBubbleProjectilePrefab: {fileID: 5981903970954296668, guid: 89586430915cfb04096c0f541271958e, type: 3}
     attackCooldown: 2
-    arcSwipeAmount: 120
-    numberOfBubbles: 6
+    arcSwipeAmount: 90
+    numberOfBubbles: 3
     preAnimationTime: 0.1
     animationTime: 1.5
     moveSpeed: 2
-    damageAmount: 3
-    piercing: 3
-    targetDetectionRadius: 0.5
+    damageAmount: 2
+    piercing: 2
+    targetDetectionRadius: 0.25
     autoDestroySelfTimer: 5
   inkSplash:
     inkSplashPrefab: {fileID: 3644522096767842627, guid: 2d14b4b4edbadf0499005a98930971de, type: 3}

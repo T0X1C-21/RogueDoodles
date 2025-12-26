@@ -7,6 +7,7 @@ public class SketchyWorm : Enemy {
     private float timeToStayHiddenOffset;
     private float timeToDisappear;
     private float timeToDisappearOffset;
+    private float popUpNearPlayerRadius;
 
     protected override void Awake() {
         base.Awake();
@@ -14,7 +15,7 @@ public class SketchyWorm : Enemy {
         EnemyData enemyData = DataManager.Instance.GetEnemyData();
         attackCooldown = enemyData.sketchyWorm.attackCooldown;
         attackDamage = enemyData.sketchyWorm.attackDamage;
-        attackPointOffsetMultiplier = enemyData.sketchyWorm.attackPointOffsetMultiplier;
+        popUpNearPlayerRadius = enemyData.sketchyWorm.popUpNearPlayerRadius;
 
         timeToStayHidden = enemyData.sketchyWorm.timeToStayHidden;
         timeToStayHiddenOffset = enemyData.sketchyWorm.timeToStayHiddenOffset;
@@ -40,8 +41,8 @@ public class SketchyWorm : Enemy {
         yield return new WaitForSeconds(waitTime);
 
         float randomAngle = Random.Range(0f, 2 * Mathf.PI);
-        float xValue = attackPointOffsetMultiplier * Mathf.Cos(randomAngle);
-        float yValue = attackPointOffsetMultiplier * Mathf.Sin(randomAngle);
+        float xValue = popUpNearPlayerRadius * Mathf.Cos(randomAngle);
+        float yValue = popUpNearPlayerRadius * Mathf.Sin(randomAngle);
 
         Vector3 targetPosition = playerTarget.position + new Vector3(xValue, yValue);
         this.transform.position = targetPosition;
@@ -82,8 +83,8 @@ public class SketchyWorm : Enemy {
 
         if (!doOnce) {
             float randomAngle = Random.Range(0f, 2 * Mathf.PI);
-            xValue = attackPointOffsetMultiplier * Mathf.Cos(randomAngle);
-            yValue = attackPointOffsetMultiplier * Mathf.Sin(randomAngle);
+            xValue = popUpNearPlayerRadius * Mathf.Cos(randomAngle);
+            yValue = popUpNearPlayerRadius * Mathf.Sin(randomAngle);
             doOnce = true;
             StartCoroutine(ResetDoOnce());
         }
@@ -95,12 +96,5 @@ public class SketchyWorm : Enemy {
         yield return new WaitForSeconds(3f);
         doOnce = true;
     }
-
-    // 1. take time to hide
-    // 2. pop up near player
-    // 3. wait for some more time
-    // 4. shoot projectile
-    // 5. wait for some more time
-    // 6. disappear
 
 }

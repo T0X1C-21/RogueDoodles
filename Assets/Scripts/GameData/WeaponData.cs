@@ -11,7 +11,6 @@ public class WeaponData : ScriptableObject {
         public int piercing;
         public float attackCooldown;
         [Tooltip("The higher this number, the larger the attack arc.")]
-        [Range(-1f, 1f)]
         public float preAnimationTime;
         public float animationTime;
 
@@ -127,7 +126,6 @@ public class WeaponData : ScriptableObject {
     public SecondaryWeaponType[] startingSecondaryWeaponTypes;
     public float aimWeaponRadius;
     [Tooltip("SLerp speed of the weapon")]
-    [Range(15f, 25f)]
     public float weaponRotationSpeed;
 
     [Space(10)]

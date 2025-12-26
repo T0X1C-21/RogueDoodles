@@ -119,7 +119,7 @@ MonoBehaviour:
     attackCooldown: 2
     timeToDisappear: 2
     timeToDisappearOffset: 0.5
-    attackPointOffsetMultiplier: 1
+    popUpNearPlayerRadius: 0.5
     sketchyWormProjectilePrefab: {fileID: 5981903970954296668, guid: eb0e696819241804db9966662755ad6e, type: 3}
     moveSpeed: 3
     attackDamage: 5
@@ -176,6 +176,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     mediumAngryBenchMinimumSplitCount: 2
-    mediumAngryBenchMaximumSplitCount: 4
-    smallAngryBenchMinimumSplitCount: 3
-    smallAngryBenchMaximumSplitCount: 4
+    mediumAngryBenchMaximumSplitCount: 3
+    smallAngryBenchMinimumSplitCount: 2
+    smallAngryBenchMaximumSplitCount: 3

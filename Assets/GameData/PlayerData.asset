@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   scribbleKid:
     moveSpeed: 5
     maxHealthPoints: 100
-    startingWeapon: 2
+    startingWeapon: 0
