@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingPrimaryWeaponType: 0
-  startingSecondaryWeaponTypes: 
+  startingPrimaryWeaponType: 2
+  startingSecondaryWeaponTypes: 02000000
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
   pencil:
@@ -58,7 +58,7 @@ MonoBehaviour:
     maximumAttackRange: 1
     spawnAnimationDuration: 0.25
     inkSplashFlamesSprite: {fileID: 21300000, guid: e58bef87230bbaa44b4d6e932782a9d8, type: 3}
-    enemyDetectionRadius: 0
+    enemyDetectionRadius: 0.25
     flamesDuration: 3
     attackCooldown: 1
   crayonMissile:
@@ -71,6 +71,7 @@ MonoBehaviour:
     autoDestroySelfTimer: 3
   notebookTear:
     notebookTearPrefab: {fileID: 3644522096767842627, guid: 5a538489bb31299408328559b6373b0f, type: 3}
+    numberOfProjectiles: 0
     revolutionSpeed: 6
     revolutionRadius: 1.2
     rotationSpeed: 2

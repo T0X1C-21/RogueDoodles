@@ -104,16 +104,22 @@ public class ChalkShot : PlayerWeapon {
 
     private void OnEnable() {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnInkOverflowUpgrade += UpgradeManager_OnInkOverflowUpgrade;
     }
 
     private void OnDisable() {
         UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnInkOverflowUpgrade -= UpgradeManager_OnInkOverflowUpgrade;
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
-        attackCooldown /= e.attackSpeedBuffAmount;
-        preAnimationTime /= e.attackSpeedBuffAmount;
-        animationTime /= e.attackSpeedBuffAmount;
+        attackCooldown /= e.attackSpeedToMultiply;
+        preAnimationTime /= e.attackSpeedToMultiply;
+        animationTime /= e.attackSpeedToMultiply;
+    }
+
+    private void UpgradeManager_OnInkOverflowUpgrade(object sender, UpgradeManager.OnInkOverflowUpgradeEventArgs e) {
+        numberOfBullets += e.projectileCountToAdd;
     }
 
 }

@@ -12,7 +12,13 @@ public class UpgradeManager : Singleton<UpgradeManager> {
     public static event EventHandler<OnGearCogUpgradeEventArgs> OnGearCogUpgrade;
     public class OnGearCogUpgradeEventArgs {
         
-        public float attackSpeedBuffAmount;
+        public float attackSpeedToMultiply;
+
+    }
+    public static event EventHandler<OnInkOverflowUpgradeEventArgs> OnInkOverflowUpgrade;
+    public class OnInkOverflowUpgradeEventArgs {
+        
+        public int projectileCountToAdd;
 
     }
 
@@ -42,17 +48,36 @@ public class UpgradeManager : Singleton<UpgradeManager> {
                 switch (levelNumber) {
                     case 1:
                         OnGearCogUpgrade?.Invoke(this, new OnGearCogUpgradeEventArgs {
-                            attackSpeedBuffAmount = upgradeData.gearCog.LevelOne_AttackSpeedBuff
+                            attackSpeedToMultiply = upgradeData.gearCog.LevelOne_AttackSpeedToMultiply
                         });
                         break;
                     case 2:
                         OnGearCogUpgrade?.Invoke(this, new OnGearCogUpgradeEventArgs {
-                            attackSpeedBuffAmount = upgradeData.gearCog.LevelTwo_AttackSpeedBuff
+                            attackSpeedToMultiply = upgradeData.gearCog.LevelTwo_AttackSpeedToMultiply
                         });
                         break;
                     case 3:
                         OnGearCogUpgrade?.Invoke(this, new OnGearCogUpgradeEventArgs {
-                            attackSpeedBuffAmount = upgradeData.gearCog.LevelThree_AttackSpeedBuff
+                            attackSpeedToMultiply = upgradeData.gearCog.LevelThree_AttackSpeedToMultiply
+                        });
+                        break;
+                }
+                break;
+            case UpgradeType.InkOverflow:
+                switch (levelNumber) {
+                    case 1:
+                        OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
+                            projectileCountToAdd = upgradeData.inkOverflow.LevelOne_ProjectileCountToAdd
+                        });
+                        break;
+                    case 2:
+                        OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
+                            projectileCountToAdd = upgradeData.inkOverflow.LevelTwo_ProjectileCountToAdd
+                        });
+                        break;
+                    case 3:
+                        OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
+                            projectileCountToAdd = upgradeData.inkOverflow.LevelThree_ProjectileCountToAdd
                         });
                         break;
                 }
@@ -62,11 +87,7 @@ public class UpgradeManager : Singleton<UpgradeManager> {
 
     [ContextMenu("Trigger Selected Upgrade")]
     private void Editor_TriggerUpgrade() {
-        switch (upgradeType) {
-            case UpgradeType.GearCog:
-                TriggerUpgrade(upgradeType);
-                break;
-        }
+        TriggerUpgrade(upgradeType);
     }
 
 }

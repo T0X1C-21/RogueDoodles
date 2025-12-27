@@ -80,6 +80,7 @@ public class WeaponData : ScriptableObject {
     public struct NotebookTear {
 
         public GameObject notebookTearPrefab;
+        public int numberOfProjectiles;
         public float revolutionSpeed;
         public float revolutionRadius;
         public float rotationSpeed;

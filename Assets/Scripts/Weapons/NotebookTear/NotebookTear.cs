@@ -106,9 +106,6 @@ public class NotebookTear : PlayerWeapon {
 
         spriteRenderer?.DOFade(1f, fadeOutTime);
 
-        //Vector3 targetRotation = new Vector3(0f, 0f, 360f);
-        //this.transform.DORotate(targetRotation, rotationDuration, RotateMode.WorldAxisAdd).SetEase(Ease.InOutSine).SetLoops(-1);
-
         float t = 0f;
         while(t <= animationTime) {
             t += Time.deltaTime / animationTime;
@@ -166,8 +163,8 @@ public class NotebookTear : PlayerWeapon {
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
-        revolutionSpeed *= e.attackSpeedBuffAmount;
-        rotationSpeed *= e.attackSpeedBuffAmount;
+        revolutionSpeed *= e.attackSpeedToMultiply;
+        rotationSpeed *= e.attackSpeedToMultiply;
     }
 
 }

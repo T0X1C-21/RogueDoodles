@@ -81,9 +81,9 @@ public class Pencil : PlayerWeapon {
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
-        attackCooldown /= e.attackSpeedBuffAmount;
-        preAnimationTime /= e.attackSpeedBuffAmount;
-        animationTime /= e.attackSpeedBuffAmount;
+        attackCooldown /= e.attackSpeedToMultiply;
+        preAnimationTime /= e.attackSpeedToMultiply;
+        animationTime /= e.attackSpeedToMultiply;
     }
 
     private void OnDrawGizmos() {

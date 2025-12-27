@@ -60,7 +60,8 @@ public enum AngryBenchVariant {
 }
 
 public enum UpgradeType {
-    GearCog
+    GearCog,
+    InkOverflow
 }
 
 public class DataManager : Singleton<DataManager> {

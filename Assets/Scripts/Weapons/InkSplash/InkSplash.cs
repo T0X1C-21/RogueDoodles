@@ -38,7 +38,7 @@ public class InkSplash : PlayerWeapon {
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
-        attackCooldown /= e.attackSpeedBuffAmount;
+        attackCooldown /= e.attackSpeedToMultiply;
     }
 
 }
