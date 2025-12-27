@@ -157,4 +157,17 @@ public class NotebookTear : PlayerWeapon {
         StartCoroutine(ClearAttackHitHashSet());
     }
 
+    private void OnEnable() {
+        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void OnDisable() {
+        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+        revolutionSpeed *= e.attackSpeedBuffAmount;
+        rotationSpeed *= e.attackSpeedBuffAmount;
+    }
+
 }

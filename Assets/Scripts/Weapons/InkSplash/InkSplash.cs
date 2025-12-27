@@ -29,4 +29,16 @@ public class InkSplash : PlayerWeapon {
             playerTransform.position, Quaternion.identity);
     }
 
+    private void OnEnable() {
+        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void OnDisable() {
+        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+        attackCooldown /= e.attackSpeedBuffAmount;
+    }
+
 }

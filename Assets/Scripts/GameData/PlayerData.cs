@@ -5,9 +5,11 @@ public class PlayerData : ScriptableObject {
 
     [System.Serializable]
     public struct ScribbleKid {
+
         public float moveSpeed;
         public int maxHealthPoints;
         public PrimaryWeaponType startingWeapon;
+
     }
 
     [Space(10)]

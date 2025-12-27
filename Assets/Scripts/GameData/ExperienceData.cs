@@ -5,62 +5,82 @@ public class ExperienceData : ScriptableObject {
 
     [System.Serializable]
     public struct SmallInkBlob {
+
         public GameObject prefabObject;
         public int amountOfExperience;
+
     }
 
     [System.Serializable]
     public struct MediumInkBlob {
+
         public GameObject prefabObject;
         public int amountOfExperience;
+
     }
 
     [System.Serializable]
     public struct LargeInkBlob {
+
         public GameObject prefabObject;
         public int amountOfExperience;
+
     }
 
     [System.Serializable]
     public struct Balloon {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [System.Serializable]
     public struct CursedChalkStick {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [System.Serializable]
     public struct SadSandCastle {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [System.Serializable]
     public struct SketchyWorm {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [System.Serializable]
     public struct LargeAngryBench {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [System.Serializable]
     public struct MediumAngryBench {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [System.Serializable]
     public struct SmallAngryBench {
+
         public int minimumAmountOfExperienceDrop;
         public int maximumAmountOfExperienceDrop;
+
     }
 
     [Space(10)]

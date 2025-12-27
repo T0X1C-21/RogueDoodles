@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingPrimaryWeaponType: 2
+  startingPrimaryWeaponType: 0
   startingSecondaryWeaponTypes: 
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
@@ -32,6 +32,7 @@ MonoBehaviour:
     attackCooldown: 0.5
     preAnimationTime: 0.15
     animationTime: 0.125
+    recoilStrength: 0.5
     moveSpeed: 15
     damageAmount: 2
     targetDetectionRadius: 0.25

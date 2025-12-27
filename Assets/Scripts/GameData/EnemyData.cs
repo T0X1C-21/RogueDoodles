@@ -14,6 +14,7 @@ public class EnemyData : ScriptableObject {
 
     [System.Serializable]
     public struct Balloon {
+
         [Space(10)]
         [Header("----- BASIC SETTINGS -----")]
         public GameObject balloonPrefab;
@@ -31,10 +32,12 @@ public class EnemyData : ScriptableObject {
         public float attackDamage;
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         public float attackPointOffsetMultiplier;
+
     }
 
     [System.Serializable]
     public struct CursedChalkStick {
+
         [Space(10)]
         [Header("----- BASIC SETTINGS -----")]
         public GameObject cursedChalkStickPrefab;
@@ -58,10 +61,12 @@ public class EnemyData : ScriptableObject {
         public float lifeTimePerDamageTrailPoint;
         public int trailDamageAmount;
         public float trailDamageCooldown;
+
     }
 
     [System.Serializable]
     public struct SadSandCastle {
+
         [Space(10)]
         [Header("----- BASIC SETTINGS -----")]
         public GameObject sadSandCastlePrefab;
@@ -79,10 +84,12 @@ public class EnemyData : ScriptableObject {
         public float attackDamage;
         [Tooltip("0 - Player position, 0 to 1 - Attack point shifts towards enemy position")]
         public float attackPointOffsetMultiplier;
+
     }
 
     [System.Serializable]
     public struct SketchyWorm {
+
         [Space(10)]
         [Header("----- BASIC SETTINGS -----")]
         public GameObject sketchyWormPrefab;
@@ -113,10 +120,12 @@ public class EnemyData : ScriptableObject {
         [Tooltip("Radius to detect the target")]
         public float targetDetectionRadius;
         public float autoDestroySelfTimer;
+
     }
 
     [System.Serializable]
     public struct AngryBench {
+
         [Space(10)]
         [Header("----- BASIC SETTIGNS -----")]
         public GameObject largeAngryBenchPrefab;
@@ -152,6 +161,7 @@ public class EnemyData : ScriptableObject {
         public int mediumAngryBenchMaximumSplitCount;
         public int smallAngryBenchMinimumSplitCount;
         public int smallAngryBenchMaximumSplitCount;
+
     }
 
     [Space(10)]

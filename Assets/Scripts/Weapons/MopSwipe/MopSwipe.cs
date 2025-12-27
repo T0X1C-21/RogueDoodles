@@ -72,6 +72,20 @@ public class MopSwipe : PlayerWeapon {
         }
     }
 
+    private void OnEnable() {
+        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void OnDisable() {
+        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+        attackCooldown /= e.attackSpeedBuffAmount;
+        preAnimationTime /= e.attackSpeedBuffAmount;
+        animationTime /= e.attackSpeedBuffAmount;
+    }
+
     private void OnDrawGizmos() {
         Gizmos.DrawRay(this.transform.position, this.transform.right);
     }

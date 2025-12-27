@@ -59,10 +59,15 @@ public enum AngryBenchVariant {
     Small
 }
 
+public enum UpgradeType {
+    GearCog
+}
+
 public class DataManager : Singleton<DataManager> {
 
     [SerializeField] private PlayerData playerData;
     [SerializeField] private WeaponData weaponData;
+    [SerializeField] private UpgradeData upgradeData;
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private ExperienceData experienceData;
     [SerializeField] private Transform playerTargetTransform;
@@ -73,6 +78,10 @@ public class DataManager : Singleton<DataManager> {
 
     public WeaponData GetWeaponData() {
         return weaponData;
+    }
+
+    public UpgradeData GetUpgradeData() {
+        return upgradeData;
     }
 
     public EnemyData GetEnemyData() {

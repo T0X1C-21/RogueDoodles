@@ -9,6 +9,7 @@ public class ChalkShot : PlayerWeapon {
     private GameObject chalkShotBulletPrefab;
     private float preAnimationTime;
     private float animationTime;
+    private float recoilStrength;
     private int numberOfBullets;
     private int currentNumberOfBullets;
     private float reloadTime;
@@ -24,6 +25,7 @@ public class ChalkShot : PlayerWeapon {
         attackCooldown = weaponData.chalkShot.attackCooldown;
         preAnimationTime = weaponData.chalkShot.preAnimationTime;
         animationTime = weaponData.chalkShot.animationTime;
+        recoilStrength = weaponData.chalkShot.recoilStrength;
         numberOfBullets = weaponData.chalkShot.numberOfBullets;
         currentNumberOfBullets = numberOfBullets;
         reloadTime = weaponData.chalkShot.reloadTime;
@@ -51,7 +53,7 @@ public class ChalkShot : PlayerWeapon {
         IEnumerator backAnimation() {
             Vector3 playerDirectionNormalized = (playerTransform.position - this.transform.position).normalized;
             Vector3 startPosition = spriteGameObject.transform.localPosition;
-            float pushForce = 0.3f;
+            float pushForce = recoilStrength;
             Vector3 endPosition = playerDirectionNormalized * pushForce;
             float t = 0f;
             while(t < preAnimationTime) {
@@ -98,6 +100,20 @@ public class ChalkShot : PlayerWeapon {
             isReloading = false;
             isAnimating = false;
         });
+    }
+
+    private void OnEnable() {
+        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void OnDisable() {
+        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+    }
+
+    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+        attackCooldown /= e.attackSpeedBuffAmount;
+        preAnimationTime /= e.attackSpeedBuffAmount;
+        animationTime /= e.attackSpeedBuffAmount;
     }
 
 }

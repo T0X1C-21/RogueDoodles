@@ -27,6 +27,7 @@ public class WeaponData : ScriptableObject {
         public float attackCooldown;
         public float preAnimationTime;
         public float animationTime;
+        public float recoilStrength;
 
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
