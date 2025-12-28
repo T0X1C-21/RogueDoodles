@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ChalkShotBulletProjectile : Projectile {
     
+    private WeaponData_Runtime weaponData;
     private int piercing;
     private HashSet<Collider2D> damagedEnemiesHashSet = new HashSet<Collider2D>();
 
     private void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         moveSpeed = weaponData.chalkShot.moveSpeed;
         damageAmount = weaponData.chalkShot.damageAmount;
         targetDetectionRadius = weaponData.chalkShot.targetDetectionRadius;
@@ -19,7 +20,6 @@ public class ChalkShotBulletProjectile : Projectile {
     }
 
     private void OnEnable() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
         piercing = weaponData.chalkShot.piercing;
         damagedEnemiesHashSet.Clear();
     }

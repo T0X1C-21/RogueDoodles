@@ -1,170 +1,70 @@
-using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NotebookTear : PlayerWeapon {
 
-    private float revolutionSpeed;
-    private float revolutionRadius;
-    private float rotationSpeed;
-    private float autoStartRevolutionTime;
-    private float autoEndRevolutionTime;
-    private float attackRadius;
+    private WeaponData_Runtime weaponData;
+    private GameObject notebookTearProjectilePrefab;
+    private int numberOfProjectiles;
+    private float cooldownTime;
+    private float revolutionTime;
     private float animationTime;
-    private bool canAttack;
-    private bool isIdle;
-
-    private HashSet<Collider2D> attackHitsHashSet = new HashSet<Collider2D>();
-    private int currentPiercing;
-    private float revolutionAngle;
+    private float spawnAngle;
+    private float currentSpawnAngle;
 
     protected override void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
-        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
 
-        weaponDamage = weaponData.notebookTear.attackDamage;
-        piercing = weaponData.notebookTear.piercing;
-        currentPiercing = piercing;
-        revolutionSpeed = weaponData.notebookTear.revolutionSpeed;
-        revolutionRadius = weaponData.notebookTear.revolutionRadius;
-        rotationSpeed = weaponData.notebookTear.rotationSpeed;
-        autoStartRevolutionTime = weaponData.notebookTear.autoStartRevolutionTime;
-        autoEndRevolutionTime = weaponData.notebookTear.autoEndRevolutionTime;
-        attackRadius = weaponData.notebookTear.attackRadius;
+        notebookTearProjectilePrefab = weaponData.notebookTear.notebookTearProjectilePrefab;
+        numberOfProjectiles = weaponData.notebookTear.numberOfProjectiles;
+        cooldownTime = weaponData.notebookTear.cooldownTime;
+        revolutionTime = weaponData.notebookTear.revolutionTime;
         animationTime = weaponData.notebookTear.animationTime;
-        fadeOutTime = weaponData.notebookTear.fadeOutTime;
-        attackCooldown = weaponData.notebookTear.attackCooldown;
-        attackTimer = attackCooldown;
-        enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
-        spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
-    }
-
-    private void Start() {
-        AnimateWeapon();
-        StartCoroutine(ClearAttackHitHashSet());
+        
+        spawnAngle = 360f / numberOfProjectiles;
+        currentSpawnAngle = spawnAngle;
     }
 
     protected override void Update() {
-        if (canAttack) {
-            Attack();
-        }
-
-        if (isIdle) {
-            this.transform.position = playerTransform.position;
-        }
+        
     }
 
-    protected override void Attack() {
-        if(currentPiercing <= 0) {
-            currentPiercing = piercing;
-            canAttack = false;
-            StartCoroutine(RevolutionEndAnimation());
-        }
+    private void Start() {
+        StartCoroutine(ReleaseNotebookTearProjectiles());
+    }
 
-        revolutionAngle += Time.deltaTime * revolutionSpeed;
-        float xValue = revolutionRadius * Mathf.Cos(revolutionAngle);
-        float yValue = revolutionRadius * Mathf.Sin(revolutionAngle);
-        Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
-        this.transform.position = targetPosition;
-
-        this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
-
-        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRadius, enemyLayerMask);
-
-        if(hits == null) {
-            return;
-        }
-
-        foreach(Collider2D hit in hits) {
-            if (attackHitsHashSet.Contains(hit)) {
-                continue;
+    private IEnumerator ReleaseNotebookTearProjectiles() {
+        GameObject firstProjectileGameObject = null;    
+        int currentNumberOfSpawnedProjectiles = 0;
+        firstProjectileGameObject = ObjectPoolManager.GetObjectFromPool(PoolType.NotebookTearProjectile, 
+            notebookTearProjectilePrefab, this.transform.position, Quaternion.identity);
+        currentNumberOfSpawnedProjectiles++;
+        firstProjectileGameObject.TryGetComponent(out NotebookTearProjectile firstNotebookTearProjectile);
+        while (true) {
+            if(firstNotebookTearProjectile.GetRevolutionAngle() >= currentSpawnAngle) {
+                currentSpawnAngle += spawnAngle;
+                ObjectPoolManager.GetObjectFromPool(PoolType.NotebookTearProjectile, notebookTearProjectilePrefab,
+                    this.transform.position, Quaternion.identity);
+                currentNumberOfSpawnedProjectiles++;
             }
-            attackHitsHashSet.Add(hit);
-            if(hit.TryGetComponent(out EnemyHealth enemyHealth)) {
-                currentPiercing--;
-                enemyHealth.TakeDamage(weaponDamage);
+            if(currentNumberOfSpawnedProjectiles == numberOfProjectiles) {
+                currentSpawnAngle = spawnAngle;
+                break;
             }
-        }
-    }
-
-    protected override void AnimateWeapon() {
-        StopAllCoroutines();
-        StartCoroutine(RevolutionStartAnimation());
-        StartCoroutine(AutoEndRevolution());
-    }
-
-    private IEnumerator AutoEndRevolution() {
-        yield return new WaitForSeconds(autoEndRevolutionTime);
-        currentPiercing = piercing;
-        canAttack = false;
-        StartCoroutine(RevolutionEndAnimation());
-    }
-
-    private IEnumerator RevolutionStartAnimation() {
-        isIdle = false;
-
-        spriteRenderer?.DOFade(1f, fadeOutTime);
-
-        float t = 0f;
-        while(t <= animationTime) {
-            t += Time.deltaTime / animationTime;
-            float radius = Mathf.Lerp(0f, revolutionRadius, t);
-            revolutionAngle += Time.deltaTime * revolutionSpeed;
-            float xValue = radius * Mathf.Cos(revolutionAngle);
-            float yValue = radius * Mathf.Sin(revolutionAngle);
-            Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
-            this.transform.position = targetPosition;
-
-            this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
-
-            yield return null;
-        }
-        canAttack = true;
-    }
-
-    private IEnumerator RevolutionEndAnimation() {
-        attackHitsHashSet.Clear();
-
-        spriteRenderer?.DOFade(0f, fadeOutTime);
-
-        float t = 0f;
-        while(t <= animationTime) {
-            t += Time.deltaTime / animationTime;
-            float radius = Mathf.Lerp(revolutionRadius, 0, t);
-            revolutionAngle += Time.deltaTime * revolutionSpeed;
-            float xValue = radius * Mathf.Cos(revolutionAngle);
-            float yValue = radius * Mathf.Sin(revolutionAngle);
-            Vector3 targetPosition = playerTransform.position + new Vector3(xValue, yValue);
-            this.transform.position = targetPosition;
-
-            this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
-
             yield return null;
         }
 
-        isIdle = true;
-        yield return new WaitForSeconds(autoStartRevolutionTime);
-        StartCoroutine(RevolutionStartAnimation());
-    }
-
-    private IEnumerator ClearAttackHitHashSet() {
-        attackHitsHashSet.Clear();
-        yield return new WaitForSeconds(attackCooldown);
-        StartCoroutine(ClearAttackHitHashSet());
+        yield return new WaitForSeconds(animationTime + revolutionTime + animationTime + cooldownTime);
+        StartCoroutine(ReleaseNotebookTearProjectiles());
     }
 
     private void OnEnable() {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
     }
 
-    private void OnDisable() {
-        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
-    }
-
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
-        revolutionSpeed *= e.attackSpeedToMultiply;
-        rotationSpeed *= e.attackSpeedToMultiply;
+        weaponData.notebookTear.attackCooldown /= e.attackSpeedToMultiply;
+        weaponData.notebookTear.revolutionSpeed *= e.attackSpeedToMultiply;
+        weaponData.notebookTear.rotationSpeed *= e.attackSpeedToMultiply;
     }
-
 }

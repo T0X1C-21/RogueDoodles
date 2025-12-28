@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class CrayonMissile : PlayerWeapon {
 
+    private WeaponData_Runtime weaponData;
     private GameObject crayonMissileProjectile;
 
     protected override void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
 
         crayonMissileProjectile = weaponData.crayonMissile.crayonMissileProjectilePrefab;
         attackCooldown = weaponData.crayonMissile.attackCooldown;
@@ -37,6 +38,8 @@ public class CrayonMissile : PlayerWeapon {
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
+
+        weaponData.crayonMissile.attackCooldown /= e.attackSpeedToMultiply;
     }
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pencil : PlayerWeapon {
 
+    private WeaponData_Runtime weaponData;
     private float preAnimationTime;
     private float animationTime;
 
@@ -12,7 +13,7 @@ public class Pencil : PlayerWeapon {
     protected override void Awake() {
         base.Awake();
 
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         weaponDamage = weaponData.pencil.damage;
         piercing = weaponData.pencil.piercing;
         attackCooldown = weaponData.pencil.attackCooldown;
@@ -84,6 +85,10 @@ public class Pencil : PlayerWeapon {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
+
+        weaponData.pencil.attackCooldown /= e.attackSpeedToMultiply;
+        weaponData.pencil.preAnimationTime /= e.attackSpeedToMultiply;
+        weaponData.pencil.animationTime /= e.attackSpeedToMultiply;
     }
 
     private void OnDrawGizmos() {

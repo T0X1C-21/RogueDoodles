@@ -10,7 +10,7 @@ public class MopSwipeBubbleProjectile : Projectile {
     private int currentPiercing;
 
     private void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        WeaponData_Runtime weaponData = RuntimeGameData.Instance.GetWeaponData();
 
         moveSpeed = weaponData.mopSwipe.moveSpeed;
         damageAmount = weaponData.mopSwipe.damageAmount;

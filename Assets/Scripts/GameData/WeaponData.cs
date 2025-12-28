@@ -80,12 +80,16 @@ public class WeaponData : ScriptableObject {
     public struct NotebookTear {
 
         public GameObject notebookTearPrefab;
+        public GameObject notebookTearProjectilePrefab;
+        
+        [Space(10)]
+        [Header("----- PROJECTILE SETTINGS -----")]
         public int numberOfProjectiles;
         public float revolutionSpeed;
         public float revolutionRadius;
         public float rotationSpeed;
-        public float autoStartRevolutionTime;
-        public float autoEndRevolutionTime;
+        public float cooldownTime;
+        public float revolutionTime;
         public float animationTime;
         public float fadeOutTime;
 

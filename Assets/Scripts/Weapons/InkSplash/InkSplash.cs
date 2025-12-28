@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class InkSplash : PlayerWeapon {
 
+    private WeaponData_Runtime weaponData;
     private GameObject inkSplashProjectilePrefab;
 
     protected override void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
+
         attackCooldown = weaponData.inkSplash.attackCooldown;
         inkSplashProjectilePrefab = weaponData.inkSplash.inkSplashProjectilePrefab;
 
@@ -39,6 +41,8 @@ public class InkSplash : PlayerWeapon {
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
+
+        weaponData.inkSplash.attackCooldown /= e.attackSpeedToMultiply;
     }
 
 }

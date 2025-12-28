@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
 
-    private WeaponData weaponData;
+    private WeaponData_Runtime weaponData;
     private Dictionary<PrimaryWeaponType, PlayerWeapon> equippedPrimaryWeaponDictionary =
         new Dictionary<PrimaryWeaponType, PlayerWeapon>();
     private Dictionary<SecondaryWeaponType, PlayerWeapon> equippedSecondaryWeaponDictionary = 
         new Dictionary<SecondaryWeaponType, PlayerWeapon>();
 
     private void Awake() {
-        weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         SpawnWeapon(weaponData.startingPrimaryWeaponType);
         foreach(SecondaryWeaponType secondaryWeaponType in weaponData.startingSecondaryWeaponTypes) {
             SpawnWeapon(secondaryWeaponType);

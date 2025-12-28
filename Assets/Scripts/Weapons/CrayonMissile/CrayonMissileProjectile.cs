@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CrayonMissileProjectile : Projectile {
@@ -7,7 +6,7 @@ public class CrayonMissileProjectile : Projectile {
     private Transform playerTransform;
 
     private void Awake() {
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        WeaponData_Runtime weaponData = RuntimeGameData.Instance.GetWeaponData();
         
         moveSpeed = weaponData.crayonMissile.moveSpeed;
         damageAmount = weaponData.crayonMissile.damageAmount;

@@ -45,7 +45,8 @@ public enum PoolType {
     ChalkShotProjectile,
     InkSplashProjectile,
     CrayonMissileProjectile,
-    MopSwipeBubbleProjectile
+    MopSwipeBubbleProjectile,
+    NotebookTearProjectile
 }
 
 public enum ProjectileHitType {

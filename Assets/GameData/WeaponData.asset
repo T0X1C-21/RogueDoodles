@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingPrimaryWeaponType: 2
-  startingSecondaryWeaponTypes: 02000000
+  startingPrimaryWeaponType: 1
+  startingSecondaryWeaponTypes: 00000000
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
   pencil:
@@ -71,15 +71,16 @@ MonoBehaviour:
     autoDestroySelfTimer: 3
   notebookTear:
     notebookTearPrefab: {fileID: 3644522096767842627, guid: 5a538489bb31299408328559b6373b0f, type: 3}
-    numberOfProjectiles: 0
-    revolutionSpeed: 6
+    notebookTearProjectilePrefab: {fileID: 5981903970954296668, guid: 55d4d6d170fff7a4c87851dae38abfc6, type: 3}
+    numberOfProjectiles: 1
+    revolutionSpeed: 1
     revolutionRadius: 1.2
-    rotationSpeed: 2
-    autoStartRevolutionTime: 5
-    autoEndRevolutionTime: 5
+    rotationSpeed: 1
+    cooldownTime: 2
+    revolutionTime: 10
     animationTime: 1
-    fadeOutTime: 0.75
-    attackCooldown: 1
+    fadeOutTime: 0.25
+    attackCooldown: 2
     attackDamage: 10
     attackRadius: 0.5
     piercing: 4

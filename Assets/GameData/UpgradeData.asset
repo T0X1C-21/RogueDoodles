@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UpgradeData
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
   gearCog:
-    LevelOne_AttackSpeedToMultiply: 1.05
+    LevelOne_AttackSpeedToMultiply: 2
     LevelTwo_AttackSpeedToMultiply: 1.15
     LevelThree_AttackSpeedToMultiply: 1.25
   inkOverflow:

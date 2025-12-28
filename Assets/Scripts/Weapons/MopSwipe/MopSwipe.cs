@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MopSwipe : PlayerWeapon {
 
+    private WeaponData_Runtime weaponData;
     private float arcSwipeAmount;
     private float preAnimationTime;
     private float animationTime;
@@ -13,7 +14,7 @@ public class MopSwipe : PlayerWeapon {
     protected override void Awake() {
         base.Awake();
 
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         attackCooldown = weaponData.mopSwipe.attackCooldown;
         arcSwipeAmount = weaponData.mopSwipe.arcSwipeAmount;
         preAnimationTime = weaponData.mopSwipe.preAnimationTime;
@@ -86,10 +87,16 @@ public class MopSwipe : PlayerWeapon {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
+
+        weaponData.mopSwipe.attackCooldown /= e.attackSpeedToMultiply;
+        weaponData.mopSwipe.preAnimationTime /= e.attackSpeedToMultiply;
+        weaponData.mopSwipe.animationTime /= e.attackSpeedToMultiply;
     }
 
     private void UpgradeManager_OnInkOverflowUpgrade(object sender, UpgradeManager.OnInkOverflowUpgradeEventArgs e) {
         numberOfBubbles += e.projectileCountToAdd;
+
+        weaponData.mopSwipe.numberOfBubbles += e.projectileCountToAdd;
     }
 
     private void OnDrawGizmos() {

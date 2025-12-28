@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b1cbb36ff316447b969edb95fe3b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
-  upgradeType: 1
+  upgradeType: 0
 --- !u!1 &233886970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1953134079}
   - component: {fileID: 1953134080}
+  - component: {fileID: 1953134081}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -1753,6 +1754,18 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 37a7740c958591e40a6788561e9361de, type: 2}
   experienceData: {fileID: 11400000, guid: 639d0389d7ee60540b8342a971ff31f0, type: 2}
   playerTargetTransform: {fileID: 889725389}
+--- !u!114 &1953134081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953134078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5410214aaa1dc4ab4f6d48f4638295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RuntimeGameData
 --- !u!1 &1972116984
 GameObject:
   m_ObjectHideFlags: 0

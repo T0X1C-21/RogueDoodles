@@ -6,6 +6,7 @@ public class ChalkShot : PlayerWeapon {
 
     [SerializeField] private GameObject spriteGameObject;
 
+    private WeaponData_Runtime weaponData;
     private GameObject chalkShotBulletPrefab;
     private float preAnimationTime;
     private float animationTime;
@@ -19,7 +20,7 @@ public class ChalkShot : PlayerWeapon {
     protected override void Awake() {
         base.Awake();
 
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         chalkShotBulletPrefab = weaponData.chalkShot.chalkShotBulletPrefab;
         piercing = weaponData.chalkShot.piercing;
         attackCooldown = weaponData.chalkShot.attackCooldown;
@@ -116,10 +117,16 @@ public class ChalkShot : PlayerWeapon {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
+
+        weaponData.chalkShot.attackCooldown /= e.attackSpeedToMultiply;
+        weaponData.chalkShot.preAnimationTime /= e.attackSpeedToMultiply;
+        weaponData.chalkShot.animationTime /= e.attackSpeedToMultiply;
     }
 
     private void UpgradeManager_OnInkOverflowUpgrade(object sender, UpgradeManager.OnInkOverflowUpgradeEventArgs e) {
         numberOfBullets += e.projectileCountToAdd;
+
+        weaponData.chalkShot.numberOfBullets += e.projectileCountToAdd;
     }
 
 }
