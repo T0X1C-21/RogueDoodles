@@ -20,7 +20,7 @@ public class MopSwipeBubbleProjectile : Projectile {
         currentPiercing = piercing;
 
         projectileHitType = ProjectileHitType.Enemy;
-        targetLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
     }
 
     public void InitializeBubble(Vector3 direction) {

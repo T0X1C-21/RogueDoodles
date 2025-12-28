@@ -8,7 +8,7 @@ public class PlayerHealth : Health {
     protected override void Awake() {
         switch (playerType) {
             case PlayerType.ScribbleKid:
-                PlayerData playerData = DataManager.Instance.GetPlayerData();
+                PlayerData_Runtime playerData = RuntimeGameData.Instance.GetPlayerData();
                 maxHealthPoints = playerData.scribbleKid.maxHealthPoints;
                 break;
         }

@@ -12,7 +12,7 @@ public class AngryBench : Enemy {
     protected override void Awake() {
         base.Awake();
 
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         attackCooldown = enemyData.angryBench.attackCooldown;
         attackRange = enemyData.angryBench.attackRange;
         attackDamage = enemyData.angryBench.attackDamage;
@@ -69,7 +69,7 @@ public class AngryBench : Enemy {
         
         PoolType poolType = default;
         GameObject prefab = default;
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         if(angryBenchVariant == AngryBenchVariant.Medium) {
             poolType = PoolType.MediumAngryBench;
             prefab = enemyData.angryBench.mediumAngryBenchPrefab;

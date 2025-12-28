@@ -19,7 +19,7 @@ public class CollectExperience : MonoBehaviour {
     private static AnimationCurve levelExperienceThresholdCurve;
 
     private void Awake() {
-        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
+        ExperienceData_Runtime experienceData = RuntimeGameData.Instance.GetExperienceData();
         experienceCollectionRadius = experienceData.experienceCollectionRadius;
         levelExperienceThresholdCurve = experienceData.levelExperienceThresholdCurve;
 

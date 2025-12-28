@@ -6,7 +6,7 @@ public class EnemyHealth : Health {
 
     protected override void Awake() {
         enemyType = this.GetComponent<TypeOfEnemy>().GetEnemyType();
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
 
         switch (enemyType) {
             case EnemyType.Balloon:
@@ -60,7 +60,7 @@ public class EnemyHealth : Health {
                     break;
                 case EnemyType.AngryBench:
                     this.TryGetComponent(out AngryBench angryBench);
-                    EnemyData enemyData = DataManager.Instance.GetEnemyData();
+                    EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
                     switch (angryBench.GetAngryBenchVariant()) {
                         case AngryBenchVariant.Large:
                             ObjectPoolManager.SetObjectBackToPool(PoolType.LargeAngryBench, this.gameObject);

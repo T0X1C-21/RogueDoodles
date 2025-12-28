@@ -5,7 +5,7 @@ public class SadSandCastle : Enemy {
     protected override void Awake() {
         base.Awake();
 
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         moveSpeed = enemyData.sadSandCastle.moveSpeed + Random.Range
             (-enemyData.sadSandCastle.moveSpeedOffset, enemyData.sadSandCastle.moveSpeedOffset);
         attackCooldown = enemyData.sadSandCastle.attackCooldown;

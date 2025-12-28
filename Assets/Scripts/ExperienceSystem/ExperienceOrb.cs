@@ -15,13 +15,13 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
     private Transform playerTransform;
 
     private void Awake() {
-        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
+        ExperienceData_Runtime experienceData = RuntimeGameData.Instance.GetExperienceData();
         heightCurve = experienceData.heightCurve;
         animationDuration = experienceData.animationDuration;
         orbCollectionSpeedCurve = experienceData.orbCollectionPathCurve;
         orbCollectionDuration = experienceData.orbCollectionDuration;
 
-        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
+        playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
     }
 
     private void Start() {
@@ -57,7 +57,7 @@ public class ExperienceOrb : MonoBehaviour, IPoolable {
         Vector3 startPosition = this.transform.position;
         float t = Random.Range(-0.3f, 0f);
         while(t < 1f) {
-            Vector3 endPosition = DataManager.Instance.GetPlayerTargetTransform().position;
+            Vector3 endPosition = RuntimeGameData.Instance.GetPlayerTargetTransform().position;
             t += Time.deltaTime / orbCollectionDuration;
             this.transform.position = Vector3.LerpUnclamped(startPosition, endPosition, orbCollectionSpeedCurve.Evaluate(t));
             yield return null;

@@ -4,18 +4,18 @@ using UnityEngine;
 public class SketchyWormProjectile : Projectile {
 
     private void Awake() {
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
 
         moveSpeed = enemyData.sketchyWorm.moveSpeed;
         damageAmount = enemyData.sketchyWorm.attackDamage;
         targetDetectionRadius = enemyData.sketchyWorm.targetDetectionRadius;
         autoDestroySelfTimer = enemyData.sketchyWorm.autoDestroySelfTimer;
         projectileHitType = ProjectileHitType.Player;
-        targetLayerMask = DataManager.Instance.GetPlayerData().playerLayerMask;
+        targetLayerMask = RuntimeGameData.Instance.GetPlayerData().playerLayerMask;
     }
 
     private void OnEnable() {
-        targetPosition = DataManager.Instance.GetPlayerTargetTransform().position;
+        targetPosition = RuntimeGameData.Instance.GetPlayerTargetTransform().position;
         currentPosition = this.transform.position;
         moveDirection = (targetPosition - currentPosition).normalized;
 

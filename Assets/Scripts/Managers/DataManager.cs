@@ -67,24 +67,12 @@ public enum UpgradeType {
 
 public class DataManager : Singleton<DataManager> {
 
-    [SerializeField] private PlayerData playerData;
-    [SerializeField] private WeaponData weaponData;
-    [SerializeField] private UpgradeData upgradeData;
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private ExperienceData experienceData;
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private UpgradeData upgradeData;
+    [SerializeField] private WeaponData weaponData;
     [SerializeField] private Transform playerTargetTransform;
-
-    public PlayerData GetPlayerData() {
-        return playerData;
-    }
-
-    public WeaponData GetWeaponData() {
-        return weaponData;
-    }
-
-    public UpgradeData GetUpgradeData() {
-        return upgradeData;
-    }
 
     public EnemyData GetEnemyData() {
         return enemyData;
@@ -92,6 +80,18 @@ public class DataManager : Singleton<DataManager> {
 
     public ExperienceData GetExperienceData() {
         return experienceData;
+    }
+
+    public PlayerData GetPlayerData() {
+        return playerData;
+    }
+
+    public UpgradeData GetUpgradeData() {
+        return upgradeData;
+    }
+
+    public WeaponData GetWeaponData() {
+        return weaponData;
     }
 
     public Transform GetPlayerTargetTransform() {

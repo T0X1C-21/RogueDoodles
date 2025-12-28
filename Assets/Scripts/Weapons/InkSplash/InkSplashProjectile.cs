@@ -26,7 +26,7 @@ public class InkSplashProjectile : Projectile, IPoolable {
         flamesDuration = weaponData.inkSplash.flamesDuration;
         attackCooldown = weaponData.inkSplash.attackCooldown;
         attackTimer = attackCooldown;
-        targetLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
 
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
         // Temporary

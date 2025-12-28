@@ -5,7 +5,7 @@ public class CursedChalkStick : Enemy {
     protected override void Awake() {
         base.Awake();
 
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         moveSpeed = enemyData.cursedChalkStick.moveSpeed + Random.Range
             (-enemyData.cursedChalkStick.moveSpeedOffset, enemyData.cursedChalkStick.moveSpeedOffset);
         attackCooldown = enemyData.cursedChalkStick.attackCooldown;

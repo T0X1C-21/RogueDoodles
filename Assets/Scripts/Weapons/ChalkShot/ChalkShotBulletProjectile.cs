@@ -16,7 +16,7 @@ public class ChalkShotBulletProjectile : Projectile {
         autoDestroySelfTimer = weaponData.chalkShot.autoDestroySelfTimer;
         piercing = weaponData.chalkShot.piercing;
         projectileHitType = ProjectileHitType.Enemy;
-        targetLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
     }
 
     private void OnEnable() {

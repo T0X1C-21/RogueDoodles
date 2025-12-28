@@ -5,7 +5,7 @@ public class Balloon : Enemy {
     protected override void Awake() {
         base.Awake();
 
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         moveSpeed = enemyData.balloon.moveSpeed + Random.Range
             (-enemyData.balloon.moveSpeedOffset, enemyData.balloon.moveSpeedOffset);
         attackCooldown = enemyData.balloon.attackCooldown;

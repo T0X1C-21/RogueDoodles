@@ -21,7 +21,7 @@ public class DrawDamageTrail : MonoBehaviour {
     private void Awake() {
         damageTrailLineRenderer = this.GetComponentInChildren<LineRenderer>();
 
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         lifeTimePerPoint = enemyData.cursedChalkStick.lifeTimePerDamageTrailPoint;
         trailDamageAmount = enemyData.cursedChalkStick.trailDamageAmount;
         trailDamageCooldown = enemyData.cursedChalkStick.trailDamageCooldown;

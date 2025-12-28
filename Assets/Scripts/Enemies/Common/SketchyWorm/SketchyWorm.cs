@@ -12,7 +12,7 @@ public class SketchyWorm : Enemy {
     protected override void Awake() {
         base.Awake();
 
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         attackCooldown = enemyData.sketchyWorm.attackCooldown;
         attackDamage = enemyData.sketchyWorm.attackDamage;
         popUpNearPlayerRadius = enemyData.sketchyWorm.popUpNearPlayerRadius;
@@ -54,7 +54,7 @@ public class SketchyWorm : Enemy {
         yield return new WaitForSeconds(attackCooldown);
 
         ObjectPoolManager.GetObjectFromPool(PoolType.SketchyWormProjectile, 
-            DataManager.Instance.GetEnemyData().sketchyWorm.sketchyWormProjectilePrefab,
+            RuntimeGameData.Instance.GetEnemyData().sketchyWorm.sketchyWormProjectilePrefab,
             this.transform.position, Quaternion.identity);
 
         StartCoroutine(Disappear());

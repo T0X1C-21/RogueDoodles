@@ -13,7 +13,7 @@ public class ExperienceManager : Singleton<ExperienceManager> {
     protected override void Awake() {
         base.Awake();
 
-        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
+        ExperienceData_Runtime experienceData = RuntimeGameData.Instance.GetExperienceData();
 
         smallInkBlobSettings = experienceData.smallInkBlobSettings;
         mediumInkBlobSettings = experienceData.mediumInkBlobSettings;

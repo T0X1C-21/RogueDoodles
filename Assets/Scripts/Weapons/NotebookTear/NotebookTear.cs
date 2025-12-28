@@ -62,6 +62,10 @@ public class NotebookTear : PlayerWeapon {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
     }
 
+    private void OnDisable() {
+        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+    }
+
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
         weaponData.notebookTear.attackCooldown /= e.attackSpeedToMultiply;
         weaponData.notebookTear.revolutionSpeed *= e.attackSpeedToMultiply;

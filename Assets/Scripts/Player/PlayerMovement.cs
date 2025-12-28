@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Start() {
         switch (playerType) { 
             case PlayerType.ScribbleKid:
-                moveSpeed = DataManager.Instance.GetPlayerData().scribbleKid.moveSpeed;
+                moveSpeed = RuntimeGameData.Instance.GetPlayerData().scribbleKid.moveSpeed;
                 break;
         }
     }

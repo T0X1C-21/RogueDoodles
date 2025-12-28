@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour {
     private float timer = 0f;
 
     private void Awake() {
-        EnemyData enemyData = DataManager.Instance.GetEnemyData();
+        EnemyData_Runtime enemyData = RuntimeGameData.Instance.GetEnemyData();
         minimumSpawnCircleRadius = enemyData.minimumSpawnCircleRadius;
         maximumSpawnCircleRadius = enemyData.maximumSpawnCircleRadius;
         waveCost = enemyData.firstWaveCost;
@@ -114,30 +114,30 @@ public class WaveSpawner : MonoBehaviour {
         GameObject spawnedEnemy = null;
         switch (enemyType) {
             case EnemyType.Balloon:
-                enemyPrefab = DataManager.Instance.GetEnemyData().balloon.balloonPrefab;
+                enemyPrefab = RuntimeGameData.Instance.GetEnemyData().balloon.balloonPrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.Balloon, enemyPrefab, spawnPosition,
                     Quaternion.identity);
                 break;
             case EnemyType.CursedChalkStick:
-                enemyPrefab = DataManager.Instance.GetEnemyData()
+                enemyPrefab = RuntimeGameData.Instance.GetEnemyData()
                     .cursedChalkStick.cursedChalkStickPrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.CursedChalkStick, enemyPrefab,
                     spawnPosition, Quaternion.identity);
                 break;
             case EnemyType.SadSandCastle:
-                enemyPrefab = DataManager.Instance.GetEnemyData()
+                enemyPrefab = RuntimeGameData.Instance.GetEnemyData()
                     .sadSandCastle.sadSandCastlePrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.SadSandCastle, enemyPrefab,
                     spawnPosition, Quaternion.identity);
                 break;
             case EnemyType.SketchyWorm:
-                enemyPrefab = DataManager.Instance.GetEnemyData()
+                enemyPrefab = RuntimeGameData.Instance.GetEnemyData()
                     .sketchyWorm.sketchyWormPrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.SketchyWorm, enemyPrefab,
                     spawnPosition, Quaternion.identity);
                 break;
             case EnemyType.AngryBench:
-                enemyPrefab = DataManager.Instance.GetEnemyData()
+                enemyPrefab = RuntimeGameData.Instance.GetEnemyData()
                     .angryBench.largeAngryBenchPrefab;
                 spawnedEnemy = ObjectPoolManager.GetObjectFromPool(PoolType.LargeAngryBench, enemyPrefab,
                     spawnPosition, Quaternion.identity);

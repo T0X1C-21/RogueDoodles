@@ -40,8 +40,8 @@ public class NotebookTearProjectile : MonoBehaviour {
         piercing = weaponData.notebookTear.piercing;
 
         currentPiercing = piercing;
-        enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
-        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
+        enemyLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
+        playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }
 

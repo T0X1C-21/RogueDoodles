@@ -69,7 +69,7 @@ public class Pencil : PlayerWeapon {
             isAnimating = false;
 
             // Reset Piercing
-            piercing = DataManager.Instance.GetWeaponData().pencil.piercing;
+            piercing = RuntimeGameData.Instance.GetWeaponData().pencil.piercing;
         });
     }
 

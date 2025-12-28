@@ -23,9 +23,9 @@ public abstract class PlayerWeapon : MonoBehaviour {
     private float weaponRotationSpeed;
 
     protected virtual void Awake() {
-        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
-        WeaponData weaponData = DataManager.Instance.GetWeaponData();
-        enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
+        WeaponData_Runtime weaponData = RuntimeGameData.Instance.GetWeaponData();
+        enemyLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
         weaponRotationSpeed = weaponData.weaponRotationSpeed;
         aimWeaponRadius = weaponData.aimWeaponRadius;
 

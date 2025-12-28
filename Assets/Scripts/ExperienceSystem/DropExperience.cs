@@ -13,7 +13,7 @@ public class DropExperience : MonoBehaviour {
 
     private void Awake() {
         enemyType = this.GetComponent<TypeOfEnemy>().GetEnemyType();
-        ExperienceData experienceData = DataManager.Instance.GetExperienceData();
+        ExperienceData_Runtime experienceData = RuntimeGameData.Instance.GetExperienceData();
 
         switch (enemyType) {
             case EnemyType.Balloon:

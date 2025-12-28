@@ -11,8 +11,8 @@ public class InkSplash : PlayerWeapon {
         attackCooldown = weaponData.inkSplash.attackCooldown;
         inkSplashProjectilePrefab = weaponData.inkSplash.inkSplashProjectilePrefab;
 
-        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
-        enemyLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
+        playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
+        enemyLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
 
         attackTimer = attackCooldown;
     }

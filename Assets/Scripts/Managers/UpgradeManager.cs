@@ -7,7 +7,7 @@ public class UpgradeManager : Singleton<UpgradeManager> {
     [SerializeField] private UpgradeType upgradeType;
 
     private Dictionary<UpgradeType, int> upgradeTypeAndLevelDictionary = new Dictionary<UpgradeType, int>();
-    private UpgradeData upgradeData;
+    private UpgradeData_Runtime upgradeData;
 
     public static event EventHandler<OnGearCogUpgradeEventArgs> OnGearCogUpgrade;
     public class OnGearCogUpgradeEventArgs {
@@ -25,7 +25,7 @@ public class UpgradeManager : Singleton<UpgradeManager> {
     protected override void Awake() {
         base.Awake();
 
-        upgradeData = DataManager.Instance.GetUpgradeData();
+        upgradeData = RuntimeGameData.Instance.GetUpgradeData();
     }
 
     public void TriggerUpgrade(UpgradeType upgradeType) {

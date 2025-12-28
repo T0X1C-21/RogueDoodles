@@ -30,8 +30,8 @@ public class Enemy : MonoBehaviour, IPoolable {
     }
 
     protected virtual void Awake() {
-        playerTarget = DataManager.Instance.GetPlayerTargetTransform();
-        playerLayerMask = DataManager.Instance.GetPlayerData().playerLayerMask;
+        playerTarget = RuntimeGameData.Instance.GetPlayerTargetTransform();
+        playerLayerMask = RuntimeGameData.Instance.GetPlayerData().playerLayerMask;
 
         canAttack = true;
     }

@@ -12,8 +12,8 @@ public class CrayonMissileProjectile : Projectile {
         damageAmount = weaponData.crayonMissile.damageAmount;
         targetDetectionRadius = weaponData.crayonMissile.targetDetectionRadius;
         autoDestroySelfTimer = weaponData.crayonMissile.autoDestroySelfTimer;
-        targetLayerMask = DataManager.Instance.GetEnemyData().enemyLayerMask;
-        playerTransform = DataManager.Instance.GetPlayerTargetTransform();
+        targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
+        playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
     }
 
     private void OnEnable() {
