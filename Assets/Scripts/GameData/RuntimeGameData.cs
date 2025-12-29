@@ -60,6 +60,7 @@ public class UpgradeData_Runtime {
 
     public GearCog gearCog;
     public InkOverflow inkOverflow;
+    public RulerEdge rulerEdge;
 
 }
 

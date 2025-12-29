@@ -69,16 +69,17 @@ public class Pencil : PlayerWeapon {
             isAnimating = false;
 
             // Reset Piercing
-            piercing = RuntimeGameData.Instance.GetWeaponData().pencil.piercing;
+            piercing = weaponData.pencil.piercing;
         });
     }
 
     private void OnEnable() {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
     }
-
     private void OnDisable() {
         UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
@@ -90,6 +91,13 @@ public class Pencil : PlayerWeapon {
         weaponData.pencil.preAnimationTime /= e.attackSpeedToMultiply;
         weaponData.pencil.animationTime /= e.attackSpeedToMultiply;
     }
+
+    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+        piercing += e.piercingToAdd;
+
+        weaponData.pencil.piercing += e.piercingToAdd;
+    }
+
 
     private void OnDrawGizmos() {
         if (!drawGizmos) {

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b1cbb36ff316447b969edb95fe3b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
-  upgradeType: 0
+  upgradeType: 1
 --- !u!1 &233886970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,11 +1748,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a805b23834dd104fb6dbc079575c31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
-  playerData: {fileID: 11400000, guid: 358601d7724cf4846ad56b44ebf7d6df, type: 2}
-  weaponData: {fileID: 11400000, guid: 2b40ef74dfedbbd4d9726b61233c1119, type: 2}
-  upgradeData: {fileID: 11400000, guid: 7e8c50e1c89a1424fb80c44223e367ea, type: 2}
   enemyData: {fileID: 11400000, guid: 37a7740c958591e40a6788561e9361de, type: 2}
   experienceData: {fileID: 11400000, guid: 639d0389d7ee60540b8342a971ff31f0, type: 2}
+  playerData: {fileID: 11400000, guid: 358601d7724cf4846ad56b44ebf7d6df, type: 2}
+  upgradeData: {fileID: 11400000, guid: 7e8c50e1c89a1424fb80c44223e367ea, type: 2}
+  weaponData: {fileID: 11400000, guid: 2b40ef74dfedbbd4d9726b61233c1119, type: 2}
   playerTargetTransform: {fileID: 889725389}
 --- !u!114 &1953134081
 MonoBehaviour:

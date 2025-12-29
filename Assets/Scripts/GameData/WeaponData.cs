@@ -95,7 +95,7 @@ public class WeaponData : ScriptableObject {
 
         [Space(10)]
         [Header("----- ATTACK SETTINGS -----")]
-        public float attackCooldown;
+        public float attackHitCooldown;
         public int attackDamage;
         public float attackRadius;
         public int piercing;

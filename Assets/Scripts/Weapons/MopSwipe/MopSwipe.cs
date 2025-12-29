@@ -76,11 +76,12 @@ public class MopSwipe : PlayerWeapon {
     private void OnEnable() {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
         UpgradeManager.OnInkOverflowUpgrade += UpgradeManager_OnInkOverflowUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
     }
-
     private void OnDisable() {
         UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
         UpgradeManager.OnInkOverflowUpgrade -= UpgradeManager_OnInkOverflowUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
@@ -97,6 +98,10 @@ public class MopSwipe : PlayerWeapon {
         numberOfBubbles += e.projectileCountToAdd;
 
         weaponData.mopSwipe.numberOfBubbles += e.projectileCountToAdd;
+    }
+
+    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+        weaponData.mopSwipe.piercing += e.piercingToAdd; 
     }
 
     private void OnDrawGizmos() {

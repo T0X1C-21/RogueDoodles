@@ -21,6 +21,12 @@ public class UpgradeManager : Singleton<UpgradeManager> {
         public int projectileCountToAdd;
 
     }
+    public static event EventHandler<OnRulerEdgeUpgradeEventArgs> OnRulerEdgeUpgrade;
+    public class OnRulerEdgeUpgradeEventArgs {
+        
+        public int piercingToAdd;
+
+    }
 
     protected override void Awake() {
         base.Awake();
@@ -78,6 +84,25 @@ public class UpgradeManager : Singleton<UpgradeManager> {
                     case 3:
                         OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
                             projectileCountToAdd = upgradeData.inkOverflow.LevelThree_ProjectileCountToAdd
+                        });
+                        break;
+                }
+                break;
+            case UpgradeType.RulerEdge:
+                switch (levelNumber) {
+                    case 1:
+                        OnRulerEdgeUpgrade?.Invoke(this, new OnRulerEdgeUpgradeEventArgs {
+                            piercingToAdd = upgradeData.inkOverflow.LevelOne_ProjectileCountToAdd
+                        });
+                        break;
+                    case 2:
+                        OnRulerEdgeUpgrade?.Invoke(this, new OnRulerEdgeUpgradeEventArgs {
+                            piercingToAdd = upgradeData.inkOverflow.LevelTwo_ProjectileCountToAdd
+                        });
+                        break;
+                    case 3:
+                        OnRulerEdgeUpgrade?.Invoke(this, new OnRulerEdgeUpgradeEventArgs {
+                            piercingToAdd = upgradeData.inkOverflow.LevelThree_ProjectileCountToAdd
                         });
                         break;
                 }

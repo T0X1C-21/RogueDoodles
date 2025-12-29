@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   startingPrimaryWeaponType: 1
-  startingSecondaryWeaponTypes: 00000000
+  startingSecondaryWeaponTypes: 02000000
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
   pencil:
     pencilPrefab: {fileID: 3644522096767842627, guid: 2a507ace5dcdb7043bc2b162b0b8c141, type: 3}
     damage: 15
-    piercing: 5
+    piercing: 1
     attackCooldown: 1.5
     preAnimationTime: 0.15
     animationTime: 0.1
@@ -28,7 +28,7 @@ MonoBehaviour:
     chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
     numberOfBullets: 6
     reloadTime: 0.6
-    piercing: 3
+    piercing: 1
     attackCooldown: 0.5
     preAnimationTime: 0.15
     animationTime: 0.125
@@ -40,14 +40,14 @@ MonoBehaviour:
   mopSwipe:
     mopSwipePrefab: {fileID: 3644522096767842627, guid: 0b1151706f1bd714f81dbda81903c03d, type: 3}
     mopSwipeBubbleProjectilePrefab: {fileID: 5981903970954296668, guid: 89586430915cfb04096c0f541271958e, type: 3}
-    attackCooldown: 2
+    attackCooldown: 1
     arcSwipeAmount: 90
     numberOfBubbles: 3
     preAnimationTime: 0.1
-    animationTime: 1.5
+    animationTime: 0.65
     moveSpeed: 2
     damageAmount: 2
-    piercing: 2
+    piercing: 1
     targetDetectionRadius: 0.25
     autoDestroySelfTimer: 5
   inkSplash:
@@ -73,14 +73,14 @@ MonoBehaviour:
     notebookTearPrefab: {fileID: 3644522096767842627, guid: 5a538489bb31299408328559b6373b0f, type: 3}
     notebookTearProjectilePrefab: {fileID: 5981903970954296668, guid: 55d4d6d170fff7a4c87851dae38abfc6, type: 3}
     numberOfProjectiles: 1
-    revolutionSpeed: 1
+    revolutionSpeed: 2
     revolutionRadius: 1.2
-    rotationSpeed: 1
-    cooldownTime: 2
-    revolutionTime: 10
+    rotationSpeed: 2
+    cooldownTime: 1
+    revolutionTime: 4
     animationTime: 1
     fadeOutTime: 0.25
-    attackCooldown: 2
+    attackHitCooldown: 0.25
     attackDamage: 10
     attackRadius: 0.5
-    piercing: 4
+    piercing: 1

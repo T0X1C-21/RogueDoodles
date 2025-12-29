@@ -21,6 +21,7 @@ public class ChalkShotBulletProjectile : Projectile {
 
     private void OnEnable() {
         piercing = weaponData.chalkShot.piercing;
+        moveSpeed = weaponData.chalkShot.moveSpeed;
         damagedEnemiesHashSet.Clear();
     }
 

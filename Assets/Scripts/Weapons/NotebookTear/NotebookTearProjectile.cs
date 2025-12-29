@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class NotebookTearProjectile : MonoBehaviour {
     
-    private static float revolutionSpeed;
+    private float revolutionSpeed;
     private float revolutionRadius;
-    private static float rotationSpeed;
+    private float rotationSpeed;
     private float revolutionTime;
     private float animationTime;
     private float fadeOutTime;
-    private static float attackCooldown;
+    private float attackCooldown;
     private int attackDamage;
     private float attackRadius;
     private int piercing;
@@ -20,10 +20,12 @@ public class NotebookTearProjectile : MonoBehaviour {
     private LayerMask enemyLayerMask;
     private int currentPiercing;
     private HashSet<Collider2D> attackHitsHashSet = new HashSet<Collider2D>();
+    private HashSet<Collider2D> cannotAttackHitsHashSet = new HashSet<Collider2D>();
     private bool canAttack;
     private Transform playerTransform;
     private float revolutionAngle;
     private SpriteRenderer spriteRenderer;
+    private Coroutine attackCoroutine;
 
     private void Awake() {
         weaponData = RuntimeGameData.Instance.GetWeaponData();
@@ -34,7 +36,7 @@ public class NotebookTearProjectile : MonoBehaviour {
         revolutionTime = weaponData.notebookTear.revolutionTime;
         animationTime = weaponData.notebookTear.animationTime;
         fadeOutTime = weaponData.notebookTear.fadeOutTime;
-        attackCooldown = weaponData.notebookTear.attackCooldown;
+        attackCooldown = weaponData.notebookTear.attackHitCooldown;
         attackDamage = weaponData.notebookTear.attackDamage;
         attackRadius = weaponData.notebookTear.attackRadius;
         piercing = weaponData.notebookTear.piercing;
@@ -48,12 +50,6 @@ public class NotebookTearProjectile : MonoBehaviour {
     private void Update() {
         if (!canAttack) {
             return;
-        }
-
-        if (currentPiercing <= 0) {
-            currentPiercing = piercing;
-            canAttack = false;
-            StartCoroutine(RevolutionEndAnimation());
         }
 
         revolutionAngle += Time.deltaTime * revolutionSpeed;
@@ -71,13 +67,41 @@ public class NotebookTearProjectile : MonoBehaviour {
         }
 
         foreach (Collider2D hit in hits) {
-            if (hit.TryGetComponent(out EnemyHealth enemyHealth) && !attackHitsHashSet.Contains(hit)) {
-                attackHitsHashSet.Add(hit);
-                Debug.Log($"Hit {hit.name}");
+            if (cannotAttackHitsHashSet.Contains(hit)) {
+                continue;
+            }
+
+            if(currentPiercing > 0 && !attackHitsHashSet.Contains(hit)) {
                 currentPiercing--;
+                attackHitsHashSet.Add(hit);
+                cannotAttackHitsHashSet.Add(hit);
+            }
+        }
+
+        if(attackCoroutine == null) {
+            attackCoroutine = StartCoroutine(Attack());
+        }
+    }
+
+    private IEnumerator Attack() {
+        yield return new WaitForSeconds(attackCooldown);
+        Debug.Log($"Detecting Enemies!");
+
+        foreach (Collider2D hit in attackHitsHashSet) {
+            if (hit.TryGetComponent(out EnemyHealth enemyHealth)) {
+                Debug.Log($"Hit {hit.name}");
                 enemyHealth.TakeDamage(attackDamage);
             }
         }
+
+        if (currentPiercing <= 0) {
+            currentPiercing = piercing;
+            canAttack = false;
+            StartCoroutine(RevolutionEndAnimation());
+        }
+
+        attackHitsHashSet.Clear();
+        attackCoroutine = null;
     }
 
     private IEnumerator RevolutionStartAnimation() {
@@ -101,8 +125,9 @@ public class NotebookTearProjectile : MonoBehaviour {
     }
 
     private IEnumerator RevolutionEndAnimation() {
+        cannotAttackHitsHashSet.Clear();
+
         canAttack = false;
-        attackHitsHashSet.Clear();
 
         spriteRenderer.DOFade(0f, fadeOutTime);
 
@@ -130,12 +155,6 @@ public class NotebookTearProjectile : MonoBehaviour {
         StartCoroutine(RevolutionEndAnimation());
     }
 
-    private IEnumerator ClearAttackHitHashSet() {
-        attackHitsHashSet.Clear();
-        yield return new WaitForSeconds(attackCooldown);
-        StartCoroutine(ClearAttackHitHashSet());
-    }
-
     public float GetRevolutionAngle() {
         Vector3 projectileDirectionNormalized = (this.transform.position - playerTransform.position).normalized;
         float angle = Mathf.Atan2(projectileDirectionNormalized.y, projectileDirectionNormalized.x) * Mathf.Rad2Deg;
@@ -148,14 +167,18 @@ public class NotebookTearProjectile : MonoBehaviour {
 
     private void OnEnable() {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+        attackCooldown = weaponData.notebookTear.attackHitCooldown;
+        revolutionSpeed = weaponData.notebookTear.revolutionSpeed;
+        rotationSpeed = weaponData.notebookTear.rotationSpeed;
+        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
 
+        StopAllCoroutines();
         StartCoroutine(RevolutionStartAnimation());
         StartCoroutine(EndRevolutionAutomatically());
-        StartCoroutine(ClearAttackHitHashSet());
     }
-
     private void OnDisable() {
         UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
 
         StopAllCoroutines();
         revolutionAngle = 0f;
@@ -166,5 +189,11 @@ public class NotebookTearProjectile : MonoBehaviour {
         revolutionSpeed *= e.attackSpeedToMultiply;
         rotationSpeed *= e.attackSpeedToMultiply;
     }
+
+    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+        piercing += e.piercingToAdd;
+        currentPiercing += e.piercingToAdd;
+    }
+
 
 }

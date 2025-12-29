@@ -60,15 +60,32 @@ public class NotebookTear : PlayerWeapon {
 
     private void OnEnable() {
         UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnInkOverflowUpgrade += UpgradeManager_OnInkOverflowUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
     }
-
     private void OnDisable() {
         UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnInkOverflowUpgrade -= UpgradeManager_OnInkOverflowUpgrade;
+        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
     }
 
     private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
-        weaponData.notebookTear.attackCooldown /= e.attackSpeedToMultiply;
+        weaponData.notebookTear.attackHitCooldown /= e.attackSpeedToMultiply;
         weaponData.notebookTear.revolutionSpeed *= e.attackSpeedToMultiply;
         weaponData.notebookTear.rotationSpeed *= e.attackSpeedToMultiply;
     }
+
+    private void UpgradeManager_OnInkOverflowUpgrade(object sender, UpgradeManager.OnInkOverflowUpgradeEventArgs e) {
+        numberOfProjectiles += e.projectileCountToAdd;
+        spawnAngle = 360f / numberOfProjectiles;
+        currentSpawnAngle = spawnAngle;
+
+        weaponData.notebookTear.numberOfProjectiles += e.projectileCountToAdd;
+    }
+
+    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+        weaponData.notebookTear.piercing += e.piercingToAdd;
+    }
+
+
 }

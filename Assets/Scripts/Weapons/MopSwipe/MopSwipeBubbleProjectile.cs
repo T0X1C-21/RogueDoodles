@@ -62,4 +62,16 @@ public class MopSwipeBubbleProjectile : Projectile {
         }
     }
 
+    private void OnEnable() {
+        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
+    }
+
+    private void OnDisable() {
+        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
+    }
+
+    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+        currentPiercing += e.piercingToAdd;
+        piercing += e.piercingToAdd;
+    }
 }

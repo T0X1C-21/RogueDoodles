@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
   gearCog:
     LevelOne_AttackSpeedToMultiply: 2
-    LevelTwo_AttackSpeedToMultiply: 1.15
+    LevelTwo_AttackSpeedToMultiply: 1.25
     LevelThree_AttackSpeedToMultiply: 1.25
   inkOverflow:
     LevelOne_ProjectileCountToAdd: 1
     LevelTwo_ProjectileCountToAdd: 1
     LevelThree_ProjectileCountToAdd: 2
+  rulerEdge:
+    LevelOne_PiercingToAdd: 1
+    LevelTwo_PiercingToAdd: 1
+    LevelThree_PiercingToAdd: 2
