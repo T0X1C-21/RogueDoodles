@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InkSplashProjectile : Projectile, IPoolable {
 
-    private float playerDetectionRadius;
+    private WeaponData_Runtime weaponData;
     private float minimumAttackRange;
     private float maximumAttackRange;
     private float spawnAnimationDuration;
@@ -16,9 +16,9 @@ public class InkSplashProjectile : Projectile, IPoolable {
     private float attackTimer;
 
     private void Awake() {
-        WeaponData_Runtime weaponData = RuntimeGameData.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         damageAmount = weaponData.inkSplash.damage;
-        playerDetectionRadius = weaponData.inkSplash.enemyDetectionRadius;
+        targetDetectionRadius = weaponData.inkSplash.targetDetectionRadius;
         minimumAttackRange = weaponData.inkSplash.minimumAttackRange;
         maximumAttackRange = weaponData.inkSplash.maximumAttackRange;
         spawnAnimationDuration = weaponData.inkSplash.spawnAnimationDuration;
@@ -28,9 +28,8 @@ public class InkSplashProjectile : Projectile, IPoolable {
         attackTimer = attackCooldown;
         targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
 
+        this.transform.localScale = weaponData.inkSplash.size;
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
-        // Temporary
-        this.transform.localScale = Vector3.one;
         SpawnAnimation();
     }
 
@@ -52,13 +51,13 @@ public class InkSplashProjectile : Projectile, IPoolable {
         canAttack = true;
         spriteRenderer.sprite = inkSplashFlamesSprite;
         // Temporary
-        this.transform.localScale = Vector3.one * 5;
+        this.transform.localScale = weaponData.inkSplash.size * 3;
         yield return new WaitForSeconds(flamesDuration);
         DestroySelf();
     }
 
     protected override void DetectAndDamageTarget() {
-        Collider2D hit = Physics2D.OverlapCircle(this.transform.position, playerDetectionRadius, targetLayerMask);
+        Collider2D hit = Physics2D.OverlapCircle(this.transform.position, targetDetectionRadius, targetLayerMask);
 
         if(hit == null) {
             return;
@@ -88,7 +87,13 @@ public class InkSplashProjectile : Projectile, IPoolable {
 
     public void OnReturnToPool() {
         canAttack = false;
-        // Temporary
-        this.transform.localScale = Vector3.one;
     }
+
+    private void OnEnable() {
+        attackCooldown = weaponData.inkSplash.attackCooldown;
+
+        this.transform.localScale = weaponData.inkSplash.size;
+        targetDetectionRadius = weaponData.inkSplash.targetDetectionRadius;
+    }
+
 }

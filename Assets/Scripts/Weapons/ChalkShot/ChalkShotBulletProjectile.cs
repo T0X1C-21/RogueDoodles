@@ -19,12 +19,6 @@ public class ChalkShotBulletProjectile : Projectile {
         targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
     }
 
-    private void OnEnable() {
-        piercing = weaponData.chalkShot.piercing;
-        moveSpeed = weaponData.chalkShot.moveSpeed;
-        damagedEnemiesHashSet.Clear();
-    }
-
     protected override IEnumerator AutoDestroySelf() {
         yield return new WaitForSeconds(autoDestroySelfTimer);
         DestroySelf();
@@ -65,4 +59,12 @@ public class ChalkShotBulletProjectile : Projectile {
         StartCoroutine(AutoDestroySelf());
     }
 
+    
+    private void OnEnable() {
+        damagedEnemiesHashSet.Clear();
+
+        piercing = weaponData.chalkShot.piercing;
+        this.transform.localScale = weaponData.chalkShot.size;
+        targetDetectionRadius = weaponData.chalkShot.targetDetectionRadius;
+    }
 }

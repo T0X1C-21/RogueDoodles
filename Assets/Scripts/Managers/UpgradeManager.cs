@@ -9,22 +9,28 @@ public class UpgradeManager : Singleton<UpgradeManager> {
     private Dictionary<UpgradeType, int> upgradeTypeAndLevelDictionary = new Dictionary<UpgradeType, int>();
     private UpgradeData_Runtime upgradeData;
 
-    public static event EventHandler<OnGearCogUpgradeEventArgs> OnGearCogUpgrade;
-    public class OnGearCogUpgradeEventArgs {
+    public static event EventHandler<OnAttackSpeedPlusPlusUpgradeEventArgs> OnAttackSpeedPlusPlusUpgrade;
+    public class OnAttackSpeedPlusPlusUpgradeEventArgs {
         
         public float attackSpeedToMultiply;
 
     }
-    public static event EventHandler<OnInkOverflowUpgradeEventArgs> OnInkOverflowUpgrade;
-    public class OnInkOverflowUpgradeEventArgs {
+    public static event EventHandler<OnProjectileCountPlusPlusUpgradeEventArgs> OnProjectileCountPlusPlusUpgrade;
+    public class OnProjectileCountPlusPlusUpgradeEventArgs {
         
         public int projectileCountToAdd;
 
     }
-    public static event EventHandler<OnRulerEdgeUpgradeEventArgs> OnRulerEdgeUpgrade;
-    public class OnRulerEdgeUpgradeEventArgs {
+    public static event EventHandler<OnPiercingPlusPlusUpgradeEventArgs> OnPiercingPlusPlusUpgrade;
+    public class OnPiercingPlusPlusUpgradeEventArgs {
         
         public int piercingToAdd;
+
+    }
+    public static event EventHandler<OnSizePlusPlusUpgradeEventArgs> OnSizePlusPlusUpgrade;
+    public class OnSizePlusPlusUpgradeEventArgs {
+        
+        public float sizeToMultiply;
 
     }
 
@@ -50,59 +56,78 @@ public class UpgradeManager : Singleton<UpgradeManager> {
         Debug.Log($"Added to dictionary {upgradeType.ToString()} with level {levelNumber}");
 
         switch (upgradeType) {
-            case UpgradeType.GearCog:
+            case UpgradeType.AttackSpeedPlusPlus:
                 switch (levelNumber) {
                     case 1:
-                        OnGearCogUpgrade?.Invoke(this, new OnGearCogUpgradeEventArgs {
-                            attackSpeedToMultiply = upgradeData.gearCog.LevelOne_AttackSpeedToMultiply
+                        OnAttackSpeedPlusPlusUpgrade?.Invoke(this, new OnAttackSpeedPlusPlusUpgradeEventArgs {
+                            attackSpeedToMultiply = upgradeData.AttackSpeedPlusPlus.LevelOne_AttackSpeedToMultiply
                         });
                         break;
                     case 2:
-                        OnGearCogUpgrade?.Invoke(this, new OnGearCogUpgradeEventArgs {
-                            attackSpeedToMultiply = upgradeData.gearCog.LevelTwo_AttackSpeedToMultiply
+                        OnAttackSpeedPlusPlusUpgrade?.Invoke(this, new OnAttackSpeedPlusPlusUpgradeEventArgs {
+                            attackSpeedToMultiply = upgradeData.AttackSpeedPlusPlus.LevelTwo_AttackSpeedToMultiply
                         });
                         break;
                     case 3:
-                        OnGearCogUpgrade?.Invoke(this, new OnGearCogUpgradeEventArgs {
-                            attackSpeedToMultiply = upgradeData.gearCog.LevelThree_AttackSpeedToMultiply
+                        OnAttackSpeedPlusPlusUpgrade?.Invoke(this, new OnAttackSpeedPlusPlusUpgradeEventArgs {
+                            attackSpeedToMultiply = upgradeData.AttackSpeedPlusPlus.LevelThree_AttackSpeedToMultiply
                         });
                         break;
                 }
                 break;
-            case UpgradeType.InkOverflow:
+            case UpgradeType.ProjectileCountPlusPlus:
                 switch (levelNumber) {
                     case 1:
-                        OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
-                            projectileCountToAdd = upgradeData.inkOverflow.LevelOne_ProjectileCountToAdd
+                        OnProjectileCountPlusPlusUpgrade?.Invoke(this, new OnProjectileCountPlusPlusUpgradeEventArgs {
+                            projectileCountToAdd = upgradeData.ProjectileCountPlusPlus.LevelOne_ProjectileCountToAdd
                         });
                         break;
                     case 2:
-                        OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
-                            projectileCountToAdd = upgradeData.inkOverflow.LevelTwo_ProjectileCountToAdd
+                        OnProjectileCountPlusPlusUpgrade?.Invoke(this, new OnProjectileCountPlusPlusUpgradeEventArgs {
+                            projectileCountToAdd = upgradeData.ProjectileCountPlusPlus.LevelTwo_ProjectileCountToAdd
                         });
                         break;
                     case 3:
-                        OnInkOverflowUpgrade?.Invoke(this, new OnInkOverflowUpgradeEventArgs {
-                            projectileCountToAdd = upgradeData.inkOverflow.LevelThree_ProjectileCountToAdd
+                        OnProjectileCountPlusPlusUpgrade?.Invoke(this, new OnProjectileCountPlusPlusUpgradeEventArgs {
+                            projectileCountToAdd = upgradeData.ProjectileCountPlusPlus.LevelThree_ProjectileCountToAdd
                         });
                         break;
                 }
                 break;
-            case UpgradeType.RulerEdge:
+            case UpgradeType.PiercingPlusPlus:
                 switch (levelNumber) {
                     case 1:
-                        OnRulerEdgeUpgrade?.Invoke(this, new OnRulerEdgeUpgradeEventArgs {
-                            piercingToAdd = upgradeData.inkOverflow.LevelOne_ProjectileCountToAdd
+                        OnPiercingPlusPlusUpgrade?.Invoke(this, new OnPiercingPlusPlusUpgradeEventArgs {
+                            piercingToAdd = upgradeData.ProjectileCountPlusPlus.LevelOne_ProjectileCountToAdd
                         });
                         break;
                     case 2:
-                        OnRulerEdgeUpgrade?.Invoke(this, new OnRulerEdgeUpgradeEventArgs {
-                            piercingToAdd = upgradeData.inkOverflow.LevelTwo_ProjectileCountToAdd
+                        OnPiercingPlusPlusUpgrade?.Invoke(this, new OnPiercingPlusPlusUpgradeEventArgs {
+                            piercingToAdd = upgradeData.ProjectileCountPlusPlus.LevelTwo_ProjectileCountToAdd
                         });
                         break;
                     case 3:
-                        OnRulerEdgeUpgrade?.Invoke(this, new OnRulerEdgeUpgradeEventArgs {
-                            piercingToAdd = upgradeData.inkOverflow.LevelThree_ProjectileCountToAdd
+                        OnPiercingPlusPlusUpgrade?.Invoke(this, new OnPiercingPlusPlusUpgradeEventArgs {
+                            piercingToAdd = upgradeData.ProjectileCountPlusPlus.LevelThree_ProjectileCountToAdd
+                        });
+                        break;
+                }
+                break;
+            case UpgradeType.SizePlusPlus:
+                switch (levelNumber) {
+                    case 1:
+                        OnSizePlusPlusUpgrade?.Invoke(this, new OnSizePlusPlusUpgradeEventArgs {
+                            sizeToMultiply = upgradeData.SizePlusPlus.LevelOne_SizeToMultiply
+                        });
+                        break;
+                    case 2:
+                        OnSizePlusPlusUpgrade?.Invoke(this, new OnSizePlusPlusUpgradeEventArgs {
+                            sizeToMultiply = upgradeData.SizePlusPlus.LevelTwo_SizeToMultiply
+                        });
+                        break;
+                    case 3:
+                        OnSizePlusPlusUpgrade?.Invoke(this, new OnSizePlusPlusUpgradeEventArgs {
+                            sizeToMultiply = upgradeData.SizePlusPlus.LevelThree_SizeToMultiply
                         });
                         break;
                 }

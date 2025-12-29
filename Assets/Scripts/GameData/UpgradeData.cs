@@ -4,7 +4,7 @@ using UnityEngine;
 public class UpgradeData : ScriptableObject {
 
     [System.Serializable]
-    public struct GearCog {
+    public struct AttackSpeedPlusPlus {
 
         public float LevelOne_AttackSpeedToMultiply;
         public float LevelTwo_AttackSpeedToMultiply;
@@ -13,7 +13,7 @@ public class UpgradeData : ScriptableObject {
     }
 
     [System.Serializable]
-    public struct InkOverflow {
+    public struct ProjectileCountPlusPlus {
 
         public int LevelOne_ProjectileCountToAdd;
         public int LevelTwo_ProjectileCountToAdd;
@@ -22,7 +22,7 @@ public class UpgradeData : ScriptableObject {
     }
 
     [System.Serializable]
-    public struct RulerEdge {
+    public struct PiercingPlusPlus {
 
         public int LevelOne_PiercingToAdd;
         public int LevelTwo_PiercingToAdd;
@@ -30,10 +30,20 @@ public class UpgradeData : ScriptableObject {
 
     }
 
+    [System.Serializable]
+    public struct SizePlusPlus {
+
+        public float LevelOne_SizeToMultiply;
+        public float LevelTwo_SizeToMultiply;
+        public float LevelThree_SizeToMultiply;
+
+    }
+
     [Space(10)]
     [Header("----- UPGRADES STATS -----")]
-    public GearCog gearCog;
-    public InkOverflow inkOverflow;
-    public RulerEdge rulerEdge;
+    public AttackSpeedPlusPlus attackSpeedPlusPlus;
+    public ProjectileCountPlusPlus projectileCountPlusPlus;
+    public PiercingPlusPlus piercingPlusPlus;
+    public SizePlusPlus sizePlusPlus;
 
 }

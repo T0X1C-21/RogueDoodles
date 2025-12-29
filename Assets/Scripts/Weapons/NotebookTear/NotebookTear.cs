@@ -59,23 +59,25 @@ public class NotebookTear : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnInkOverflowUpgrade += UpgradeManager_OnInkOverflowUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnOnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
     }
     private void OnDisable() {
-        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnInkOverflowUpgrade -= UpgradeManager_OnInkOverflowUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnOnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.attackHitCooldown /= e.attackSpeedToMultiply;
         weaponData.notebookTear.revolutionSpeed *= e.attackSpeedToMultiply;
         weaponData.notebookTear.rotationSpeed *= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnInkOverflowUpgrade(object sender, UpgradeManager.OnInkOverflowUpgradeEventArgs e) {
+    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
         numberOfProjectiles += e.projectileCountToAdd;
         spawnAngle = 360f / numberOfProjectiles;
         currentSpawnAngle = spawnAngle;
@@ -83,9 +85,13 @@ public class NotebookTear : PlayerWeapon {
         weaponData.notebookTear.numberOfProjectiles += e.projectileCountToAdd;
     }
 
-    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+    private void UpgradeManager_OnOnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.piercing += e.piercingToAdd;
     }
 
+    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+        weaponData.notebookTear.size *= e.sizeToMultiply;
+        weaponData.notebookTear.targetDetectionRadius *= e.sizeToMultiply;
+    }
 
 }

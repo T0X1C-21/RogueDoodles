@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour, IPoolable {
     private bool stopMovement;
     private LayerMask playerLayerMask;
 
+    private Vector3 avoidEnemyMovement;
+    private Collider2D enemyNear;
+
     public virtual void OnSpawnFromPool() {
         if(this.TryGetComponent(out EnemyHealth enemyHealth)) {
             enemyHealth.ResetHealth();
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour, IPoolable {
         Movement();
         DetectAndAttackPlayer();
         FlipEnemy();
+        MoveAwayFromEnemy();
     }
 
     protected virtual void StopMovement() {
@@ -57,7 +61,7 @@ public class Enemy : MonoBehaviour, IPoolable {
         }
 
         moveDirection = targetPosition - this.transform.position;
-        this.transform.position += moveDirection.normalized * Time.deltaTime * moveSpeed;
+        this.transform.position += (moveDirection.normalized * Time.deltaTime * moveSpeed) + avoidEnemyMovement;
     }
 
     protected virtual void DetectAndAttackPlayer() {
@@ -93,4 +97,16 @@ public class Enemy : MonoBehaviour, IPoolable {
         Gizmos.color = Color.purple;
         Gizmos.DrawWireSphere(targetPosition, 0.2f);
     }
+
+    protected void MoveAwayFromEnemy() {
+        enemyNear = Physics2D.OverlapCircle(this.transform.position, 0.25f, 
+            RuntimeGameData.Instance.GetEnemyData().enemyLayerMask);
+        avoidEnemyMovement = Vector3.zero;
+
+        if(enemyNear != null) {    
+            Vector3 moveAwayDirectionNormalized = (this.transform.position - enemyNear.transform.position).normalized;
+            avoidEnemyMovement += moveAwayDirectionNormalized * 0.001f;
+        }
+    }
+
 }

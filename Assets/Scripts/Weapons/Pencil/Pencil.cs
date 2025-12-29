@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pencil : PlayerWeapon {
 
     private WeaponData_Runtime weaponData;
+    private float attackRange;
     private float preAnimationTime;
     private float animationTime;
 
@@ -17,16 +18,18 @@ public class Pencil : PlayerWeapon {
         weaponDamage = weaponData.pencil.damage;
         piercing = weaponData.pencil.piercing;
         attackCooldown = weaponData.pencil.attackCooldown;
+        attackRange = weaponData.pencil.attackRange;
         preAnimationTime = weaponData.pencil.preAnimationTime;
         animationTime = weaponData.pencil.animationTime;
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
+
+        this.transform.localScale = weaponData.pencil.size;
     }
 
     // Collect enemies to hit at slash
     protected override void Attack() {
         Vector2 boxSize = new Vector2(1f, 0.25f);
-        Collider2D[] hits = Physics2D.OverlapBoxAll(GetAimPointPosition(), boxSize, 
-            this.transform.eulerAngles.z, enemyLayerMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(aimPoint.position, attackRange, enemyLayerMask);
 
         if(hits == null) {
             return;
@@ -74,15 +77,18 @@ public class Pencil : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
-    }
-    private void OnDisable() {
-        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+    private void OnDisable() {
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
+    }
+
+    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
@@ -92,12 +98,22 @@ public class Pencil : PlayerWeapon {
         weaponData.pencil.animationTime /= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+    private void UpgradeManager_OnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         piercing += e.piercingToAdd;
 
         weaponData.pencil.piercing += e.piercingToAdd;
     }
+    
+    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+        weaponData.pencil.size *= e.sizeToMultiply;
+        this.transform.localScale = weaponData.pencil.size;
 
+        attackRange *= e.sizeToMultiply;
+        weaponData.pencil.attackRange *= e.sizeToMultiply;
+
+        weaponData.aimWeaponRadius *= e.sizeToMultiply;
+        aimWeaponRadius = weaponData.aimWeaponRadius;
+    }
 
     private void OnDrawGizmos() {
         if (!drawGizmos) {

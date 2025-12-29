@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerWeapon : MonoBehaviour {
 
-    [SerializeField] private Transform aimPoint;
+    [SerializeField] protected Transform aimPoint;
     [SerializeField] protected bool drawGizmos;
 
     protected int weaponDamage;
@@ -19,7 +19,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
     protected float fadeOutTime;
     protected SpriteRenderer spriteRenderer;
 
-    private float aimWeaponRadius;
+    protected float aimWeaponRadius;
     private float weaponRotationSpeed;
 
     protected virtual void Awake() {

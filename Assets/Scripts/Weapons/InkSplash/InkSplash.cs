@@ -32,17 +32,24 @@ public class InkSplash : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
     }
 
     private void OnDisable() {
-        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
 
         weaponData.inkSplash.attackCooldown /= e.attackSpeedToMultiply;
+    }
+    
+    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+        weaponData.inkSplash.size *= e.sizeToMultiply;
+        weaponData.inkSplash.targetDetectionRadius *= e.sizeToMultiply;
     }
 
 }

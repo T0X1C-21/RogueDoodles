@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MopSwipeBubbleProjectile : Projectile {
 
+    private WeaponData_Runtime weaponData;
     private int piercing;
     private HashSet<Collider2D> attackHitsHashSet = new HashSet<Collider2D>();
 
     private int currentPiercing;
 
     private void Awake() {
-        WeaponData_Runtime weaponData = RuntimeGameData.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
 
         moveSpeed = weaponData.mopSwipe.moveSpeed;
         damageAmount = weaponData.mopSwipe.damageAmount;
@@ -63,15 +64,9 @@ public class MopSwipeBubbleProjectile : Projectile {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
+        piercing = weaponData.mopSwipe.piercing;
+        this.transform.localScale = weaponData.mopSwipe.size;
+        targetDetectionRadius = weaponData.mopSwipe.targetDetectionRadius;
     }
 
-    private void OnDisable() {
-        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
-    }
-
-    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
-        currentPiercing += e.piercingToAdd;
-        piercing += e.piercingToAdd;
-    }
 }

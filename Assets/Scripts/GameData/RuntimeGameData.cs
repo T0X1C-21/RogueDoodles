@@ -58,9 +58,10 @@ public class PlayerData_Runtime {
 
 public class UpgradeData_Runtime {
 
-    public GearCog gearCog;
-    public InkOverflow inkOverflow;
-    public RulerEdge rulerEdge;
+    public AttackSpeedPlusPlus AttackSpeedPlusPlus;
+    public ProjectileCountPlusPlus ProjectileCountPlusPlus;
+    public PiercingPlusPlus PiercingPlusPlus;
+    public SizePlusPlus SizePlusPlus;
 
 }
 
@@ -144,8 +145,10 @@ public class RuntimeGameData : Singleton<RuntimeGameData> {
 
         UpgradeData upgradeData = DataManager.Instance.GetUpgradeData();
         upgradeData_Runtime = new UpgradeData_Runtime {
-            gearCog = upgradeData.gearCog,
-            inkOverflow = upgradeData.inkOverflow
+            AttackSpeedPlusPlus = upgradeData.attackSpeedPlusPlus,
+            ProjectileCountPlusPlus = upgradeData.projectileCountPlusPlus,
+            PiercingPlusPlus = upgradeData.piercingPlusPlus,
+            SizePlusPlus = upgradeData.sizePlusPlus
         };
 
         WeaponData weaponData = DataManager.Instance.GetWeaponData();
@@ -163,6 +166,13 @@ public class RuntimeGameData : Singleton<RuntimeGameData> {
             crayonMissile = weaponData.crayonMissile,
             notebookTear = weaponData.notebookTear
         };
+
+        weaponData_Runtime.pencil.size = Vector3.one;
+        weaponData_Runtime.chalkShot.size = Vector3.one;
+        weaponData_Runtime.mopSwipe.size = Vector3.one;
+        weaponData_Runtime.inkSplash.size = Vector3.one;
+        weaponData_Runtime.crayonMissile.size = Vector3.one;
+        weaponData_Runtime.notebookTear.size = Vector3.one;
 
         playerTargetTransform = DataManager.Instance.GetPlayerTargetTransform();
     }

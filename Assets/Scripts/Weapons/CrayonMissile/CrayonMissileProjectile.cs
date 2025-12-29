@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class CrayonMissileProjectile : Projectile {
 
+    private WeaponData_Runtime weaponData;
     private Transform playerTransform;
 
     private void Awake() {
-        WeaponData_Runtime weaponData = RuntimeGameData.Instance.GetWeaponData();
+        weaponData = RuntimeGameData.Instance.GetWeaponData();
         
         moveSpeed = weaponData.crayonMissile.moveSpeed;
         damageAmount = weaponData.crayonMissile.damageAmount;
@@ -15,15 +16,6 @@ public class CrayonMissileProjectile : Projectile {
         targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
         playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
     }
-
-    private void OnEnable() {
-        float xValue = Random.Range(-1f, 1f);
-        float yValue = Random.Range(-1f, 1f);
-        this.transform.position = playerTransform.position;
-        moveDirection = new Vector3(xValue, yValue).normalized;
-        StartCoroutine(AutoDestroySelf());
-    }
-
     protected override void DestroySelf() {
         ObjectPoolManager.SetObjectBackToPool(PoolType.CrayonMissileProjectile, this.gameObject);
     }
@@ -44,6 +36,17 @@ public class CrayonMissileProjectile : Projectile {
     protected override IEnumerator AutoDestroySelf() {
         yield return new WaitForSeconds(autoDestroySelfTimer);
         DestroySelf();
+    }
+
+    private void OnEnable() {
+        float xValue = Random.Range(-1f, 1f);
+        float yValue = Random.Range(-1f, 1f);
+        this.transform.position = playerTransform.position;
+        moveDirection = new Vector3(xValue, yValue).normalized;
+        StartCoroutine(AutoDestroySelf());
+
+        this.transform.localScale = weaponData.crayonMissile.size;
+        targetDetectionRadius = weaponData.crayonMissile.targetDetectionRadius;
     }
 
 }

@@ -31,6 +31,7 @@ public class ChalkShot : PlayerWeapon {
         currentNumberOfBullets = numberOfBullets;
         reloadTime = weaponData.chalkShot.reloadTime;
 
+        this.transform.localScale = weaponData.chalkShot.size;
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -104,17 +105,20 @@ public class ChalkShot : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnInkOverflowUpgrade += UpgradeManager_OnInkOverflowUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
-    }
-    private void OnDisable() {
-        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnInkOverflowUpgrade -= UpgradeManager_OnInkOverflowUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+    private void OnDisable() {
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
+    }
+
+    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
@@ -124,15 +128,24 @@ public class ChalkShot : PlayerWeapon {
         weaponData.chalkShot.animationTime /= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnInkOverflowUpgrade(object sender, UpgradeManager.OnInkOverflowUpgradeEventArgs e) {
+    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
         numberOfBullets += e.projectileCountToAdd;
 
         weaponData.chalkShot.numberOfBullets += e.projectileCountToAdd;
     }
 
-    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+    private void UpgradeManager_OnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         weaponData.chalkShot.piercing += e.piercingToAdd;
     }
+    
+    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+        weaponData.chalkShot.size *= e.sizeToMultiply;
+        this.transform.localScale = weaponData.chalkShot.size;
 
+        weaponData.chalkShot.targetDetectionRadius *= e.sizeToMultiply;
+
+        weaponData.aimWeaponRadius *= e.sizeToMultiply;
+        aimWeaponRadius = weaponData.aimWeaponRadius;
+    }
 
 }

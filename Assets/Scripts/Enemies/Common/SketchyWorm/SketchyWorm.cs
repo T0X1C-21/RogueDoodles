@@ -33,7 +33,7 @@ public class SketchyWorm : Enemy {
     }
 
     protected override void Update() {
-        
+        MoveAwayFromEnemy();
     }
 
     private IEnumerator PopUpNearPlayer() {

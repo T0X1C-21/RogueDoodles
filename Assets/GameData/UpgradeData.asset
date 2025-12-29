@@ -12,15 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253cc8ca8bef741439a5e2e90ec3d181, type: 3}
   m_Name: UpgradeData
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
-  gearCog:
-    LevelOne_AttackSpeedToMultiply: 2
+  attackSpeedPlusPlus:
+    LevelOne_AttackSpeedToMultiply: 1.15
     LevelTwo_AttackSpeedToMultiply: 1.25
     LevelThree_AttackSpeedToMultiply: 1.25
-  inkOverflow:
+  projectileCountPlusPlus:
     LevelOne_ProjectileCountToAdd: 1
     LevelTwo_ProjectileCountToAdd: 1
     LevelThree_ProjectileCountToAdd: 2
-  rulerEdge:
+  piercingPlusPlus:
     LevelOne_PiercingToAdd: 1
     LevelTwo_PiercingToAdd: 1
     LevelThree_PiercingToAdd: 2
+  sizePlusPlus:
+    LevelOne_SizeToMultiply: 1.05
+    LevelTwo_SizeToMultiply: 1.15
+    LevelThree_SizeToMultiply: 1.25

@@ -61,9 +61,10 @@ public enum AngryBenchVariant {
 }
 
 public enum UpgradeType {
-    GearCog,
-    InkOverflow,
-    RulerEdge
+    AttackSpeedPlusPlus,
+    ProjectileCountPlusPlus,
+    PiercingPlusPlus,
+    SizePlusPlus
 }
 
 public class DataManager : Singleton<DataManager> {
@@ -98,5 +99,5 @@ public class DataManager : Singleton<DataManager> {
     public Transform GetPlayerTargetTransform() {
         return playerTargetTransform;
     }
-
+    
 }

@@ -12,18 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingPrimaryWeaponType: 1
-  startingSecondaryWeaponTypes: 02000000
+  startingPrimaryWeaponType: 2
+  startingSecondaryWeaponTypes: 
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
   pencil:
+    size: {x: 1, y: 1, z: 1}
     pencilPrefab: {fileID: 3644522096767842627, guid: 2a507ace5dcdb7043bc2b162b0b8c141, type: 3}
     damage: 15
     piercing: 1
+    attackRange: 0.25
     attackCooldown: 1.5
     preAnimationTime: 0.15
     animationTime: 0.1
   chalkShot:
+    size: {x: 1, y: 1, z: 1}
     chalkShotPrefab: {fileID: 3644522096767842627, guid: f13d69bc09ba29f44903dab179e375aa, type: 3}
     chalkShotBulletPrefab: {fileID: 5981903970954296668, guid: 210d0401baaac92499f0fc769d5ae31d, type: 3}
     numberOfBullets: 6
@@ -35,9 +38,10 @@ MonoBehaviour:
     recoilStrength: 0.5
     moveSpeed: 15
     damageAmount: 2
-    targetDetectionRadius: 0.25
+    targetDetectionRadius: 0.05
     autoDestroySelfTimer: 15
   mopSwipe:
+    size: {x: 1, y: 1, z: 1}
     mopSwipePrefab: {fileID: 3644522096767842627, guid: 0b1151706f1bd714f81dbda81903c03d, type: 3}
     mopSwipeBubbleProjectilePrefab: {fileID: 5981903970954296668, guid: 89586430915cfb04096c0f541271958e, type: 3}
     attackCooldown: 1
@@ -48,9 +52,10 @@ MonoBehaviour:
     moveSpeed: 2
     damageAmount: 2
     piercing: 1
-    targetDetectionRadius: 0.25
+    targetDetectionRadius: 0.05
     autoDestroySelfTimer: 5
   inkSplash:
+    size: {x: 1, y: 1, z: 1}
     inkSplashPrefab: {fileID: 3644522096767842627, guid: 2d14b4b4edbadf0499005a98930971de, type: 3}
     inkSplashProjectilePrefab: {fileID: 5981903970954296668, guid: 9c54bc0d75fc70146ba43fc18df8eac4, type: 3}
     damage: 5
@@ -58,18 +63,20 @@ MonoBehaviour:
     maximumAttackRange: 1
     spawnAnimationDuration: 0.25
     inkSplashFlamesSprite: {fileID: 21300000, guid: e58bef87230bbaa44b4d6e932782a9d8, type: 3}
-    enemyDetectionRadius: 0.25
+    targetDetectionRadius: 0.25
     flamesDuration: 3
     attackCooldown: 1
   crayonMissile:
+    size: {x: 1, y: 1, z: 1}
     crayonMissilePrefab: {fileID: 3644522096767842627, guid: d4ba6e3739a5daa4388d1585abd85f16, type: 3}
     crayonMissileProjectilePrefab: {fileID: 5981903970954296668, guid: f85074e71b036874886daaa2c2a6571b, type: 3}
     attackCooldown: 1
     moveSpeed: 8
     damageAmount: 20
-    targetDetectionRadius: 0.5
+    targetDetectionRadius: 0.25
     autoDestroySelfTimer: 3
   notebookTear:
+    size: {x: 1, y: 1, z: 1}
     notebookTearPrefab: {fileID: 3644522096767842627, guid: 5a538489bb31299408328559b6373b0f, type: 3}
     notebookTearProjectilePrefab: {fileID: 5981903970954296668, guid: 55d4d6d170fff7a4c87851dae38abfc6, type: 3}
     numberOfProjectiles: 1
@@ -82,5 +89,5 @@ MonoBehaviour:
     fadeOutTime: 0.25
     attackHitCooldown: 0.25
     attackDamage: 10
-    attackRadius: 0.5
+    targetDetectionRadius: 0.5
     piercing: 1

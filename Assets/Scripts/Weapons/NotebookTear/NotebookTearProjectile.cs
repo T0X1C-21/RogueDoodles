@@ -13,7 +13,7 @@ public class NotebookTearProjectile : MonoBehaviour {
     private float fadeOutTime;
     private float attackCooldown;
     private int attackDamage;
-    private float attackRadius;
+    private float targetDetectionRadius;
     private int piercing;
 
     private WeaponData_Runtime weaponData;
@@ -38,7 +38,7 @@ public class NotebookTearProjectile : MonoBehaviour {
         fadeOutTime = weaponData.notebookTear.fadeOutTime;
         attackCooldown = weaponData.notebookTear.attackHitCooldown;
         attackDamage = weaponData.notebookTear.attackDamage;
-        attackRadius = weaponData.notebookTear.attackRadius;
+        targetDetectionRadius = weaponData.notebookTear.targetDetectionRadius;
         piercing = weaponData.notebookTear.piercing;
 
         currentPiercing = piercing;
@@ -60,7 +60,7 @@ public class NotebookTearProjectile : MonoBehaviour {
 
         this.transform.Rotate(new Vector3(0f, 0f, 1f), rotationSpeed);
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, attackRadius, enemyLayerMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, targetDetectionRadius, enemyLayerMask);
 
         if (hits == null) {
             return;
@@ -166,34 +166,45 @@ public class NotebookTearProjectile : MonoBehaviour {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnGearCogUpgrade += UpgradeManager_OnGearCogUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
         attackCooldown = weaponData.notebookTear.attackHitCooldown;
         revolutionSpeed = weaponData.notebookTear.revolutionSpeed;
         rotationSpeed = weaponData.notebookTear.rotationSpeed;
-        UpgradeManager.OnRulerEdgeUpgrade += UpgradeManager_OnRulerEdgeUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
 
         StopAllCoroutines();
         StartCoroutine(RevolutionStartAnimation());
         StartCoroutine(EndRevolutionAutomatically());
+
+        this.transform.localScale = weaponData.notebookTear.size;
     }
+
     private void OnDisable() {
-        UpgradeManager.OnGearCogUpgrade -= UpgradeManager_OnGearCogUpgrade;
-        UpgradeManager.OnRulerEdgeUpgrade -= UpgradeManager_OnRulerEdgeUpgrade;
+        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
+        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
 
         StopAllCoroutines();
         revolutionAngle = 0f;
     }
 
-    private void UpgradeManager_OnGearCogUpgrade(object sender, UpgradeManager.OnGearCogUpgradeEventArgs e) {
+    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
         revolutionSpeed *= e.attackSpeedToMultiply;
         rotationSpeed *= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnRulerEdgeUpgrade(object sender, UpgradeManager.OnRulerEdgeUpgradeEventArgs e) {
+    private void UpgradeManager_OnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         piercing += e.piercingToAdd;
         currentPiercing += e.piercingToAdd;
     }
+    
+    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+        weaponData.notebookTear.size *= e.sizeToMultiply;
+        this.transform.localScale = weaponData.notebookTear.size;
 
+        targetDetectionRadius = weaponData.notebookTear.targetDetectionRadius;
+    }
 
 }

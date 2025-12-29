@@ -6,9 +6,11 @@ public class WeaponData : ScriptableObject {
     [System.Serializable]
     public struct Pencil {
 
+        [HideInInspector] public Vector3 size;
         public GameObject pencilPrefab;
         public int damage;
         public int piercing;
+        public float attackRange;
         public float attackCooldown;
         [Tooltip("The higher this number, the larger the attack arc.")]
         public float preAnimationTime;
@@ -19,6 +21,7 @@ public class WeaponData : ScriptableObject {
     [System.Serializable]
     public struct ChalkShot {
 
+        [HideInInspector] public Vector3 size;
         public GameObject chalkShotPrefab;
         public GameObject chalkShotBulletPrefab;
         public int numberOfBullets;
@@ -41,6 +44,7 @@ public class WeaponData : ScriptableObject {
     [System.Serializable]
     public struct InkSplash {
 
+        [HideInInspector] public Vector3 size;
         public GameObject inkSplashPrefab;
         public GameObject inkSplashProjectilePrefab;
 
@@ -54,7 +58,7 @@ public class WeaponData : ScriptableObject {
         [Space(10)]
         [Header("----- FLAMES SETTINGS -----")]
         public Sprite inkSplashFlamesSprite;
-        public float enemyDetectionRadius;
+        public float targetDetectionRadius;
         public float flamesDuration;
         public float attackCooldown;
 
@@ -63,6 +67,7 @@ public class WeaponData : ScriptableObject {
     [System.Serializable]
     public struct CrayonMissile {
 
+        [HideInInspector] public Vector3 size;
         public GameObject crayonMissilePrefab;
         public GameObject crayonMissileProjectilePrefab;
         public float attackCooldown;
@@ -79,6 +84,7 @@ public class WeaponData : ScriptableObject {
     [System.Serializable]
     public struct NotebookTear {
 
+        [HideInInspector] public Vector3 size;
         public GameObject notebookTearPrefab;
         public GameObject notebookTearProjectilePrefab;
         
@@ -97,7 +103,7 @@ public class WeaponData : ScriptableObject {
         [Header("----- ATTACK SETTINGS -----")]
         public float attackHitCooldown;
         public int attackDamage;
-        public float attackRadius;
+        public float targetDetectionRadius;
         public int piercing;
 
     }
@@ -105,6 +111,7 @@ public class WeaponData : ScriptableObject {
     [System.Serializable]
     public struct MopSwipe{
 
+        [HideInInspector] public Vector3 size;
         public GameObject mopSwipePrefab;
         public GameObject mopSwipeBubbleProjectilePrefab;
         public float attackCooldown;
