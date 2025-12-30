@@ -11,10 +11,7 @@ public class ChalkShotBulletProjectile : Projectile {
     private void Awake() {
         weaponData = RuntimeGameData.Instance.GetWeaponData();
         moveSpeed = weaponData.chalkShot.moveSpeed;
-        damageAmount = weaponData.chalkShot.damageAmount;
-        targetDetectionRadius = weaponData.chalkShot.targetDetectionRadius;
         autoDestroySelfTimer = weaponData.chalkShot.autoDestroySelfTimer;
-        piercing = weaponData.chalkShot.piercing;
         projectileHitType = ProjectileHitType.Enemy;
         targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
     }
@@ -66,5 +63,6 @@ public class ChalkShotBulletProjectile : Projectile {
         piercing = weaponData.chalkShot.piercing;
         this.transform.localScale = weaponData.chalkShot.size;
         targetDetectionRadius = weaponData.chalkShot.targetDetectionRadius;
+        damageAmount = weaponData.chalkShot.damageAmount;
     }
 }

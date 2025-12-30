@@ -64,7 +64,8 @@ public enum UpgradeType {
     AttackSpeedPlusPlus,
     ProjectileCountPlusPlus,
     PiercingPlusPlus,
-    SizePlusPlus
+    SizePlusPlus,
+    AttackDamagePlusPlus
 }
 
 public class DataManager : Singleton<DataManager> {

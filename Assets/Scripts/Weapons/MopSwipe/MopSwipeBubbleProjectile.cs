@@ -14,11 +14,7 @@ public class MopSwipeBubbleProjectile : Projectile {
         weaponData = RuntimeGameData.Instance.GetWeaponData();
 
         moveSpeed = weaponData.mopSwipe.moveSpeed;
-        damageAmount = weaponData.mopSwipe.damageAmount;
-        targetDetectionRadius = weaponData.mopSwipe.targetDetectionRadius;
         autoDestroySelfTimer = weaponData.mopSwipe.autoDestroySelfTimer;
-        piercing = weaponData.mopSwipe.piercing;
-        currentPiercing = piercing;
 
         projectileHitType = ProjectileHitType.Enemy;
         targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
@@ -65,8 +61,10 @@ public class MopSwipeBubbleProjectile : Projectile {
 
     private void OnEnable() {
         piercing = weaponData.mopSwipe.piercing;
+        currentPiercing = piercing;
         this.transform.localScale = weaponData.mopSwipe.size;
         targetDetectionRadius = weaponData.mopSwipe.targetDetectionRadius;
+        damageAmount = weaponData.mopSwipe.damageAmount;
     }
 
 }

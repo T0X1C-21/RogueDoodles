@@ -8,7 +8,7 @@ public class WeaponData : ScriptableObject {
 
         [HideInInspector] public Vector3 size;
         public GameObject pencilPrefab;
-        public int damage;
+        public float damage;
         public int piercing;
         public float attackRange;
         public float attackCooldown;
@@ -50,7 +50,7 @@ public class WeaponData : ScriptableObject {
 
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
-        public int damage;
+        public float damage;
         public float minimumAttackRange;
         public float maximumAttackRange;
         public float spawnAnimationDuration;
@@ -75,7 +75,7 @@ public class WeaponData : ScriptableObject {
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
         public float moveSpeed;
-        public int damageAmount;
+        public float damageAmount;
         public float targetDetectionRadius;
         public float autoDestroySelfTimer;
 
@@ -102,7 +102,7 @@ public class WeaponData : ScriptableObject {
         [Space(10)]
         [Header("----- ATTACK SETTINGS -----")]
         public float attackHitCooldown;
-        public int attackDamage;
+        public float attackDamage;
         public float targetDetectionRadius;
         public int piercing;
 
@@ -126,7 +126,7 @@ public class WeaponData : ScriptableObject {
         [Space(10)]
         [Header("----- PROJECTILE SETTINGS -----")]
         public float moveSpeed;
-        public int damageAmount;
+        public float damageAmount;
         public int piercing;
         public float targetDetectionRadius;
         public float autoDestroySelfTimer;

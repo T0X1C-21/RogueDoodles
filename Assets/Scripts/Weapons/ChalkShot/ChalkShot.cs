@@ -109,6 +109,7 @@ public class ChalkShot : PlayerWeapon {
         UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
@@ -116,6 +117,7 @@ public class ChalkShot : PlayerWeapon {
         UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
@@ -146,6 +148,10 @@ public class ChalkShot : PlayerWeapon {
 
         weaponData.aimWeaponRadius *= e.sizeToMultiply;
         aimWeaponRadius = weaponData.aimWeaponRadius;
+    }
+    
+    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+        weaponData.chalkShot.damageAmount *= e.attackDamageToMultiply;
     }
 
 }

@@ -62,6 +62,7 @@ public class UpgradeData_Runtime {
     public ProjectileCountPlusPlus ProjectileCountPlusPlus;
     public PiercingPlusPlus PiercingPlusPlus;
     public SizePlusPlus SizePlusPlus;
+    public AttackDamagePlusPlus AttackDamagePlusPlus;
 
 }
 
@@ -148,7 +149,8 @@ public class RuntimeGameData : Singleton<RuntimeGameData> {
             AttackSpeedPlusPlus = upgradeData.attackSpeedPlusPlus,
             ProjectileCountPlusPlus = upgradeData.projectileCountPlusPlus,
             PiercingPlusPlus = upgradeData.piercingPlusPlus,
-            SizePlusPlus = upgradeData.sizePlusPlus
+            SizePlusPlus = upgradeData.sizePlusPlus,
+            AttackDamagePlusPlus = upgradeData.attackDamagePlusPlus
         };
 
         WeaponData weaponData = DataManager.Instance.GetWeaponData();

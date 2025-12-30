@@ -10,8 +10,6 @@ public class CrayonMissileProjectile : Projectile {
         weaponData = RuntimeGameData.Instance.GetWeaponData();
         
         moveSpeed = weaponData.crayonMissile.moveSpeed;
-        damageAmount = weaponData.crayonMissile.damageAmount;
-        targetDetectionRadius = weaponData.crayonMissile.targetDetectionRadius;
         autoDestroySelfTimer = weaponData.crayonMissile.autoDestroySelfTimer;
         targetLayerMask = RuntimeGameData.Instance.GetEnemyData().enemyLayerMask;
         playerTransform = RuntimeGameData.Instance.GetPlayerTargetTransform();
@@ -47,6 +45,7 @@ public class CrayonMissileProjectile : Projectile {
 
         this.transform.localScale = weaponData.crayonMissile.size;
         targetDetectionRadius = weaponData.crayonMissile.targetDetectionRadius;
+        damageAmount = weaponData.crayonMissile.damageAmount;
     }
 
 }

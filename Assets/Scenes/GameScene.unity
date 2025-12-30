@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b1cbb36ff316447b969edb95fe3b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
-  upgradeType: 0
+  upgradeType: 4
 --- !u!1 &233886970
 GameObject:
   m_ObjectHideFlags: 0

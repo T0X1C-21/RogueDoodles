@@ -28,3 +28,7 @@ MonoBehaviour:
     LevelOne_SizeToMultiply: 1.05
     LevelTwo_SizeToMultiply: 1.15
     LevelThree_SizeToMultiply: 1.25
+  attackDamagePlusPlus:
+    LevelOne_AttackDamageToMultiply: 1.05
+    LevelTwo_AttackDamageToMultiply: 1.15
+    LevelThree_AttackDamageToMultiply: 1.15

@@ -80,12 +80,14 @@ public class Pencil : PlayerWeapon {
         UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
         UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
@@ -113,6 +115,12 @@ public class Pencil : PlayerWeapon {
 
         weaponData.aimWeaponRadius *= e.sizeToMultiply;
         aimWeaponRadius = weaponData.aimWeaponRadius;
+    }
+    
+    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+        weaponDamage *= e.attackDamageToMultiply;
+        weaponData.pencil.damage *= e.attackDamageToMultiply;
     }
 
     private void OnDrawGizmos() {

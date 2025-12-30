@@ -79,6 +79,7 @@ public class MopSwipe : PlayerWeapon {
         UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
@@ -86,6 +87,7 @@ public class MopSwipe : PlayerWeapon {
         UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
@@ -98,7 +100,8 @@ public class MopSwipe : PlayerWeapon {
         weaponData.mopSwipe.animationTime /= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
+    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, 
+        UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
         numberOfBubbles += e.projectileCountToAdd;
 
         weaponData.mopSwipe.numberOfBubbles += e.projectileCountToAdd;
@@ -116,6 +119,11 @@ public class MopSwipe : PlayerWeapon {
 
         weaponData.aimWeaponRadius *= e.sizeToMultiply;
         aimWeaponRadius = weaponData.aimWeaponRadius;
+    }
+    
+    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+        weaponData.mopSwipe.damageAmount *= e.attackDamageToMultiply;
     }
 
     private void OnDrawGizmos() {

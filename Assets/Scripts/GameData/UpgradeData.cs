@@ -39,11 +39,21 @@ public class UpgradeData : ScriptableObject {
 
     }
 
+    [System.Serializable]
+    public struct AttackDamagePlusPlus {
+
+        public float LevelOne_AttackDamageToMultiply;
+        public float LevelTwo_AttackDamageToMultiply;
+        public float LevelThree_AttackDamageToMultiply;
+
+    }
+
     [Space(10)]
     [Header("----- UPGRADES STATS -----")]
     public AttackSpeedPlusPlus attackSpeedPlusPlus;
     public ProjectileCountPlusPlus projectileCountPlusPlus;
     public PiercingPlusPlus piercingPlusPlus;
     public SizePlusPlus sizePlusPlus;
+    public AttackDamagePlusPlus attackDamagePlusPlus;
 
 }

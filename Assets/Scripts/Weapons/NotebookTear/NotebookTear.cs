@@ -63,21 +63,26 @@ public class NotebookTear : PlayerWeapon {
         UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnOnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
+
     private void OnDisable() {
         UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
         UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
         UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnOnPiercingPlusPlusUpgrade;
         UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
+    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, 
+        UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.attackHitCooldown /= e.attackSpeedToMultiply;
         weaponData.notebookTear.revolutionSpeed *= e.attackSpeedToMultiply;
         weaponData.notebookTear.rotationSpeed *= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
+    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, 
+        UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
         numberOfProjectiles += e.projectileCountToAdd;
         spawnAngle = 360f / numberOfProjectiles;
         currentSpawnAngle = spawnAngle;
@@ -92,6 +97,11 @@ public class NotebookTear : PlayerWeapon {
     private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.size *= e.sizeToMultiply;
         weaponData.notebookTear.targetDetectionRadius *= e.sizeToMultiply;
+    }
+    
+    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+        weaponData.notebookTear.attackDamage *= e.attackDamageToMultiply;
     }
 
 }

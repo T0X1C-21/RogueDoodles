@@ -6,7 +6,7 @@ public abstract class PlayerWeapon : MonoBehaviour {
     [SerializeField] protected Transform aimPoint;
     [SerializeField] protected bool drawGizmos;
 
-    protected int weaponDamage;
+    protected float weaponDamage;
     protected int piercing;
     protected float attackCooldown;
     protected Vector3 aimDirection;

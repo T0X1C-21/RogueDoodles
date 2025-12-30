@@ -33,6 +33,12 @@ public class UpgradeManager : Singleton<UpgradeManager> {
         public float sizeToMultiply;
 
     }
+    public static event EventHandler<OnAttackDamagePlusPlusUpgradeEventArgs> OnAttackDamagePlusPlusUpgrade;
+    public class OnAttackDamagePlusPlusUpgradeEventArgs {
+        
+        public float attackDamageToMultiply;
+
+    }
 
     protected override void Awake() {
         base.Awake();
@@ -128,6 +134,25 @@ public class UpgradeManager : Singleton<UpgradeManager> {
                     case 3:
                         OnSizePlusPlusUpgrade?.Invoke(this, new OnSizePlusPlusUpgradeEventArgs {
                             sizeToMultiply = upgradeData.SizePlusPlus.LevelThree_SizeToMultiply
+                        });
+                        break;
+                }
+                break;
+            case UpgradeType.AttackDamagePlusPlus:
+                switch (levelNumber) {
+                    case 1:
+                        OnAttackDamagePlusPlusUpgrade?.Invoke(this, new OnAttackDamagePlusPlusUpgradeEventArgs {
+                            attackDamageToMultiply = upgradeData.AttackDamagePlusPlus.LevelOne_AttackDamageToMultiply
+                        });
+                        break;
+                    case 2:
+                        OnAttackDamagePlusPlusUpgrade?.Invoke(this, new OnAttackDamagePlusPlusUpgradeEventArgs {
+                            attackDamageToMultiply = upgradeData.AttackDamagePlusPlus.LevelTwo_AttackDamageToMultiply
+                        });
+                        break;
+                    case 3:
+                        OnAttackDamagePlusPlusUpgrade?.Invoke(this, new OnAttackDamagePlusPlusUpgradeEventArgs {
+                            attackDamageToMultiply = upgradeData.AttackDamagePlusPlus.LevelThree_AttackDamageToMultiply
                         });
                         break;
                 }
