@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: UpgradeData
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
   attackSpeedPlusPlus:
-    LevelOne_AttackSpeedToMultiply: 1.15
-    LevelTwo_AttackSpeedToMultiply: 1.25
-    LevelThree_AttackSpeedToMultiply: 1.25
+    AttackSpeedToMultiply_LevelOne: 1.05
+    AttackSpeedToMultiply_LevelTwo: 1.15
+    AttackSpeedToMultiply_LevelThree: 1.15
   projectileCountPlusPlus:
-    LevelOne_ProjectileCountToAdd: 1
-    LevelTwo_ProjectileCountToAdd: 1
-    LevelThree_ProjectileCountToAdd: 2
+    ProjectileCountToAdd_LevelOne: 2
+    ProjectileCountToAdd_LevelTwo: 2
+    ProjectileCountToAdd_LevelThree: 3
   piercingPlusPlus:
-    LevelOne_PiercingToAdd: 1
-    LevelTwo_PiercingToAdd: 1
-    LevelThree_PiercingToAdd: 2
+    PiercingToAdd_LevelOne: 1
+    PiercingToAdd_LevelTwo: 2
+    PiercingToAdd_LevelThree: 3
   sizePlusPlus:
-    LevelOne_SizeToMultiply: 1.05
-    LevelTwo_SizeToMultiply: 1.15
-    LevelThree_SizeToMultiply: 1.25
+    SizeToMultiply_LevelOne: 1.05
+    SizeToMultiply_LevelTwo: 1.1
+    SizeToMultiply_LevelThree: 1.15
   attackDamagePlusPlus:
-    LevelOne_AttackDamageToMultiply: 1.05
-    LevelTwo_AttackDamageToMultiply: 1.15
-    LevelThree_AttackDamageToMultiply: 1.15
+    AttackDamageToMultiply_LevelOne: 1.05
+    AttackDamageToMultiply_LevelTwo: 1.15
+    AttackDamageToMultiply_LevelThree: 1.15

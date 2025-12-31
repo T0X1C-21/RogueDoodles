@@ -60,12 +60,30 @@ public enum AngryBenchVariant {
     Small
 }
 
-public enum UpgradeType {
+public enum PassiveType {
     AttackSpeedPlusPlus,
     ProjectileCountPlusPlus,
     PiercingPlusPlus,
     SizePlusPlus,
-    AttackDamagePlusPlus
+    AttackDamagePlusPlus,
+    RerollPlusPlus,
+    LuckPlusPlus
+}
+
+public enum UserInterfaceUpgradePool {
+    Pencil,
+    ChalkShot,
+    MopSwipe,
+    InkSplash,
+    CrayonMissile,
+    NotebookTear,
+    AttackSpeedPlusPlus,
+    ProjectileCountPlusPlus,
+    PiercingPlusPlus,
+    SizePlusPlus,
+    AttackDamagePlusPlus,
+    RerollPlusPlus,
+    LuckPlusPlus
 }
 
 public class DataManager : Singleton<DataManager> {
@@ -74,6 +92,7 @@ public class DataManager : Singleton<DataManager> {
     [SerializeField] private ExperienceData experienceData;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private UpgradeData upgradeData;
+    [SerializeField] private UserInterfaceData userInterfaceData;
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Transform playerTargetTransform;
 
@@ -91,6 +110,10 @@ public class DataManager : Singleton<DataManager> {
 
     public UpgradeData GetUpgradeData() {
         return upgradeData;
+    }
+
+    public UserInterfaceData GetUserInterfaceData() {
+        return userInterfaceData;
     }
 
     public WeaponData GetWeaponData() {

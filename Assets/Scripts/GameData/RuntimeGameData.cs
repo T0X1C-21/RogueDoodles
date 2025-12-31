@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static EnemyData;
 using static ExperienceData;
 using static PlayerData;
 using static UpgradeData;
+using static UserInterfaceData;
 
 public class EnemyData_Runtime {
 
@@ -58,11 +60,17 @@ public class PlayerData_Runtime {
 
 public class UpgradeData_Runtime {
 
-    public AttackSpeedPlusPlus AttackSpeedPlusPlus;
-    public ProjectileCountPlusPlus ProjectileCountPlusPlus;
-    public PiercingPlusPlus PiercingPlusPlus;
-    public SizePlusPlus SizePlusPlus;
-    public AttackDamagePlusPlus AttackDamagePlusPlus;
+    public AttackSpeedPlusPlus attackSpeedPlusPlus;
+    public ProjectileCountPlusPlus projectileCountPlusPlus;
+    public PiercingPlusPlus piercingPlusPlus;
+    public SizePlusPlus sizePlusPlus;
+    public AttackDamagePlusPlus attackDamagePlusPlus;
+
+}
+
+public class UserInterfaceData_Runtime {
+    
+    public UpgradeMenuInfo upgradeMenuInfo;
 
 }
 
@@ -89,6 +97,7 @@ public class RuntimeGameData : Singleton<RuntimeGameData> {
     private ExperienceData_Runtime experienceData_Runtime;
     private PlayerData_Runtime playerData_Runtime;
     private UpgradeData_Runtime upgradeData_Runtime;
+    private UserInterfaceData_Runtime userInterface_Runtime;
     private WeaponData_Runtime weaponData_Runtime;
 
     private Transform playerTargetTransform;
@@ -146,11 +155,16 @@ public class RuntimeGameData : Singleton<RuntimeGameData> {
 
         UpgradeData upgradeData = DataManager.Instance.GetUpgradeData();
         upgradeData_Runtime = new UpgradeData_Runtime {
-            AttackSpeedPlusPlus = upgradeData.attackSpeedPlusPlus,
-            ProjectileCountPlusPlus = upgradeData.projectileCountPlusPlus,
-            PiercingPlusPlus = upgradeData.piercingPlusPlus,
-            SizePlusPlus = upgradeData.sizePlusPlus,
-            AttackDamagePlusPlus = upgradeData.attackDamagePlusPlus
+            attackSpeedPlusPlus = upgradeData.attackSpeedPlusPlus,
+            projectileCountPlusPlus = upgradeData.projectileCountPlusPlus,
+            piercingPlusPlus = upgradeData.piercingPlusPlus,
+            sizePlusPlus = upgradeData.sizePlusPlus,
+            attackDamagePlusPlus = upgradeData.attackDamagePlusPlus
+        };
+
+        UserInterfaceData userInterfaceData = DataManager.Instance.GetUserInterfaceData();
+        userInterface_Runtime = new UserInterfaceData_Runtime {
+            upgradeMenuInfo = userInterfaceData.upgradeMenuInfo
         };
 
         WeaponData weaponData = DataManager.Instance.GetWeaponData();
@@ -193,6 +207,10 @@ public class RuntimeGameData : Singleton<RuntimeGameData> {
 
     public UpgradeData_Runtime GetUpgradeData() {
         return upgradeData_Runtime;
+    }
+
+    public UserInterfaceData_Runtime GetUserInterfaceData() {
+        return userInterface_Runtime;
     }
 
     public WeaponData_Runtime GetWeaponData() {

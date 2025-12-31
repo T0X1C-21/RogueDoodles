@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9533235d11ef14eb2bd8065ecd875d, type: 3}
+  m_Name: UserInterfaceData
+  m_EditorClassIdentifier: Assembly-CSharp::UserInterfaceData
+  upgradeMenuInfo:
+    leftUpgradeButtonGameObject: {fileID: 0}
+    midddleUpgradeButtonGameObject: {fileID: 0}
+    rightUpgradeButtonGameObject: {fileID: 0}
+    inkSplashText: ink splash
+    inkSplashImage: {fileID: 0}
+    crayonMissileText: crayon missle
+    crayonMissileImage: {fileID: 0}
+    notebookTearText: notebook tear
+    notebookTearImage: {fileID: 0}
+    attackSpeedPlusPlusText: attack speed plus plus
+    attackSpeedPlusPlusImage: {fileID: 0}
+    projectileCountPlusPlusText: projectile count plus plus
+    projectilCountPlusPlusImage: {fileID: 0}
+    piercingPlusPlusText: piercing plus plus
+    piercingPlusPlusImage: {fileID: 0}
+    sizePlusPlusText: size plus plus
+    sizePlusPlusImage: {fileID: 0}
+    attackDamagePlusPlusText: attack damage plus plus
+    attackDamagePlusPlusImage: {fileID: 0}
+    rerollPlusPlusText: reroll plus plus
+    rerollPlusPlusImage: {fileID: 0}
+    luckPlusPlusText: luck plus plus
+    luckPlusPlusImage: {fileID: 0}

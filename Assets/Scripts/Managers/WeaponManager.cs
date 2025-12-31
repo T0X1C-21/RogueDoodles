@@ -1,15 +1,24 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour {
+public class WeaponManager : Singleton<WeaponManager> {
 
-    private WeaponData_Runtime weaponData;
+    public event EventHandler<OnPrimaryWeaponAddedEventArgs> OnPrimaryWeaponAdded;
+    public class OnPrimaryWeaponAddedEventArgs : EventArgs {
+        public PrimaryWeaponType addedWeapon;
+    }
+
     private Dictionary<PrimaryWeaponType, PlayerWeapon> equippedPrimaryWeaponDictionary =
         new Dictionary<PrimaryWeaponType, PlayerWeapon>();
     private Dictionary<SecondaryWeaponType, PlayerWeapon> equippedSecondaryWeaponDictionary = 
         new Dictionary<SecondaryWeaponType, PlayerWeapon>();
 
-    private void Awake() {
+    private WeaponData_Runtime weaponData;
+
+    protected override void Awake() {
+        base.Awake();
+
         weaponData = RuntimeGameData.Instance.GetWeaponData();
         SpawnWeapon(weaponData.startingPrimaryWeaponType);
         foreach(SecondaryWeaponType secondaryWeaponType in weaponData.startingSecondaryWeaponTypes) {
@@ -18,6 +27,11 @@ public class WeaponManager : MonoBehaviour {
     }
 
     public void SpawnWeapon(SecondaryWeaponType secondaryWeaponType) {
+        if (equippedSecondaryWeaponDictionary.ContainsKey(secondaryWeaponType)) {
+            Debug.LogWarning("Cannot add the same weapon more than once!");
+            return;
+        }
+
         if(equippedSecondaryWeaponDictionary.Count == 3) {
             Debug.LogWarning("Cannot add more than 3 secondary weapons!");
             return;
@@ -52,11 +66,6 @@ public class WeaponManager : MonoBehaviour {
     }
 
     public void SpawnWeapon(PrimaryWeaponType primaryWeaponType) {
-        if(equippedPrimaryWeaponDictionary.Count == 1) {
-            Debug.LogWarning("Cannot add more than 1 primary weapon!");
-            return;
-        }
-
         GameObject instantiatedWeapon = null;
         switch (primaryWeaponType) {
             case PrimaryWeaponType.Pencil:
@@ -76,7 +85,9 @@ public class WeaponManager : MonoBehaviour {
         if(instantiatedWeapon == null) {
             return;
         }
-
+        OnPrimaryWeaponAdded?.Invoke(this, new OnPrimaryWeaponAddedEventArgs {
+            addedWeapon = primaryWeaponType
+        });
         instantiatedWeapon.transform.parent = this.transform;
         instantiatedWeapon.name = primaryWeaponType.ToString();
         instantiatedWeapon.TryGetComponent(out PlayerWeapon playerWeapon);

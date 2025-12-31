@@ -17,5 +17,5 @@ MonoBehaviour:
     m_Bits: 64
   scribbleKid:
     moveSpeed: 5
-    maxHealthPoints: 100
+    maxHealthPoints: 1210
     startingWeapon: 0

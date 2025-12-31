@@ -6,45 +6,45 @@ public class UpgradeData : ScriptableObject {
     [System.Serializable]
     public struct AttackSpeedPlusPlus {
 
-        public float LevelOne_AttackSpeedToMultiply;
-        public float LevelTwo_AttackSpeedToMultiply;
-        public float LevelThree_AttackSpeedToMultiply;
+        public float AttackSpeedToMultiply_LevelOne;
+        public float AttackSpeedToMultiply_LevelTwo;
+        public float AttackSpeedToMultiply_LevelThree;
 
     }
 
     [System.Serializable]
     public struct ProjectileCountPlusPlus {
 
-        public int LevelOne_ProjectileCountToAdd;
-        public int LevelTwo_ProjectileCountToAdd;
-        public int LevelThree_ProjectileCountToAdd;
+        public int ProjectileCountToAdd_LevelOne;
+        public int ProjectileCountToAdd_LevelTwo;
+        public int ProjectileCountToAdd_LevelThree;
 
     }
 
     [System.Serializable]
     public struct PiercingPlusPlus {
 
-        public int LevelOne_PiercingToAdd;
-        public int LevelTwo_PiercingToAdd;
-        public int LevelThree_PiercingToAdd;
+        public int PiercingToAdd_LevelOne;
+        public int PiercingToAdd_LevelTwo;
+        public int PiercingToAdd_LevelThree;
 
     }
 
     [System.Serializable]
     public struct SizePlusPlus {
 
-        public float LevelOne_SizeToMultiply;
-        public float LevelTwo_SizeToMultiply;
-        public float LevelThree_SizeToMultiply;
+        public float SizeToMultiply_LevelOne;
+        public float SizeToMultiply_LevelTwo;
+        public float SizeToMultiply_LevelThree;
 
     }
 
     [System.Serializable]
     public struct AttackDamagePlusPlus {
 
-        public float LevelOne_AttackDamageToMultiply;
-        public float LevelTwo_AttackDamageToMultiply;
-        public float LevelThree_AttackDamageToMultiply;
+        public float AttackDamageToMultiply_LevelOne;
+        public float AttackDamageToMultiply_LevelTwo;
+        public float AttackDamageToMultiply_LevelThree;
 
     }
 

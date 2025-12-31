@@ -1,12 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
-public class CollectExperience : MonoBehaviour {
+public class CollectExperience : Singleton<CollectExperience> {
 
-    public static EventHandler<OnLevelUpEventArgs> onLevelUp;
-    public class OnLevelUpEventArgs : EventArgs {
+    public static event EventHandler<OnExperienceCollectedEventArgs> OnExperienceCollected;
+    public class OnExperienceCollectedEventArgs : EventArgs {
         public int levelNumber;
         public int amountOfExperience;
+    }
+
+    public static event EventHandler<OnLevelUpEventArgs> OnLevelUp;
+    public class OnLevelUpEventArgs : EventArgs {
+        public int levelNumber;
     }
 
     [SerializeField] private bool drawGizmos;
@@ -18,7 +24,9 @@ public class CollectExperience : MonoBehaviour {
     private float experienceCollectionRadius;
     private static AnimationCurve levelExperienceThresholdCurve;
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
+
         ExperienceData_Runtime experienceData = RuntimeGameData.Instance.GetExperienceData();
         experienceCollectionRadius = experienceData.experienceCollectionRadius;
         levelExperienceThresholdCurve = experienceData.levelExperienceThresholdCurve;
@@ -49,7 +57,7 @@ public class CollectExperience : MonoBehaviour {
     public static void AddExperience(int amountOfExperience) {
         CollectExperience.amountOfExperience += amountOfExperience;
 
-        onLevelUp?.Invoke(null, new OnLevelUpEventArgs {
+        OnExperienceCollected?.Invoke(null, new OnExperienceCollectedEventArgs {
             levelNumber = CollectExperience.levelNumber,
             amountOfExperience = CollectExperience.amountOfExperience
         });
@@ -64,9 +72,8 @@ public class CollectExperience : MonoBehaviour {
         levelNumber += 1;
         nextLevelThreshold = (int) levelExperienceThresholdCurve.Evaluate(levelNumber);
 
-        onLevelUp?.Invoke(null, new OnLevelUpEventArgs {
-            levelNumber = CollectExperience.levelNumber,
-            amountOfExperience = CollectExperience.amountOfExperience
+        OnLevelUp?.Invoke(null, new OnLevelUpEventArgs {
+            levelNumber = levelNumber
         });
     }
 
