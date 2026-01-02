@@ -75,22 +75,22 @@ public class MopSwipe : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade += PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnProjectileCountPlusPlusUpgrade += PassiveManager_OnProjectileCountPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade += PassiveManager_OnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade += PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade += PassiveManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade -= PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnProjectileCountPlusPlusUpgrade -= PassiveManager_OnProjectileCountPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade -= PassiveManager_OnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade -= PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade -= PassiveManager_OnAttackDamagePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackSpeedPlusPlusUpgrade(object sender, PassiveManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
@@ -100,18 +100,18 @@ public class MopSwipe : PlayerWeapon {
         weaponData.mopSwipe.animationTime /= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, 
-        UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnProjectileCountPlusPlusUpgrade(object sender, 
+        PassiveManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
         numberOfBubbles += e.projectileCountToAdd;
 
         weaponData.mopSwipe.numberOfBubbles += e.projectileCountToAdd;
     }
 
-    private void UpgradeManager_OnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnPiercingPlusPlusUpgrade(object sender, PassiveManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         weaponData.mopSwipe.piercing += e.piercingToAdd; 
     }
     
-    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnSizePlusPlusUpgrade(object sender, PassiveManager.OnSizePlusPlusUpgradeEventArgs e) {
         weaponData.mopSwipe.size *= e.sizeToMultiply;
         this.transform.localScale = weaponData.mopSwipe.size;
 
@@ -121,8 +121,8 @@ public class MopSwipe : PlayerWeapon {
         aimWeaponRadius = weaponData.aimWeaponRadius;
     }
     
-    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        PassiveManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
         weaponData.mopSwipe.damageAmount *= e.attackDamageToMultiply;
     }
 

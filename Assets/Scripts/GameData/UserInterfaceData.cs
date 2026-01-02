@@ -9,6 +9,12 @@ public class UserInterfaceData : ScriptableObject {
         
         [Space(10)]
         [Header("----- WEAPON UPGRADES ------")]
+        public string pencilText;
+        public Image pencilImage;
+        public string chalkShotText;
+        public Image chalkShotImage;
+        public string mopSwipeText;
+        public Image mopSwipeImage;
         public string inkSplashText;
         public Image inkSplashImage;
         public string crayonMissileText;

@@ -32,31 +32,31 @@ public class InkSplash : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade += PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade += PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade += PassiveManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade -= PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade -= PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade -= PassiveManager_OnAttackDamagePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackSpeedPlusPlusUpgrade(object sender, 
+        PassiveManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
 
         weaponData.inkSplash.attackCooldown /= e.attackSpeedToMultiply;
     }
     
-    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnSizePlusPlusUpgrade(object sender, PassiveManager.OnSizePlusPlusUpgradeEventArgs e) {
         weaponData.inkSplash.size *= e.sizeToMultiply;
         weaponData.inkSplash.targetDetectionRadius *= e.sizeToMultiply;
     }
     
-    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        PassiveManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
         weaponData.inkSplash.damage *= e.attackDamageToMultiply;
     }
 

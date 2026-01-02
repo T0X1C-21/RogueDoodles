@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b1cbb36ff316447b969edb95fe3b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
-  upgradeType: 4
 --- !u!1 &233886970
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +853,7 @@ GameObject:
   - component: {fileID: 591375268}
   - component: {fileID: 591375267}
   - component: {fileID: 591375266}
+  - component: {fileID: 591375269}
   m_Layer: 5
   m_Name: RightUpgrade
   m_TagString: Untagged
@@ -963,6 +963,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591375264}
   m_CullTransparentMesh: 1
+--- !u!114 &591375269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591375264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4375d3ac900911042a37d75916b58a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonUpgradeType
 --- !u!1 &617443304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1444,7 @@ GameObject:
   - component: {fileID: 935549238}
   - component: {fileID: 935549237}
   - component: {fileID: 935549236}
+  - component: {fileID: 935549239}
   m_Layer: 5
   m_Name: LeftUpgrade
   m_TagString: Untagged
@@ -1541,6 +1554,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935549234}
   m_CullTransparentMesh: 1
+--- !u!114 &935549239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935549234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4375d3ac900911042a37d75916b58a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonUpgradeType
 --- !u!1 &1009014463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,6 +2002,7 @@ GameObject:
   - component: {fileID: 1402000817}
   - component: {fileID: 1402000816}
   - component: {fileID: 1402000815}
+  - component: {fileID: 1402000818}
   m_Layer: 5
   m_Name: MiddleUpgrade
   m_TagString: Untagged
@@ -2086,6 +2112,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402000813}
   m_CullTransparentMesh: 1
+--- !u!114 &1402000818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402000813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4375d3ac900911042a37d75916b58a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonUpgradeType
 --- !u!1 &1449418087
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,6 +2520,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900ca6fd684793f40b8244bda8f00e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExperienceManager
+--- !u!1 &1827642752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827642753}
+  - component: {fileID: 1827642754}
+  m_Layer: 0
+  m_Name: PassiveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1827642753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827642752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.84348, y: -0.60495, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1827642754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827642752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1005b928c5c499d4ba93309e451e9459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassiveManager
+  upgradeType: 0
 --- !u!1 &1953134078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,6 +2881,7 @@ SceneRoots:
   - {fileID: 1790032693}
   - {fileID: 1972116986}
   - {fileID: 862789478}
+  - {fileID: 1827642753}
   - {fileID: 227079112}
   - {fileID: 1449418088}
   - {fileID: 668110643}

@@ -59,30 +59,30 @@ public class NotebookTear : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnOnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnProjectileCountPlusPlusUpgrade += UpgradeManager_OnProjectileCountPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnOnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnOnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnProjectileCountPlusPlusUpgrade -= UpgradeManager_OnProjectileCountPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnOnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
+        PassiveManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.attackHitCooldown /= e.attackSpeedToMultiply;
         weaponData.notebookTear.revolutionSpeed *= e.attackSpeedToMultiply;
         weaponData.notebookTear.rotationSpeed *= e.attackSpeedToMultiply;
     }
 
     private void UpgradeManager_OnProjectileCountPlusPlusUpgrade(object sender, 
-        UpgradeManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
+        PassiveManager.OnProjectileCountPlusPlusUpgradeEventArgs e) {
         numberOfProjectiles += e.projectileCountToAdd;
         spawnAngle = 360f / numberOfProjectiles;
         currentSpawnAngle = spawnAngle;
@@ -90,17 +90,17 @@ public class NotebookTear : PlayerWeapon {
         weaponData.notebookTear.numberOfProjectiles += e.projectileCountToAdd;
     }
 
-    private void UpgradeManager_OnOnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
+    private void UpgradeManager_OnOnPiercingPlusPlusUpgrade(object sender, PassiveManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.piercing += e.piercingToAdd;
     }
 
-    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, PassiveManager.OnSizePlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.size *= e.sizeToMultiply;
         weaponData.notebookTear.targetDetectionRadius *= e.sizeToMultiply;
     }
     
     private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+        PassiveManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.attackDamage *= e.attackDamageToMultiply;
     }
 

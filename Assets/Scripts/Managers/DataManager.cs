@@ -70,10 +70,8 @@ public enum PassiveType {
     LuckPlusPlus
 }
 
-public enum UserInterfaceUpgradePool {
-    Pencil,
-    ChalkShot,
-    MopSwipe,
+public enum UpgradeType {
+    MainWeapon,
     InkSplash,
     CrayonMissile,
     NotebookTear,

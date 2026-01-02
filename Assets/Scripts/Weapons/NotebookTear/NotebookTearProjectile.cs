@@ -162,13 +162,13 @@ public class NotebookTearProjectile : MonoBehaviour {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade += PassiveManager_OnAttackSpeedPlusPlusUpgrade;
         attackCooldown = weaponData.notebookTear.attackHitCooldown;
         revolutionSpeed = weaponData.notebookTear.revolutionSpeed;
         rotationSpeed = weaponData.notebookTear.rotationSpeed;
-        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade += PassiveManager_OnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade += PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade += PassiveManager_OnAttackDamagePlusPlusUpgrade;
         attackDamage = weaponData.notebookTear.attackDamage;
 
         StopAllCoroutines();
@@ -179,37 +179,37 @@ public class NotebookTearProjectile : MonoBehaviour {
     }
 
     private void OnDisable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade -= PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade -= PassiveManager_OnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade -= PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade -= PassiveManager_OnAttackDamagePlusPlusUpgrade;
 
         StopAllCoroutines();
         revolutionAngle = 0f;
     }
 
-    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackSpeedPlusPlusUpgrade(object sender, 
+        PassiveManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
         revolutionSpeed *= e.attackSpeedToMultiply;
         rotationSpeed *= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnPiercingPlusPlusUpgrade(object sender, 
-        UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnPiercingPlusPlusUpgrade(object sender, 
+        PassiveManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         piercing += e.piercingToAdd;
         currentPiercing += e.piercingToAdd;
     }
     
-    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnSizePlusPlusUpgrade(object sender, PassiveManager.OnSizePlusPlusUpgradeEventArgs e) {
         weaponData.notebookTear.size *= e.sizeToMultiply;
         this.transform.localScale = weaponData.notebookTear.size;
 
         targetDetectionRadius = weaponData.notebookTear.targetDetectionRadius;
     }
     
-    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        PassiveManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
         attackDamage *= e.attackDamageToMultiply;
     }
 

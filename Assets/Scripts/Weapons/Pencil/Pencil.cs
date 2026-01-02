@@ -77,20 +77,20 @@ public class Pencil : PlayerWeapon {
     }
 
     private void OnEnable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade += UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade += UpgradeManager_OnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade += UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade += UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade += PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade += PassiveManager_OnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade += PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade += PassiveManager_OnAttackDamagePlusPlusUpgrade;
     }
 
     private void OnDisable() {
-        UpgradeManager.OnAttackSpeedPlusPlusUpgrade -= UpgradeManager_OnAttackSpeedPlusPlusUpgrade;
-        UpgradeManager.OnPiercingPlusPlusUpgrade -= UpgradeManager_OnPiercingPlusPlusUpgrade;
-        UpgradeManager.OnSizePlusPlusUpgrade -= UpgradeManager_OnSizePlusPlusUpgrade;
-        UpgradeManager.OnAttackDamagePlusPlusUpgrade -= UpgradeManager_OnAttackDamagePlusPlusUpgrade;
+        PassiveManager.OnAttackSpeedPlusPlusUpgrade -= PassiveManager_OnAttackSpeedPlusPlusUpgrade;
+        PassiveManager.OnPiercingPlusPlusUpgrade -= PassiveManager_OnPiercingPlusPlusUpgrade;
+        PassiveManager.OnSizePlusPlusUpgrade -= PassiveManager_OnSizePlusPlusUpgrade;
+        PassiveManager.OnAttackDamagePlusPlusUpgrade -= PassiveManager_OnAttackDamagePlusPlusUpgrade;
     }
 
-    private void UpgradeManager_OnAttackSpeedPlusPlusUpgrade(object sender, UpgradeManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackSpeedPlusPlusUpgrade(object sender, PassiveManager.OnAttackSpeedPlusPlusUpgradeEventArgs e) {
         attackCooldown /= e.attackSpeedToMultiply;
         preAnimationTime /= e.attackSpeedToMultiply;
         animationTime /= e.attackSpeedToMultiply;
@@ -100,13 +100,13 @@ public class Pencil : PlayerWeapon {
         weaponData.pencil.animationTime /= e.attackSpeedToMultiply;
     }
 
-    private void UpgradeManager_OnPiercingPlusPlusUpgrade(object sender, UpgradeManager.OnPiercingPlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnPiercingPlusPlusUpgrade(object sender, PassiveManager.OnPiercingPlusPlusUpgradeEventArgs e) {
         piercing += e.piercingToAdd;
 
         weaponData.pencil.piercing += e.piercingToAdd;
     }
     
-    private void UpgradeManager_OnSizePlusPlusUpgrade(object sender, UpgradeManager.OnSizePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnSizePlusPlusUpgrade(object sender, PassiveManager.OnSizePlusPlusUpgradeEventArgs e) {
         weaponData.pencil.size *= e.sizeToMultiply;
         this.transform.localScale = weaponData.pencil.size;
 
@@ -117,8 +117,8 @@ public class Pencil : PlayerWeapon {
         aimWeaponRadius = weaponData.aimWeaponRadius;
     }
     
-    private void UpgradeManager_OnAttackDamagePlusPlusUpgrade(object sender, 
-        UpgradeManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
+    private void PassiveManager_OnAttackDamagePlusPlusUpgrade(object sender, 
+        PassiveManager.OnAttackDamagePlusPlusUpgradeEventArgs e) {
         weaponDamage *= e.attackDamageToMultiply;
         weaponData.pencil.damage *= e.attackDamageToMultiply;
     }

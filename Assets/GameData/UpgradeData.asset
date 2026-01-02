@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: UpgradeData
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
   attackSpeedPlusPlus:
-    AttackSpeedToMultiply_LevelOne: 1.05
-    AttackSpeedToMultiply_LevelTwo: 1.15
-    AttackSpeedToMultiply_LevelThree: 1.15
+    AttackSpeedToMultiply_LevelOne: 2
+    AttackSpeedToMultiply_LevelTwo: 2
+    AttackSpeedToMultiply_LevelThree: 2
   projectileCountPlusPlus:
-    ProjectileCountToAdd_LevelOne: 2
-    ProjectileCountToAdd_LevelTwo: 2
-    ProjectileCountToAdd_LevelThree: 3
+    ProjectileCountToAdd_LevelOne: 5
+    ProjectileCountToAdd_LevelTwo: 6
+    ProjectileCountToAdd_LevelThree: 7
   piercingPlusPlus:
-    PiercingToAdd_LevelOne: 1
-    PiercingToAdd_LevelTwo: 2
-    PiercingToAdd_LevelThree: 3
+    PiercingToAdd_LevelOne: 5
+    PiercingToAdd_LevelTwo: 6
+    PiercingToAdd_LevelThree: 7
   sizePlusPlus:
     SizeToMultiply_LevelOne: 1.05
     SizeToMultiply_LevelTwo: 1.1

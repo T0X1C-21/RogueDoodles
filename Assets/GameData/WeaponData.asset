@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff9ef5cad9d9b4089d0ef305ac5f44, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  startingPrimaryWeaponType: 2
+  startingPrimaryWeaponType: 1
   startingSecondaryWeaponTypes: 02000000
   aimWeaponRadius: 0.4
   weaponRotationSpeed: 25
