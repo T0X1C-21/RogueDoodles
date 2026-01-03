@@ -35,21 +35,18 @@ public class WeaponManager : Singleton<WeaponManager> {
                 Vector3.zero, Quaternion.identity);
                 instantiatedWeapon.transform.parent = this.transform;
                 instantiatedWeapon.name = primaryWeaponType.ToString();
-                Debug.Log($"Equipped Primary {primaryWeaponType.ToString()}");
                 break;
             case PrimaryWeaponType.ChalkShot:
                 instantiatedWeapon = Instantiate(weaponData.chalkShot.chalkShotPrefab,
                 Vector3.zero, Quaternion.identity);
                 instantiatedWeapon.transform.parent = this.transform;
                 instantiatedWeapon.name = primaryWeaponType.ToString();
-                Debug.Log($"Equipped Primary {primaryWeaponType.ToString()}");
                 break;
             case PrimaryWeaponType.MopSwipe:
                 instantiatedWeapon = Instantiate(weaponData.mopSwipe.mopSwipePrefab,
                 Vector3.zero, Quaternion.identity);
                 instantiatedWeapon.transform.parent = this.transform;
                 instantiatedWeapon.name = primaryWeaponType.ToString();
-                Debug.Log($"Equipped Primary {primaryWeaponType.ToString()}");
                 break;
         }
         Debug.Log($"Added to dictionary {primaryWeaponType.ToString()} with level 1");
@@ -77,6 +74,7 @@ public class WeaponManager : Singleton<WeaponManager> {
                         break;
                     case 3:
                         Debug.Log("Not Implemented Yet!");
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.MainWeapon);
                         break;
                 }
                 break;
@@ -87,6 +85,7 @@ public class WeaponManager : Singleton<WeaponManager> {
                         break;
                     case 3:
                         Debug.Log("Not Implemented Yet!");
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.MainWeapon);
                         break;
                 }
                 break;
@@ -97,6 +96,7 @@ public class WeaponManager : Singleton<WeaponManager> {
                         break;
                     case 3:
                         Debug.Log("Not Implemented Yet!");
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.MainWeapon);
                         break;
                 }
                 break;
@@ -139,6 +139,7 @@ public class WeaponManager : Singleton<WeaponManager> {
                         break;
                     case 3:
                         Debug.Log("Not Implemented Yet!");
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.InkSplash);
                         break;
                 }
                 break;
@@ -156,6 +157,7 @@ public class WeaponManager : Singleton<WeaponManager> {
                         break;
                     case 3:
                         Debug.Log("Not Implemented Yet!");
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.CrayonMissile);
                         break;
                 }
                 break;
@@ -173,6 +175,7 @@ public class WeaponManager : Singleton<WeaponManager> {
                         break;
                     case 3:
                         Debug.Log("Not Implemented Yet!");
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.NotebookTear);
                         break;
                 }
                 break;

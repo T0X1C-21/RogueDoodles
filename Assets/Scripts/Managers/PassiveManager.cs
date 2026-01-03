@@ -47,6 +47,10 @@ public class PassiveManager : Singleton<PassiveManager> {
 
     }
 
+    public Dictionary<PassiveType, int> GetEquippedPassivesAndLevelsDictionary() {
+        return equippedPassiveAndLevelDictionary;
+    }
+
     public void TriggerPassiveUpgrade(PassiveType passiveType) {
         int levelNumber;
         if (!equippedPassiveAndLevelDictionary.ContainsKey(passiveType)) {
@@ -79,6 +83,7 @@ public class PassiveManager : Singleton<PassiveManager> {
                         OnAttackSpeedPlusPlusUpgrade?.Invoke(this, new OnAttackSpeedPlusPlusUpgradeEventArgs {
                             attackSpeedToMultiply = upgradeData.attackSpeedPlusPlus.AttackSpeedToMultiply_LevelThree
                         });
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.AttackSpeedPlusPlus);
                         break;
                 }
                 break;
@@ -98,6 +103,7 @@ public class PassiveManager : Singleton<PassiveManager> {
                         OnProjectileCountPlusPlusUpgrade?.Invoke(this, new OnProjectileCountPlusPlusUpgradeEventArgs {
                             projectileCountToAdd = upgradeData.projectileCountPlusPlus.ProjectileCountToAdd_LevelThree
                         });
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.ProjectileCountPlusPlus);
                         break;
                 }
                 break;
@@ -117,6 +123,7 @@ public class PassiveManager : Singleton<PassiveManager> {
                         OnPiercingPlusPlusUpgrade?.Invoke(this, new OnPiercingPlusPlusUpgradeEventArgs {
                             piercingToAdd = upgradeData.projectileCountPlusPlus.ProjectileCountToAdd_LevelThree
                         });
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.PiercingPlusPlus);
                         break;
                 }
                 break;
@@ -136,6 +143,7 @@ public class PassiveManager : Singleton<PassiveManager> {
                         OnSizePlusPlusUpgrade?.Invoke(this, new OnSizePlusPlusUpgradeEventArgs {
                             sizeToMultiply = upgradeData.sizePlusPlus.SizeToMultiply_LevelThree
                         });
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.SizePlusPlus);
                         break;
                 }
                 break;
@@ -155,6 +163,7 @@ public class PassiveManager : Singleton<PassiveManager> {
                         OnAttackDamagePlusPlusUpgrade?.Invoke(this, new OnAttackDamagePlusPlusUpgradeEventArgs {
                             attackDamageToMultiply = upgradeData.attackDamagePlusPlus.AttackDamageToMultiply_LevelThree
                         });
+                        UpgradeManager.Instance.DeleteFromUpgradePool(UpgradeType.AttackDamagePlusPlus);
                         break;
                 }
                 break;

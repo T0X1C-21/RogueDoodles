@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ChalkShotBulletProjectile : Projectile {
     
@@ -52,6 +53,10 @@ public class ChalkShotBulletProjectile : Projectile {
         targetPosition = direction;
         currentPosition = this.transform.position;
         moveDirection = (targetPosition - currentPosition).normalized;
+
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
+        this.transform.rotation = targetRotation;
 
         StartCoroutine(AutoDestroySelf());
     }

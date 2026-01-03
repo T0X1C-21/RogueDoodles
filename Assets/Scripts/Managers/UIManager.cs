@@ -109,7 +109,6 @@ public class UIManager : Singleton<UIManager> {
         bool gotUniqueUpgrade = false;
         while (!gotUniqueUpgrade) {
             int randomNumber = Random.Range(0, UpgradeManager.Instance.NumberOfItemsInUpgradePool());
-        
             switch (randomNumber) {
                 case 0:
                     if (UpgradeManager.Instance.CheckItemInUpgradePool(UpgradeType.MainWeapon)) {
@@ -126,7 +125,7 @@ public class UIManager : Singleton<UIManager> {
                                 buttonText.text = userInterfaceData.upgradeMenuInfo.mopSwipeText;
                                 break;
                         }
-                        buttonText.text += " " + WeaponManager.Instance.GetLevelOfEquippedPrimaryWeapon().ToString();
+                        buttonText.text += " " + (WeaponManager.Instance.GetLevelOfEquippedPrimaryWeapon() + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.MainWeapon);
                         gotUniqueUpgrade = true;
                     }
@@ -136,8 +135,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.InkSplash);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.inkSplashText;
-                        buttonText.text += " " + WeaponManager.Instance.
-                            GetLevelOfEquippedSecondaryWeapon(SecondaryWeaponType.InkSplash).ToString();
+                        buttonText.text += " " + (WeaponManager.Instance.
+                            GetLevelOfEquippedSecondaryWeapon(SecondaryWeaponType.InkSplash) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.InkSplash);
                         gotUniqueUpgrade = true;
                     }
@@ -147,8 +146,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.CrayonMissile);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.crayonMissileText;
-                        buttonText.text += " " + WeaponManager.Instance.
-                            GetLevelOfEquippedSecondaryWeapon(SecondaryWeaponType.CrayonMissile).ToString();
+                        buttonText.text += " " + (WeaponManager.Instance.
+                            GetLevelOfEquippedSecondaryWeapon(SecondaryWeaponType.CrayonMissile) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.CrayonMissile);
                         gotUniqueUpgrade = true;
                     }
@@ -158,8 +157,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.NotebookTear);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.notebookTearText;
-                        buttonText.text += " " + WeaponManager.Instance.
-                            GetLevelOfEquippedSecondaryWeapon(SecondaryWeaponType.NotebookTear).ToString();
+                        buttonText.text += " " + (WeaponManager.Instance.
+                            GetLevelOfEquippedSecondaryWeapon(SecondaryWeaponType.NotebookTear) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.NotebookTear);
                         gotUniqueUpgrade = true;
                     }
@@ -169,8 +168,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.AttackSpeedPlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.attackSpeedPlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.AttackSpeedPlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.AttackSpeedPlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.AttackSpeedPlusPlus);
                         gotUniqueUpgrade = true;
                     }
@@ -180,8 +179,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.ProjectileCountPlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.projectileCountPlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.ProjectileCountPlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.ProjectileCountPlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.ProjectileCountPlusPlus);
                         gotUniqueUpgrade = true;
                     }
@@ -191,8 +190,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.PiercingPlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.piercingPlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.PiercingPlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.PiercingPlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.PiercingPlusPlus);
                         gotUniqueUpgrade = true;
                     }
@@ -202,8 +201,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.SizePlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.sizePlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.SizePlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.SizePlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.SizePlusPlus);
                         gotUniqueUpgrade = true;
                     }
@@ -213,8 +212,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.AttackDamagePlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.attackDamagePlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.AttackDamagePlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.AttackDamagePlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.AttackDamagePlusPlus);
                         gotUniqueUpgrade = true;
                     }
@@ -224,8 +223,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.RerollPlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.rerollPlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.RerollPlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.RerollPlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.RerollPlusPlus);
                         //gotUniqueUpgrade = true;
                     }
@@ -235,8 +234,8 @@ public class UIManager : Singleton<UIManager> {
                         UpgradeManager.Instance.RemoveFromUpgradePool(UpgradeType.LuckPlusPlus);
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
                         buttonText.text = userInterfaceData.upgradeMenuInfo.luckPlusPlusText;
-                        buttonText.text += " " + PassiveManager.Instance.
-                            GetLevelOfPassive(PassiveType.LuckPlusPlus).ToString();
+                        buttonText.text += " " + (PassiveManager.Instance.
+                            GetLevelOfPassive(PassiveType.LuckPlusPlus) + 1).ToString();
                         buttonUpgradeType.SetUpgradeType(UpgradeType.LuckPlusPlus);
                         //gotUniqueUpgrade = true;
                     }

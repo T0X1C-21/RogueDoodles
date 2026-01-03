@@ -49,7 +49,7 @@ public class UpgradeData : ScriptableObject {
     }
 
     [Space(10)]
-    [Header("----- UPGRADES STATS -----")]
+    [Header("----- PASSIVES STATS -----")]
     public AttackSpeedPlusPlus attackSpeedPlusPlus;
     public ProjectileCountPlusPlus projectileCountPlusPlus;
     public PiercingPlusPlus piercingPlusPlus;
